@@ -242,6 +242,7 @@ Makefile: ..\Vass_2\Vass_2.pro ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mk
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\qt_config.prf \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\win32-msvc\qmake.conf \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\exclusive_builds.prf \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\common\msvc-version.conf \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\toolchain.prf \
@@ -436,6 +437,7 @@ Makefile: ..\Vass_2\Vass_2.pro ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mk
 ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\qt_config.prf:
 ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\win32-msvc\qmake.conf:
 ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\exclusive_builds.prf:
 ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\common\msvc-version.conf:
 ..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\features\toolchain.prf:

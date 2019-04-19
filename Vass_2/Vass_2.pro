@@ -28,6 +28,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp
 
+RC_ICONS=icon2.png
+
 HEADERS += \
         mainwindow.h
 
@@ -38,3 +40,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc \
+    resources.qrc
