@@ -12,6 +12,7 @@ Media_Player::Media_Player(QWidget *parent) :
     m_player=new QMediaPlayer(this);
     connect(m_player,&QMediaPlayer::positionChanged,this,&Media_Player::on_positionChanged);
     connect(m_player,&QMediaPlayer::durationChanged,this,&Media_Player::on_durationChanged);
+
 }
 
 Media_Player::~Media_Player()
