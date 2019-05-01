@@ -2,9 +2,9 @@
 #
 # Project created by QtCreator 2019-04-20T00:07:19
 #
-#-------------------------------------------------
+#-------------------------------------------------_
 
-QT       += core gui
+QT       += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,16 +26,19 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        media_player.cpp
 
 RC_ICONS=icon2.png
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        media_player.h
 
 FORMS += \
-        mainwindow.ui
-
+        mainwindow.ui \
+        media_player.ui
+QT+=multimedia
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin

@@ -30,7 +30,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(644, 430);
+        MainWindow->resize(799, 539);
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -52,11 +52,11 @@ public:
         centralWidget->setFont(font);
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(220, 240, 191, 41));
+        pushButton->setGeometry(QRect(10, 10, 191, 41));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 644, 21));
+        menuBar->setGeometry(QRect(0, 0, 799, 21));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);
