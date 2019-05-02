@@ -26,7 +26,6 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QPushButton *pushButton;
-    QPushButton *pushButton_2;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -56,9 +55,6 @@ public:
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(10, 10, 191, 41));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(40, 90, 181, 25));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -74,7 +70,6 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Vass 2", Q_NULLPTR));
         pushButton->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
     } // retranslateUi
 
 };

@@ -28,19 +28,22 @@ SOURCES += \
         icon_panel.cpp \
         main.cpp \
         mainwindow.cpp \
-        media_player.cpp
+        media_player.cpp \
+        submit_removal.cpp
 
 RC_ICONS=icon2.png
 
 HEADERS += \
         icon_panel.h \
         mainwindow.h \
-        media_player.h
+        media_player.h \
+        submit_removal.h
 
 FORMS += \
         icon_panel.ui \
         mainwindow.ui \
-        media_player.ui
+        media_player.ui \
+        submit_removal.ui
 QT+=multimedia
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

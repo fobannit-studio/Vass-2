@@ -79,7 +79,6 @@ void Media_Player::on_AddButton_clicked()
         for (int i=0;i<songs.count();i++)
         {   tmp=songs[i].toStdString();
             tmp=tmp.substr(tmp.find_last_of("/")+1);
-
             std::cout<<tmp<<std::endl;
             ui->listWidget->addItem(QString::fromStdString(tmp));
         }

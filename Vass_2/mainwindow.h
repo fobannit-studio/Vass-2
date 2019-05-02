@@ -5,6 +5,7 @@
 #include<QShortcut>
 #include<QKeySequence>
 #include "media_player.h"
+#include "submit_removal.h"
 #include"icon_panel.h"
 namespace Ui {
 class MainWindow;

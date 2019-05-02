@@ -3,11 +3,20 @@
 
 #include <QWidget>
 #include <QDesktopServices>
+#include <QMessageBox>
 #include <QFile>
 #include<QFileDialog>
 #include<QUrl>
 #include<QWheelEvent>
+#include<QDebug>
+#include<QIODevice>
 #include <vector>
+#include <regex>
+#include <QLabel>
+#include<QDataStream>
+#include<algorithm>
+#include "submit_removal.h"
+
 
 namespace Ui {
 class icon_panel;
@@ -26,6 +35,7 @@ public:
 protected:
     void wheelEvent(QWheelEvent *event);
 
+
 private slots:
     void on_addShortCut_clicked();
     void fill_shortcuts();
@@ -37,11 +47,27 @@ private slots:
     void on_app_6_clicked();
     void on_app_7_clicked();
     void on_app_8_clicked();
+    void on_removeShortCut_clicked();
+
 private:
 
+    bool _removal;
+    int _current_page;
     Ui::icon_panel *ui;
-    int _current_page ;
-    std::vector<QString> _shortcuts;
+//    submit_removal submit_window;
+    QString _shortcuts_file;
+    std::vector <std::pair<std::string,QString>> _apps;
+    QStringList _shortcuts;
+    std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
+    std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
+    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
+
+    void initShortcut(QPushButton * app , QLabel * label , int current_position);
+    void parse_names(QString);
+    void setIcon(QLabel *,int);
+    void writeToFile();
+    void readFromFile();
+    void removeShortCut(int);
 
 
 };
