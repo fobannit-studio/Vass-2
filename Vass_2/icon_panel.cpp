@@ -7,8 +7,8 @@ icon_panel::icon_panel(QWidget *parent) :
     ui(new Ui::icon_panel)
 {
     _current_page = 0;
-    fill_shortcuts();
     ui->setupUi(this);
+    fill_shortcuts();
 }
 
 icon_panel::~icon_panel()
