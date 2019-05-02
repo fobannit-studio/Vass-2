@@ -2,7 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include<QShortcut>
+#include<QKeySequence>
 #include "media_player.h"
+#include"icon_panel.h"
 namespace Ui {
 class MainWindow;
 }
@@ -17,11 +20,13 @@ public:
 
 private slots:
     void on_pushButton_clicked();
-
+    void OpenIcons();
 
 private:
     Ui::MainWindow *ui;
     Media_Player M_Player;
+    icon_panel Icons;
+    QShortcut * openIcons;
 };
 
 #endif // MAINWINDOW_H
