@@ -8,7 +8,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    Icons()
 {
    
     QPainter painter(this);
@@ -17,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
         painter.setBrush(QColor(100,100,100, 127));
         painter.drawRect(0, 0, width(),  height());
         openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(OpenIcons()));
-        /*openIcons= new QShortcut(QKeySequence(Qt::CTRL+Qt::Key_M), parent);
-        QObject::connect(openIcons, SIGNAL(activated()), this, SLOT(OpenIcons()));*/
+        connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
+
     ui->setupUi(this);
 }
 
@@ -32,6 +33,13 @@ void MainWindow::on_pushButton_clicked()
   M_Player.show();
 
 
+}
+
+void MainWindow::HideIcons()
+{
+
+    qDebug()<<"called";
+    this -> show();
 }
 
 void MainWindow::OpenIcons()

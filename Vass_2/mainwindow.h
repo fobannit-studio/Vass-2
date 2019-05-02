@@ -19,6 +19,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void HideIcons();
+
 private slots:
     void on_pushButton_clicked();
     void OpenIcons();

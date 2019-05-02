@@ -3,12 +3,13 @@
 
 icon_panel::icon_panel(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::icon_panel)
-//    submit_window(this)
+    ui(new Ui::icon_panel),
+    submit_window(this)
 {
     _removal = false;
     _current_page = 0;
     _shortcuts_file = tr("shortcuts.abk");
+    closeIcons = new QShortcut(QKeySequence(Qt::CTRL+Qt::Key_M),this,SLOT(close_icon_panel()));
     readFromFile();
     ui->setupUi(this);
 
@@ -62,15 +63,14 @@ void icon_panel::parse_names(QString filename)
     path = matches[1];
     std::string app = matches[2];
     std::string extension = matches[3];
-//    QDir current_dir = QDir(QString::fromStdString(path));
-     std::pair<std::string,QString> name_icon;
+    std::pair<std::string,QString> name_icon;
     if(std::find(_image_ext.begin(), _image_ext.end(), extension) != _image_ext.end())
     {
-        name_icon = std::make_pair(app,QString::fromStdString("/home/bohdan/Projects/Fobannit/Vass-2/Vass_2/images/art.png"));
+        name_icon = std::make_pair(app,QString::fromStdString(":/icons/images/picture.png"));
     }
     else if(std::find(_doc_ext.begin(), _doc_ext.end(), extension) != _doc_ext.end())
     {
-        name_icon = std::make_pair(app,QString::fromStdString("/home/bohdan/Projects/Fobannit/Vass-2/Vass_2/images/explorer.png"));
+        name_icon = std::make_pair(app,QString::fromStdString(":/icons/images/philosophy.png"));
     }
     else {
         name_icon = std::make_pair(app,QString::fromStdString(path + "/" + app + ".png"));
@@ -89,7 +89,7 @@ void icon_panel::setIcon(QLabel * label, int current_icon)
 void icon_panel::on_addShortCut_clicked()
 {
     if(!_removal){
-    QString filename = QFileDialog::getOpenFileName(this,QString("Choose shortcut"),"/home/bohdan/Pictures","All files (*.*);;Exe files (*.exe);;Pdf files (*pdf)");
+    QString filename = QFileDialog::getOpenFileName(this,QString("Choose shortcut"),"/","All files (*.*);;Exe files (*.exe);;Pdf files (*pdf)");
     if(filename.isEmpty())return;
     _shortcuts << filename;
     parse_names(filename);
@@ -256,9 +256,16 @@ void icon_panel::on_removeShortCut_clicked()
 }
 void icon_panel::removeShortCut(int posiotion)
 {
+    submit_window.show();
+    submit_window.setModal(true);
+    if(submit_window.exec()){;
     _shortcuts.removeAt(posiotion);
-//    submit_window.show();
-//    submit_window.setModal(true);
     _apps.erase(_apps.begin() + posiotion);
     fill_shortcuts();
+    }else return;
+}
+void icon_panel::close_icon_panel(){
+    emit HideIconBar();
+    this->hide();
+    this->close();
 }

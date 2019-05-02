@@ -15,6 +15,7 @@
 #include <QLabel>
 #include<QDataStream>
 #include<algorithm>
+#include<QShortcut>
 #include "submit_removal.h"
 
 
@@ -35,6 +36,8 @@ public:
 protected:
     void wheelEvent(QWheelEvent *event);
 
+signals:
+    void HideIconBar();
 
 private slots:
     void on_addShortCut_clicked();
@@ -48,20 +51,21 @@ private slots:
     void on_app_7_clicked();
     void on_app_8_clicked();
     void on_removeShortCut_clicked();
+    void close_icon_panel();
 
 private:
 
     bool _removal;
     int _current_page;
     Ui::icon_panel *ui;
-//    submit_removal submit_window;
+    submit_removal submit_window;
     QString _shortcuts_file;
     std::vector <std::pair<std::string,QString>> _apps;
     QStringList _shortcuts;
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
     std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
     std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
-
+    QShortcut * closeIcons;
     void initShortcut(QPushButton * app , QLabel * label , int current_position);
     void parse_names(QString);
     void setIcon(QLabel *,int);

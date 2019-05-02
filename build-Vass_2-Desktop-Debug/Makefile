@@ -684,8 +684,8 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp qrc_resources.cpp
 qrc_resources.cpp: ../Vass_2/resources.qrc \
 		../../../Computer_Vision/anaconda3/bin/rcc \
-		../Vass_2/icon2.ico \
 		../Vass_2/images/music.png \
+		../Vass_2/images/icon2.png \
 		../Vass_2/images/philosophy.png \
 		../Vass_2/images/picture.png \
 		../Vass_2/images/explorer.png \
@@ -695,8 +695,8 @@ qrc_resources.cpp: ../Vass_2/resources.qrc \
 
 qrc_resources.cpp: ../Vass_2/resources.qrc \
 		../../../Computer_Vision/anaconda3/bin/rcc \
-		../Vass_2/icon2.ico \
 		../Vass_2/images/music.png \
+		../Vass_2/images/icon2.png \
 		../Vass_2/images/philosophy.png \
 		../Vass_2/images/picture.png \
 		../Vass_2/images/explorer.png \
@@ -832,6 +832,8 @@ moc_icon_panel.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWid
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qframe.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
+		../Vass_2/submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
@@ -988,6 +990,8 @@ moc_mainwindow.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMai
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../Vass_2/submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
@@ -1413,6 +1417,8 @@ icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qframe.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
+		../Vass_2/submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		ui_icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QVariant \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QAction \
@@ -1602,6 +1608,8 @@ main.o: ../Vass_2/main.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../Vass_2/submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
@@ -1776,6 +1784,8 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../Vass_2/submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
@@ -2101,7 +2111,43 @@ submit_removal.o: ../Vass_2/submit_removal.cpp ../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvector2d.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtouchdevice.h \
-		ui_submit_removal.h
+		ui_submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QVariant \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QAction \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qaction.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qicon.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qactiongroup.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreapplication.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qeventloop.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qdesktopwidget.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qguiapplication.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qinputmethod.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QButtonGroup \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qbuttongroup.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialogButtonBox \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qdialogbuttonbox.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QHeaderView \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qheaderview.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractitemview.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractscrollarea.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qframe.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractitemmodel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qitemselectionmodel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractitemdelegate.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyleoption.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractspinbox.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvalidator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregularexpression.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qslider.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractslider.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabwidget.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o submit_removal.o ../Vass_2/submit_removal.cpp
 
 qrc_resources.o: qrc_resources.cpp 
