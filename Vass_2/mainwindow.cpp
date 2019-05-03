@@ -47,7 +47,7 @@ void MainWindow::OpenIcons()
    QPoint position = QCursor::pos();
    Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
    Icons.setWindowFlags(Qt::FramelessWindowHint);
-   Icons.setAttribute(Qt::WA_TranslucentBackground);
+//   Icons.setAttribute(Qt::WA_TranslucentBackground);
    Icons.show();
    this ->hide();
 }
