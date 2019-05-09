@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include<QShortcut>
+#include <QMouseEvent>
 #include<QKeySequence>
 #include "media_player.h"
 #include "submit_removal.h"
@@ -17,6 +18,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
 
 public slots:
@@ -26,11 +28,15 @@ private slots:
     void on_pushButton_clicked();
     void OpenIcons();
 
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     Media_Player M_Player;
     icon_panel Icons;
     QShortcut * openIcons;
+
 };
 
 #endif // MAINWINDOW_H

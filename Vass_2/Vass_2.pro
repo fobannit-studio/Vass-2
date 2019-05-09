@@ -29,7 +29,8 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         media_player.cpp \
-        submit_removal.cpp
+        submit_removal.cpp \
+        timewidget.cpp
 
 RC_ICONS=icon2.png
 
@@ -37,7 +38,8 @@ HEADERS += \
         icon_panel.h \
         mainwindow.h \
         media_player.h \
-        submit_removal.h
+        submit_removal.h \
+        timewidget.h
 
 FORMS += \
         icon_panel.ui \
@@ -45,6 +47,9 @@ FORMS += \
         media_player.ui \
         submit_removal.ui
 QT+=multimedia
+
+
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
@@ -53,3 +58,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     resources.qrc \
     resources.qrc
+
+DISTFILES +=

@@ -105,7 +105,7 @@ void icon_panel::wheelEvent(QWheelEvent *event)
 {
     QPoint degrees = event -> angleDelta();
     qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
-    if(degrees.ry()>0 and _current_page + 8 < _shortcuts.size()){
+    if((degrees.ry()>0) && (_current_page + 8 < _shortcuts.size())){
         _current_page += 8;
         fill_shortcuts();
     }

@@ -5,13 +5,13 @@
 #include <QPainter>
 #include <QColor>
 #include<QCursor>
-
+#include <QTime>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     Icons()
 {
-   
+
     QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
         painter.setPen(Qt::NoPen);
@@ -21,6 +21,9 @@ MainWindow::MainWindow(QWidget *parent) :
         connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
 
     ui->setupUi(this);
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -31,10 +34,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
   M_Player.show();
-
-
 }
-
 void MainWindow::HideIcons()
 {
 
@@ -50,4 +50,13 @@ void MainWindow::OpenIcons()
 //   Icons.setAttribute(Qt::WA_TranslucentBackground);
    Icons.show();
    this ->hide();
+}
+
+
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
 }

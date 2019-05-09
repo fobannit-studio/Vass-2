@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -26,8 +26,8 @@
    <string>Vass 2</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icon2.png</normaloff>:/icon2.png</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/icons/images/icon2.png</normaloff>:/icons/images/icon2.png</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -60,7 +60,44 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Open Music</string>
+    </property>
+   </widget>
+   <widget class="TimeWidget" name="TimeLabel">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>200</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Rubik</family>
+      <pointsize>25</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>12:45:37</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>10</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Open Time Widget</string>
     </property>
    </widget>
   </widget>
@@ -70,12 +107,21 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <customwidgets>
+  <customwidget>
+   <class>TimeWidget</class>
+   <extends>QLabel</extends>
+   <header location="global">timewidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

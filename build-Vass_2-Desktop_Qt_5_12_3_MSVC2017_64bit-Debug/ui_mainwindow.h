@@ -16,6 +16,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include <timewidget.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -24,6 +25,8 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QPushButton *pushButton;
+    TimeWidget *TimeLabel;
+    QPushButton *pushButton_2;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -31,7 +34,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(799, 539);
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
@@ -39,13 +42,16 @@ public:
         MainWindow->setMouseTracking(true);
         MainWindow->setFocusPolicy(Qt::NoFocus);
         QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icon2.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8(":/icons/images/icon2.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         MainWindow->setWindowOpacity(1.000000000000000);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
-        centralWidget->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
+        centralWidget->setSizePolicy(sizePolicy1);
         centralWidget->setMinimumSize(QSize(400, 400));
         QFont font;
         font.setPointSize(12);
@@ -53,6 +59,19 @@ public:
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         pushButton->setGeometry(QRect(10, 10, 191, 41));
+        TimeLabel = new TimeWidget(centralWidget);
+        TimeLabel->setObjectName(QString::fromUtf8("TimeLabel"));
+        TimeLabel->setGeometry(QRect(290, 200, 161, 31));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Rubik"));
+        font1.setPointSize(25);
+        font1.setBold(true);
+        font1.setWeight(75);
+        TimeLabel->setFont(font1);
+        TimeLabel->setAlignment(Qt::AlignCenter);
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setGeometry(QRect(220, 10, 191, 41));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -67,7 +86,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Vass 2", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Open Music", nullptr));
+        TimeLabel->setText(QApplication::translate("MainWindow", "12:45:37", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Open Time Widget", nullptr));
     } // retranslateUi
 
 };
