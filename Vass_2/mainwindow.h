@@ -15,6 +15,7 @@
 #include "submit_removal.h"
 #include"icon_panel.h"
 #include"config.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -27,19 +28,22 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow() override;
 
-public slots:
-    void HideIcons();
+
 
 private slots:
 //    void on_pushButton_clicked();
-    void OpenIcons();
+    void setVisibleIcons();
     void createTrayIcons();
     void InitActions();
 private:
     Ui::MainWindow *ui;
+
+    bool _is_panel_active; // true = active
+
     Media_Player M_Player;
     icon_panel Icons;
     config Configuration;
+
     QShortcut * openIcons;
     QSystemTrayIcon *trayIcon;
     QMenu * trayIconMenu;

@@ -77,7 +77,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 799, 21));
+        menuBar->setGeometry(QRect(0, 0, 799, 22));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);

@@ -4,9 +4,11 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    Icons(), //doesn't need to inherit parent attributes
+    Icons(this),
     Configuration(this)
 {
+    QIcon icon = QIcon(":/icons/images/icon2.png");
+    setWindowIcon(icon);
     InitActions();
     createTrayIcons();
 
@@ -16,16 +18,20 @@ MainWindow::MainWindow(QWidget *parent) :
     painter.setBrush(QColor(100,100,100, 127));
     painter.drawRect(0, 0, width(),  height());
     //shortcut for open icons
-    openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(OpenIcons()));
+
+    openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
     connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
-    //systray set up
-    QIcon icon = QIcon(":/icons/images/icon2.png");
+
+    _is_panel_active = false;
     Configuration.hide();
+    Icons.hide();
+
+    //systray set up
     trayIcon->setIcon(icon);
-    setWindowIcon(icon);
     trayIcon-> show();
     //
     ui->setupUi(this);
+
 
 
 
@@ -41,21 +47,21 @@ MainWindow::~MainWindow()
 //  qDebug()<<"called";
 //  M_Player.show();
 //}
-void MainWindow::HideIcons()
-{
 
-    qDebug()<<"called";
-    this -> show();
+
+void MainWindow::setVisibleIcons()
+{
+    if(not _is_panel_active){
+        QPoint position = QCursor::pos();
+        Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
+        Icons.setWindowFlags(Qt::FramelessWindowHint);
+        Icons.setAttribute(Qt::WA_TranslucentBackground);
+        Icons.show();
+        _is_panel_active =true;
+    }else {
+        Icons.hide();
+        _is_panel_active=false;
 }
-
-void MainWindow::OpenIcons()
-{
-   QPoint position = QCursor::pos();
-   Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
-   Icons.setWindowFlags(Qt::FramelessWindowHint);
-   Icons.setAttribute(Qt::WA_TranslucentBackground);
-   Icons.show();
-//   this ->hide();
 }
 
 

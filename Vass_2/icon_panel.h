@@ -51,7 +51,7 @@ private slots:
     void on_app_7_clicked();
     void on_app_8_clicked();
     void on_removeShortCut_clicked();
-    void close_icon_panel();
+
 
 private:
 
@@ -65,7 +65,7 @@ private:
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
     std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
     std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
-    QShortcut * closeIcons;
+
     void initShortcut(QPushButton * app , QLabel * label , int current_position);
     void parse_names(QString);
     void setIcon(QLabel *,int);

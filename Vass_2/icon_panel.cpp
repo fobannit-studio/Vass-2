@@ -9,7 +9,6 @@ icon_panel::icon_panel(QWidget *parent) :
     _removal = false;
     _current_page = 0;
     _shortcuts_file = tr("shortcuts.abk");
-    closeIcons = new QShortcut(QKeySequence(Qt::CTRL+Qt::Key_M),this,SLOT(close_icon_panel()));
     readFromFile();
     ui->setupUi(this);
 
@@ -264,8 +263,4 @@ void icon_panel::removeShortCut(int posiotion)
     fill_shortcuts();
     }else return;
 }
-void icon_panel::close_icon_panel(){
-    emit HideIconBar();
-    this->hide();
-    this->close();
-}
+
