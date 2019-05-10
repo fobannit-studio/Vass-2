@@ -66,8 +66,8 @@
    <widget class="TimeWidget" name="TimeLabel">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>200</y>
+      <x>640</x>
+      <y>0</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -100,6 +100,16 @@
      <string>Open Time Widget</string>
     </property>
    </widget>
+   <widget class="icon_panel" name="icons" native="true">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>90</y>
+      <width>421</width>
+      <height>382</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -118,6 +128,12 @@
    <class>TimeWidget</class>
    <extends>QLabel</extends>
    <header location="global">timewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>icon_panel</class>
+   <extends>QWidget</extends>
+   <header location="global">icon_panel.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

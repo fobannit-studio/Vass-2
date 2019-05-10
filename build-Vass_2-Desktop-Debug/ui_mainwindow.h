@@ -18,6 +18,7 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
+#include <icon_panel.h>
 #include <timewidget.h>
 
 QT_BEGIN_NAMESPACE
@@ -29,6 +30,7 @@ public:
     QPushButton *pushButton;
     TimeWidget *TimeLabel;
     QPushButton *pushButton_2;
+    icon_panel *icons;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -63,7 +65,7 @@ public:
         pushButton->setGeometry(QRect(10, 10, 191, 41));
         TimeLabel = new TimeWidget(centralWidget);
         TimeLabel->setObjectName(QStringLiteral("TimeLabel"));
-        TimeLabel->setGeometry(QRect(290, 200, 161, 31));
+        TimeLabel->setGeometry(QRect(640, 0, 161, 31));
         QFont font1;
         font1.setFamily(QStringLiteral("Rubik"));
         font1.setPointSize(25);
@@ -74,6 +76,9 @@ public:
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setGeometry(QRect(220, 10, 191, 41));
+        icons = new icon_panel(centralWidget);
+        icons->setObjectName(QStringLiteral("icons"));
+        icons->setGeometry(QRect(370, 90, 421, 382));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

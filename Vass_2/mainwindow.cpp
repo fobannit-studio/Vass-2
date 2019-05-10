@@ -25,13 +25,12 @@ MainWindow::MainWindow(QWidget *parent) :
     _is_panel_active = false;
     Configuration.hide();
     Icons.hide();
-
     //systray set up
     trayIcon->setIcon(icon);
     trayIcon-> show();
     //
     ui->setupUi(this);
-
+    ui ->icons -> hide();
 
 
 
@@ -53,13 +52,14 @@ void MainWindow::setVisibleIcons()
 {
     if(not _is_panel_active){
         QPoint position = QCursor::pos();
-        Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
-        Icons.setWindowFlags(Qt::FramelessWindowHint);
-        Icons.setAttribute(Qt::WA_TranslucentBackground);
-        Icons.show();
+        ui-> icons -> move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
+//        Icons.setWindowFlags(Qt::FramelessWindowHint);
+//        Icons.setAttribute(Qt::WA_TranslucentBackground);
+//        Icons.setFocus();
+        ui ->icons -> show();
         _is_panel_active =true;
     }else {
-        Icons.hide();
+        ui ->icons -> hide();
         _is_panel_active=false;
 }
 }
