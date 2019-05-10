@@ -25,6 +25,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        config.cpp \
         icon_panel.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 RC_ICONS=icon2.png
 
 HEADERS += \
+        config.h \
         icon_panel.h \
         mainwindow.h \
         media_player.h \
@@ -42,6 +44,7 @@ HEADERS += \
         timewidget.h
 
 FORMS += \
+        config.ui \
         icon_panel.ui \
         mainwindow.ui \
         media_player.ui \
