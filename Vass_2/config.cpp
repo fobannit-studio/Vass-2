@@ -1,6 +1,5 @@
 #include "config.h"
 #include "ui_config.h"
-
 config::config(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::config)
@@ -16,4 +15,9 @@ config::config(QWidget *parent) :
 config::~config()
 {
     delete ui;
+}
+
+void config::on_app_config_clicked()
+{
+
 }

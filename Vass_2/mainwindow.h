@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(std::pair<int,int> dim,QWidget *parent = nullptr);
     ~MainWindow() override;
 
 
@@ -33,12 +33,15 @@ public:
 private slots:
 //    void on_pushButton_clicked();
     void setVisibleIcons();
+    void setVisibleConfig();
     void createTrayIcons();
     void InitActions();
 private:
     Ui::MainWindow *ui;
 
-    bool _is_panel_active; // true = active
+    bool _is_panel_active;
+    bool _is_config_active;
+    std::pair<int,int> _D_dims;
 
     Media_Player M_Player;
     icon_panel Icons;

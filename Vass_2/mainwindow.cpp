@@ -1,11 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    Icons(this),
-    Configuration(this)
+    Icons(),
+    Configuration()
 {
     QIcon icon = QIcon(":/icons/images/icon2.png");
     setWindowIcon(icon);
@@ -23,14 +23,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
 
     _is_panel_active = false;
-    Configuration.hide();
-    Icons.hide();
+    _is_config_active = false;
+    _D_dims = dim;
+
+
     //systray set up
     trayIcon->setIcon(icon);
     trayIcon-> show();
     //
     ui->setupUi(this);
     ui ->icons -> hide();
+    ui ->configuration -> hide();
 
 
 
@@ -64,13 +67,27 @@ void MainWindow::setVisibleIcons()
 }
 }
 
+void MainWindow::setVisibleConfig()
+{
+    qDebug()<<"called";
+    if(not _is_config_active){
+        ui-> configuration -> move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
+
+        ui ->configuration -> show();
+        _is_config_active =true;
+    }else {
+        ui ->configuration -> hide();
+        _is_config_active=false;
+}
+
+}
 
 void MainWindow::InitActions()
 {
    openConfig = new QAction(tr("Show configuration window"),this);
-   connect(openConfig, &QAction::triggered, &Configuration, &QWidget::show);
+   connect(openConfig, &QAction::triggered, this, &MainWindow::setVisibleConfig);
    minimize = new QAction(tr("Hide configuration"),this);
-   connect(openConfig, &QAction::triggered, &Configuration, &QWidget::show);
+   connect(minimize, &QAction::triggered, this, &MainWindow::setVisibleConfig);
    openPlayer = new QAction(tr("Open Player"),this);
    connect(openPlayer,&QAction::triggered,&M_Player,&QWidget::show);
    exit = new QAction(tr("Quit"),this);

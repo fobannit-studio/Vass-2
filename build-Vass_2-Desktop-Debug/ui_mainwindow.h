@@ -20,6 +20,7 @@
 #include <QtWidgets/QWidget>
 #include <icon_panel.h>
 #include <timewidget.h>
+#include "config.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -31,6 +32,7 @@ public:
     TimeWidget *TimeLabel;
     QPushButton *pushButton_2;
     icon_panel *icons;
+    config *configuration;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -79,6 +81,9 @@ public:
         icons = new icon_panel(centralWidget);
         icons->setObjectName(QStringLiteral("icons"));
         icons->setGeometry(QRect(370, 90, 421, 382));
+        configuration = new config(centralWidget);
+        configuration->setObjectName(QStringLiteral("configuration"));
+        configuration->setGeometry(QRect(20, 90, 600, 500));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));

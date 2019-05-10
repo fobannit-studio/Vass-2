@@ -10,15 +10,15 @@
 #include<QWheelEvent>
 #include<QDebug>
 #include<QIODevice>
-#include <vector>
-#include <regex>
 #include <QLabel>
 #include<QDataStream>
-#include<algorithm>
 #include<QShortcut>
 #include "submit_removal.h"
+#include <regex>
+#include<algorithm>
+#include <vector>
 
-
+enum class State{Ranged,Single};
 namespace Ui {
 class icon_panel;
 }
@@ -50,29 +50,36 @@ private slots:
     void on_app_6_clicked();
     void on_app_7_clicked();
     void on_app_8_clicked();
+    void removeSequence();
     void on_removeShortCut_clicked();
 
 
+
 private:
+    Ui::icon_panel *ui;
 
     bool _removal;
     int _current_page;
-    Ui::icon_panel *ui;
-    submit_removal submit_window;
-    QString _shortcuts_file;
+    std::vector<int> _to_remove;
     std::vector <std::pair<std::string,QString>> _apps;
-    QStringList _shortcuts;
+
+    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
     std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
-    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
+    std::vector<QPushButton * > _app_buttons; // buttons on ui , connected to shortcuts
+
+    submit_removal submit_window;
+    QString _shortcuts_file;
+    QStringList _shortcuts;
+    QShortcut * sumbmit;
 
     void initShortcut(QPushButton * app , QLabel * label , int current_position);
     void parse_names(QString);
     void setIcon(QLabel *,int);
     void writeToFile();
     void readFromFile();
-    void removeShortCut(int);
-
+    void mark_for_removal(QPushButton * ,int , State );
+    void return_default_style();
 
 };
 

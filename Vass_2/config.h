@@ -15,6 +15,9 @@ public:
     ~config();
 
 
+private slots:
+    void on_app_config_clicked();
+
 private:
     Ui::config *ui;
 

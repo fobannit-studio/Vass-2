@@ -40,7 +40,7 @@ public:
         app_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
         mp_config = new QPushButton(config);
         mp_config->setObjectName(QStringLiteral("mp_config"));
-        mp_config->setGeometry(QRect(150, 0, 150, 50));
+        mp_config->setGeometry(QRect(150, 0, 121, 50));
         mp_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
         lib_config = new QPushButton(config);
         lib_config->setObjectName(QStringLiteral("lib_config"));
@@ -48,7 +48,7 @@ public:
         lib_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
         ic_config = new QPushButton(config);
         ic_config->setObjectName(QStringLiteral("ic_config"));
-        ic_config->setGeometry(QRect(300, 0, 150, 50));
+        ic_config->setGeometry(QRect(269, 0, 181, 50));
         ic_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
         Layout = new QLabel(config);
         Layout->setObjectName(QStringLiteral("Layout"));

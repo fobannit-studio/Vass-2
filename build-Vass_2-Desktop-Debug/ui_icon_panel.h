@@ -64,7 +64,7 @@ public:
         app_1->setCursor(QCursor(Qt::ArrowCursor));
         app_1->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_1 = new QLabel(icon_panel);
         label_1->setObjectName(QStringLiteral("label_1"));
@@ -82,7 +82,7 @@ public:
         app_2->setCursor(QCursor(Qt::ArrowCursor));
         app_2->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_2 = new QLabel(icon_panel);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -95,7 +95,7 @@ public:
         app_3->setCursor(QCursor(Qt::ArrowCursor));
         app_3->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_3 = new QLabel(icon_panel);
         label_3->setObjectName(QStringLiteral("label_3"));
@@ -108,7 +108,7 @@ public:
         app_4->setCursor(QCursor(Qt::ArrowCursor));
         app_4->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_4 = new QLabel(icon_panel);
         label_4->setObjectName(QStringLiteral("label_4"));
@@ -121,7 +121,7 @@ public:
         app_5->setCursor(QCursor(Qt::ArrowCursor));
         app_5->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_5 = new QLabel(icon_panel);
         label_5->setObjectName(QStringLiteral("label_5"));
@@ -134,7 +134,7 @@ public:
         app_6->setCursor(QCursor(Qt::ArrowCursor));
         app_6->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_6 = new QLabel(icon_panel);
         label_6->setObjectName(QStringLiteral("label_6"));
@@ -147,7 +147,7 @@ public:
         app_7->setCursor(QCursor(Qt::ArrowCursor));
         app_7->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_7 = new QLabel(icon_panel);
         label_7->setObjectName(QStringLiteral("label_7"));
@@ -160,7 +160,7 @@ public:
         app_8->setCursor(QCursor(Qt::ArrowCursor));
         app_8->setStyleSheet(QLatin1String("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_8 = new QLabel(icon_panel);
         label_8->setObjectName(QStringLiteral("label_8"));

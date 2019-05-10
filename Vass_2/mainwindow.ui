@@ -110,6 +110,16 @@
      </rect>
     </property>
    </widget>
+   <widget class="config" name="configuration" native="true">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>600</width>
+      <height>500</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -133,6 +143,12 @@
    <class>icon_panel</class>
    <extends>QWidget</extends>
    <header location="global">icon_panel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>config</class>
+   <extends>QWidget</extends>
+   <header>config.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
