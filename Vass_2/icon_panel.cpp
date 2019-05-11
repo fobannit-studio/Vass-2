@@ -298,8 +298,8 @@ void icon_panel::on_removeShortCut_clicked()
     if(!_removal){
     _removal = true;
     ui ->addShortCut->setText("Done");
-    ui -> removeShortCut ->setText("Cancel Selection");
-    ui -> removeShortCut -> setStyleSheet("QPushButton { background-color: rgba(255, 207, 49,0.7); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ rgba(255, 207, 49,1); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
+    ui -> removeShortCut ->setText("Cancel");
+    ui -> removeShortCut -> setStyleSheet("QPushButton { background-color: rgba(255, 210, 50 , 0.7); color: white; border: 1px solid gray; border-radius:10px}QPushButton:hover{ background-color: rgb(255, 210, 50)}");
     }else {
     _to_remove.clear();
     return_default_style();
