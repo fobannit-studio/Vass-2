@@ -35,10 +35,15 @@ private slots:
 
     void on_listWidget_itemDoubleClicked();
 
+    void on_PreviousButton_clicked();
+
+    void on_NextButton_clicked();
+
 private:
     Ui::Media_Player *ui;
     QMediaPlayer* m_player;
     QStringList songs;
+    int current_song=0;
 };
 
 #endif // MEDIA_PLAYER_H

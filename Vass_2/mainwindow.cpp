@@ -1,11 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
 #include <QTimer>
 #include <QPainter>
 #include <QColor>
 #include<QCursor>
 #include <QTime>
+#include <QDebug>
+#include <iostream>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -23,12 +24,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
 
+    // считать настройки из файла
+
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -51,12 +55,27 @@ void MainWindow::OpenIcons()
    Icons.show();
    this ->hide();
 }
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    // функия что записывает настройки
+    event->accept(); // event->ignore() игнорировать закрытие окна
 
+}
 
 
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
-
+  if (this->ui->pushButton_2->text()=="Show")
+  {
+      ui->pushButton_2->setText("Hide");
+      ui->TimeLabel->show();
+  }
+  else {
+      {
+           ui->pushButton_2->setText("Show");
+           ui->TimeLabel->hide();
+      }
+  }
 }

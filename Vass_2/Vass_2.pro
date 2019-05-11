@@ -59,4 +59,14 @@ RESOURCES += \
     resources.qrc \
     resources.qrc
 
-DISTFILES +=
+
+
+unix|win32: LIBS += -L$$PWD/../ -lUGlobalHotkey
+
+INCLUDEPATH += $$PWD/../
+DEPENDPATH += $$PWD/../
+
+INCLUDEPATH +=$$PWD/../UGlobalHotkey
+
+win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../UGlobalHotkey.lib
+else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../libUGlobalHotkey.a

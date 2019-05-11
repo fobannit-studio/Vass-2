@@ -61,7 +61,7 @@ public:
         pushButton->setGeometry(QRect(10, 10, 191, 41));
         TimeLabel = new TimeWidget(centralWidget);
         TimeLabel->setObjectName(QString::fromUtf8("TimeLabel"));
-        TimeLabel->setGeometry(QRect(290, 200, 161, 31));
+        TimeLabel->setGeometry(QRect(360, 230, 161, 31));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Rubik"));
         font1.setPointSize(25);
@@ -88,7 +88,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Vass 2", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Open Music", nullptr));
         TimeLabel->setText(QApplication::translate("MainWindow", "12:45:37", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Open Time Widget", nullptr));
+        pushButton_2->setText(QApplication::translate("MainWindow", "Hide", nullptr));
     } // retranslateUi
 
 };

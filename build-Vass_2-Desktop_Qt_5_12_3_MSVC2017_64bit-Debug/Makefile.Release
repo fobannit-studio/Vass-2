@@ -16,10 +16,10 @@ CXX           = cl
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -DWIN64 -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_NO_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DNDEBUG
 CFLAGS        = -nologo -Zc:wchar_t -FS -Zc:strictStrings -O2 -MD -W3 -w44456 -w44457 -w44458 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStrings -Zc:throwingNew -Zc:referenceBinding -Zc:__cplusplus -O2 -MD -W3 -w34100 -w34189 -w44996 -w44456 -w44457 -w44458 -wd4577 -wd4467 -EHsc $(DEFINES)
-INCPATH       = -I..\Vass_2 -I. -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtMultimedia -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtANGLE -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtNetwork -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore -Irelease -I. -IC:\VulkanSDK\1.0.51.0\include -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\win32-msvc 
+INCPATH       = -I..\Vass_2 -I. -I..\..\Vass-2 -I"D:/Vass 2/Vass-2/Vass_2/../UGlobalHotkey" -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtMultimedia -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtANGLE -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtNetwork -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore -Irelease -I. -IC:\VulkanSDK\1.0.51.0\include -I..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Multimedia.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Widgets.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Gui.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Network.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Core.lib release\Vass_2_resource.res  D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.6.11-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib 
+LIBS          = /LIBPATH:"D:\Vass 2\Vass-2" "D:\Vass 2\Vass-2\UGlobalHotkey.lib" /LIBPATH:D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Multimedia.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Widgets.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Gui.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Network.lib D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\Qt5Core.lib release\Vass_2_resource.res  D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.6.11-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib 
 QMAKE         = D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -155,7 +155,7 @@ DESTDIR_TARGET = release\Vass_2.exe
 first: all
 all: Makefile.Release  release\Vass_2.exe
 
-release\Vass_2.exe: ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h $(OBJECTS) release\Vass_2_resource.res
+release\Vass_2.exe: "D:\Vass 2\Vass-2\Vass_2\..\UGlobalHotkey.lib" ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h $(OBJECTS) release\Vass_2_resource.res
 	$(LINKER) $(LFLAGS) /MANIFEST:embed /OUT:$(DESTDIR_TARGET) @<<
 release\icon_panel.obj release\main.obj release\mainwindow.obj release\media_player.obj release\submit_removal.obj release\timewidget.obj release\qrc_resources.obj release\moc_icon_panel.obj release\moc_mainwindow.obj release\moc_media_player.obj release\moc_submit_removal.obj release\moc_timewidget.obj
 $(LIBS)
@@ -354,7 +354,7 @@ release\moc_icon_panel.cpp: ..\Vass_2\icon_panel.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QDialog \
 		release\moc_predefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe
-	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\icon_panel.h -o release\moc_icon_panel.cpp
+	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -I"D:/Vass 2/Vass-2" -I"D:/Vass 2/Vass-2/UGlobalHotkey" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\icon_panel.h -o release\moc_icon_panel.cpp
 
 release\moc_mainwindow.cpp: ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -466,6 +466,7 @@ release\moc_mainwindow.cpp: ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QShortcut \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qshortcut.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QCloseEvent \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QKeySequence \
 		..\Vass_2\media_player.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -529,7 +530,7 @@ release\moc_mainwindow.cpp: ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QDataStream \
 		release\moc_predefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe
-	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\mainwindow.h -o release\moc_mainwindow.cpp
+	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -I"D:/Vass 2/Vass-2" -I"D:/Vass 2/Vass-2/UGlobalHotkey" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\mainwindow.h -o release\moc_mainwindow.cpp
 
 release\moc_media_player.cpp: ..\Vass_2\media_player.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -682,7 +683,7 @@ release\moc_media_player.cpp: ..\Vass_2\media_player.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qrubberband.h \
 		release\moc_predefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe
-	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\media_player.h -o release\moc_media_player.cpp
+	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -I"D:/Vass 2/Vass-2" -I"D:/Vass 2/Vass-2/UGlobalHotkey" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\media_player.h -o release\moc_media_player.cpp
 
 release\moc_submit_removal.cpp: ..\Vass_2\submit_removal.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QDialog \
@@ -791,11 +792,11 @@ release\moc_submit_removal.cpp: ..\Vass_2\submit_removal.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtouchdevice.h \
 		release\moc_predefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe
-	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\submit_removal.h -o release\moc_submit_removal.cpp
+	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -I"D:/Vass 2/Vass-2" -I"D:/Vass 2/Vass-2/UGlobalHotkey" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\submit_removal.h -o release\moc_submit_removal.cpp
 
 release\moc_timewidget.cpp: ..\Vass_2\timewidget.h \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qwidget.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QLabel \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qlabel.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtguiglobal.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qglobal.h \
@@ -821,6 +822,8 @@ release\moc_timewidget.cpp: ..\Vass_2\timewidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qversiontagging.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtgui-config.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qwidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qwindowdefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qobjectdefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qnamespace.h \
@@ -899,9 +902,14 @@ release\moc_timewidget.cpp: ..\Vass_2\timewidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtouchdevice.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QPoint \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTimer \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbasictimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTime \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdatetime.h \
 		release\moc_predefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe
-	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\timewidget.h -o release\moc_timewidget.cpp
+	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include "D:/Vass 2/Vass-2/build-Vass_2-Desktop_Qt_5_12_3_MSVC2017_64bit-Debug/release/moc_predefs.h" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/mkspecs/win32-msvc -I"D:/Vass 2/Vass-2/Vass_2" -I"D:/Vass 2/Vass-2" -I"D:/Vass 2/Vass-2/UGlobalHotkey" -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtMultimedia -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtWidgets -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtGui -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtANGLE -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtNetwork -ID:/PROGRAMS/QtCreator/5.12.3/msvc2017_64/include/QtCore -I. -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"D:\Visual Studio\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.6.1\include\um" -I"D:\Windows Kits\10\include\10.0.17763.0\ucrt" -I"D:\Windows Kits\10\include\10.0.17763.0\shared" -I"D:\Windows Kits\10\include\10.0.17763.0\um" -I"D:\Windows Kits\10\include\10.0.17763.0\winrt" -I"D:\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\Vass_2\timewidget.h -o release\moc_timewidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -915,7 +923,120 @@ ui_icon_panel.h: ..\Vass_2\icon_panel.ui \
 	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\uic.exe ..\Vass_2\icon_panel.ui -o ui_icon_panel.h
 
 ui_mainwindow.h: ..\Vass_2\mainwindow.ui \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\uic.exe
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\uic.exe \
+		..\Vass_2\timewidget.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QLabel \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qlabel.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtguiglobal.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qglobal.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qconfig.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtcore-config.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qsystemdetection.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qprocessordetection.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qcompilerdetection.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtypeinfo.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qsysinfo.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qlogging.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qflags.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qatomic.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbasicatomic.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qatomic_bootstrap.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qgenericatomic.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qatomic_cxx11.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qatomic_msvc.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qglobalstatic.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qmutex.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qnumeric.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qversiontagging.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtgui-config.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qwidget.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qwindowdefs.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qobjectdefs.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qnamespace.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qwindowdefs_win.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qobject.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstring.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qchar.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbytearray.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qrefcount.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qarraydata.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstringliteral.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstringalgorithms.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstringview.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstringbuilder.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qlist.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qalgorithms.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qiterator.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qhashfunctions.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qpair.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbytearraylist.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstringlist.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qregexp.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qstringmatcher.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qcoreevent.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qscopedpointer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qmetatype.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qvarlengtharray.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qcontainerfwd.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qobject_impl.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qmargins.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpaintdevice.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qrect.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qsize.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qpoint.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpalette.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qcolor.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qrgb.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qrgba64.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qbrush.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qvector.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qmatrix.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpolygon.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qregion.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdatastream.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qiodevice.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qline.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtransform.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpainterpath.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qimage.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpixelformat.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpixmap.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qsharedpointer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qshareddata.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qhash.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qsharedpointer_impl.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qfont.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qfontmetrics.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qfontinfo.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qsizepolicy.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qcursor.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qkeysequence.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qevent.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qvariant.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qmap.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdebug.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtextstream.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qlocale.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qset.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qcontiguouscache.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qurl.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qurlquery.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qfile.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qfiledevice.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qvector2d.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtouchdevice.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QPoint \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTimer \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbasictimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTime \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdatetime.h
 	D:\PROGRAMS\QtCreator\5.12.3\msvc2017_64\bin\uic.exe ..\Vass_2\mainwindow.ui -o ui_mainwindow.h
 
 ui_media_player.h: ..\Vass_2\media_player.ui \
@@ -1191,6 +1312,7 @@ release\main.obj: ..\Vass_2\main.cpp ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QShortcut \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qshortcut.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QCloseEvent \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QKeySequence \
 		..\Vass_2\media_player.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -1258,7 +1380,8 @@ release\main.obj: ..\Vass_2\main.cpp ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qeventloop.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qguiapplication.h \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qinputmethod.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QDesktopWidget
 
 release\mainwindow.obj: ..\Vass_2\mainwindow.cpp ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QMainWindow \
@@ -1370,6 +1493,7 @@ release\mainwindow.obj: ..\Vass_2\mainwindow.cpp ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QShortcut \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qshortcut.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QCloseEvent \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QKeySequence \
 		..\Vass_2\media_player.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -1448,17 +1572,19 @@ release\mainwindow.obj: ..\Vass_2\mainwindow.cpp ..\Vass_2\mainwindow.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QPushButton \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qpushbutton.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qabstractbutton.h \
+		..\Vass_2\timewidget.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QPoint \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTimer \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtimer.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbasictimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTime \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdatetime.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QPainter \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpainter.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtextoption.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qpen.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QColor \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QCursor \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTime \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdatetime.h
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QCursor
 
 release\media_player.obj: ..\Vass_2\media_player.cpp ..\Vass_2\media_player.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
@@ -1754,8 +1880,8 @@ release\submit_removal.obj: ..\Vass_2\submit_removal.cpp ..\Vass_2\submit_remova
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qframe.h
 
 release\timewidget.obj: ..\Vass_2\timewidget.cpp ..\Vass_2\timewidget.h \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QWidget \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qwidget.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QLabel \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qlabel.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtguiglobal.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qglobal.h \
@@ -1781,6 +1907,8 @@ release\timewidget.obj: ..\Vass_2\timewidget.cpp ..\Vass_2\timewidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qversiontagging.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtgui-config.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qframe.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qwidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qwindowdefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qobjectdefs.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qnamespace.h \
@@ -1858,7 +1986,16 @@ release\timewidget.obj: ..\Vass_2\timewidget.cpp ..\Vass_2\timewidget.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qvector2d.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\qtouchdevice.h \
 		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QMouseEvent \
-		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QPoint
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QPoint \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTimer \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qtimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qbasictimer.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\QTime \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtCore\qdatetime.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtGui\QPalette \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\QColorDialog \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qcolordialog.h \
+		..\..\..\PROGRAMS\QtCreator\5.12.3\msvc2017_64\include\QtWidgets\qdialog.h
 
 release\qrc_resources.obj: release\qrc_resources.cpp 
 

@@ -2,7 +2,6 @@
 #include <QApplication>
 #include <QDesktopWidget>
 
-
 int main(int argc, char *argv[])
 {
     Q_INIT_RESOURCE(resources);

@@ -4,10 +4,14 @@
 #include <QMainWindow>
 #include<QShortcut>
 #include <QMouseEvent>
+#include <fstream>
+#include <QCloseEvent>
 #include<QKeySequence>
 #include "media_player.h"
 #include "submit_removal.h"
 #include"icon_panel.h"
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -23,7 +27,7 @@ public:
 
 public slots:
     void HideIcons();
-
+    void closeEvent(QCloseEvent *event);
 private slots:
     void on_pushButton_clicked();
     void OpenIcons();
@@ -36,6 +40,8 @@ private:
     Media_Player M_Player;
     icon_panel Icons;
     QShortcut * openIcons;
+
+
 
 };
 

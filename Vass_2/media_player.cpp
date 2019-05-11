@@ -92,8 +92,26 @@ void Media_Player::on_VolumeSlider_valueChanged(int value)
 
 
 void Media_Player::on_listWidget_itemDoubleClicked()
-{
-   m_player->setMedia(QUrl::fromLocalFile(songs[ui->listWidget->currentRow()]));
+{  current_song= ui->listWidget->currentRow();
+   m_player->setMedia(QUrl::fromLocalFile(songs[current_song]));
    m_player->play();
    ui->PlayButton->setText("Play");
+}
+
+void Media_Player::on_PreviousButton_clicked()
+{
+    current_song=(current_song-1)%songs.length();
+    if (current_song<=-1) current_song=0;
+    m_player->setMedia(QUrl::fromLocalFile(songs[current_song]));
+    m_player->play();
+    ui->PlayButton->setText("Play");
+}
+
+void Media_Player::on_NextButton_clicked()
+{
+    current_song=(current_song+1)%songs.length();
+    //if (current_song>=songs.length()) current_song=songs.length()-1;
+    m_player->setMedia(QUrl::fromLocalFile(songs[current_song]));
+    m_player->play();
+    ui->PlayButton->setText("Play");
 }
