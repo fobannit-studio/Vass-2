@@ -40,7 +40,7 @@ private slots:
     void InitActions();
 private:
     Ui::MainWindow *ui;
-
+    void closeEvent(QCloseEvent* event);
     bool _is_panel_active;
     bool _is_config_active;
     std::pair<int,int> _D_dims;

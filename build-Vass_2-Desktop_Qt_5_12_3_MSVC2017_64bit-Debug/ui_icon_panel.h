@@ -39,6 +39,7 @@ public:
     QLabel *label_7;
     QPushButton *app_8;
     QLabel *label_8;
+    QLabel *label;
     QButtonGroup *application_buttons;
 
     void setupUi(QWidget *icon_panel)
@@ -46,7 +47,7 @@ public:
         if (icon_panel->objectName().isEmpty())
             icon_panel->setObjectName(QString::fromUtf8("icon_panel"));
         icon_panel->resize(421, 382);
-        icon_panel->setStyleSheet(QString::fromUtf8("QWidget{background-color:rgba(61, 58, 86, 0.5);}"));
+        icon_panel->setStyleSheet(QString::fromUtf8(""));
         addShortCut = new QPushButton(icon_panel);
         addShortCut->setObjectName(QString::fromUtf8("addShortCut"));
         addShortCut->setGeometry(QRect(130, 140, 80, 100));
@@ -61,7 +62,7 @@ public:
         app_1->setCursor(QCursor(Qt::ArrowCursor));
         app_1->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_1 = new QLabel(icon_panel);
         label_1->setObjectName(QString::fromUtf8("label_1"));
@@ -79,7 +80,7 @@ public:
         app_2->setCursor(QCursor(Qt::ArrowCursor));
         app_2->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_2 = new QLabel(icon_panel);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -92,7 +93,7 @@ public:
         app_3->setCursor(QCursor(Qt::ArrowCursor));
         app_3->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_3 = new QLabel(icon_panel);
         label_3->setObjectName(QString::fromUtf8("label_3"));
@@ -105,7 +106,7 @@ public:
         app_4->setCursor(QCursor(Qt::ArrowCursor));
         app_4->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_4 = new QLabel(icon_panel);
         label_4->setObjectName(QString::fromUtf8("label_4"));
@@ -118,7 +119,7 @@ public:
         app_5->setCursor(QCursor(Qt::ArrowCursor));
         app_5->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_5 = new QLabel(icon_panel);
         label_5->setObjectName(QString::fromUtf8("label_5"));
@@ -131,7 +132,7 @@ public:
         app_6->setCursor(QCursor(Qt::ArrowCursor));
         app_6->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_6 = new QLabel(icon_panel);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -144,7 +145,7 @@ public:
         app_7->setCursor(QCursor(Qt::ArrowCursor));
         app_7->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_7 = new QLabel(icon_panel);
         label_7->setObjectName(QString::fromUtf8("label_7"));
@@ -157,13 +158,36 @@ public:
         app_8->setCursor(QCursor(Qt::ArrowCursor));
         app_8->setStyleSheet(QString::fromUtf8("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} \n"
 "\n"
-"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(75, 70, 89), stop: 1 rgb(66, 61, 79)); }\n"
+"QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }\n"
 "QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }"));
         label_8 = new QLabel(icon_panel);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(315, 260, 90, 90));
         label_8->setCursor(QCursor(Qt::ArrowCursor));
         label_8->setFrameShadow(QFrame::Raised);
+        label = new QLabel(icon_panel);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(0, 0, 421, 381));
+        label->setStyleSheet(QString::fromUtf8("QLabel{background-color:rgba(0, 0, 0 , 0.5);border-radius:10px;}"));
+        label->raise();
+        addShortCut->raise();
+        app_1->raise();
+        label_1->raise();
+        removeShortCut->raise();
+        app_2->raise();
+        label_2->raise();
+        app_3->raise();
+        label_3->raise();
+        app_4->raise();
+        label_4->raise();
+        app_5->raise();
+        label_5->raise();
+        app_6->raise();
+        label_6->raise();
+        app_7->raise();
+        label_7->raise();
+        app_8->raise();
+        label_8->raise();
 
         retranslateUi(icon_panel);
 
@@ -191,6 +215,7 @@ public:
         label_7->setText(QApplication::translate("icon_panel", "TextLabel", nullptr));
         app_8->setText(QApplication::translate("icon_panel", "PushButton", nullptr));
         label_8->setText(QApplication::translate("icon_panel", "TextLabel", nullptr));
+        label->setText(QApplication::translate("icon_panel", "TextLabel", nullptr));
     } // retranslateUi
 
 };

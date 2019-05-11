@@ -7,7 +7,6 @@
 #include <QTime>
 #include <QDebug>
 #include <iostream>
-MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),
@@ -64,7 +63,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::setVisibleIcons()
 {
-    if(not _is_panel_active){
+    if(!_is_panel_active){
         QPoint position = QCursor::pos();
         ui-> icons -> move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
 //        Icons.setWindowFlags(Qt::FramelessWindowHint);
@@ -81,7 +80,7 @@ void MainWindow::setVisibleIcons()
 void MainWindow::setVisibleConfig()
 {
     qDebug()<<"called";
-    if(not _is_config_active){
+    if(! _is_config_active){
         ui-> configuration -> move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
 
         ui ->configuration -> show();
@@ -96,7 +95,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 {
     // функия что записывает настройки
     event->accept(); // event->ignore() игнорировать закрытие окна
-
+}
 void MainWindow::InitActions()
 {
    openConfig = new QAction(tr("Show configuration window"),this);
@@ -107,7 +106,8 @@ void MainWindow::InitActions()
    connect(openPlayer,&QAction::triggered,&M_Player,&QWidget::show);
    exit = new QAction(tr("Quit"),this);
    connect(exit,&QAction::triggered,qApp,&QApplication::quit);
-
+}
+/*
 void MainWindow::on_pushbutton_2_clicked()
 {
   if (this->ui->pushButton_2->text()=="Show")
@@ -122,6 +122,7 @@ void MainWindow::on_pushbutton_2_clicked()
       }
   }
 }
+*/
 void MainWindow::createTrayIcons()
 {
     trayIconMenu = new QMenu(this);

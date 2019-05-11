@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_icon_panel_t {
     QByteArrayData data[15];
-    char stringdata0[241];
+    char stringdata0[239];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -44,8 +44,8 @@ QT_MOC_LITERAL(9, 130, 16), // "on_app_5_clicked"
 QT_MOC_LITERAL(10, 147, 16), // "on_app_6_clicked"
 QT_MOC_LITERAL(11, 164, 16), // "on_app_7_clicked"
 QT_MOC_LITERAL(12, 181, 16), // "on_app_8_clicked"
-QT_MOC_LITERAL(13, 198, 25), // "on_removeShortCut_clicked"
-QT_MOC_LITERAL(14, 224, 16) // "close_icon_panel"
+QT_MOC_LITERAL(13, 198, 14), // "removeSequence"
+QT_MOC_LITERAL(14, 213, 25) // "on_removeShortCut_clicked"
 
     },
     "icon_panel\0HideIconBar\0\0on_addShortCut_clicked\0"
@@ -53,8 +53,8 @@ QT_MOC_LITERAL(14, 224, 16) // "close_icon_panel"
     "on_app_2_clicked\0on_app_3_clicked\0"
     "on_app_4_clicked\0on_app_5_clicked\0"
     "on_app_6_clicked\0on_app_7_clicked\0"
-    "on_app_8_clicked\0on_removeShortCut_clicked\0"
-    "close_icon_panel"
+    "on_app_8_clicked\0removeSequence\0"
+    "on_removeShortCut_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -125,8 +125,8 @@ void icon_panel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 8: _t->on_app_6_clicked(); break;
         case 9: _t->on_app_7_clicked(); break;
         case 10: _t->on_app_8_clicked(); break;
-        case 11: _t->on_removeShortCut_clicked(); break;
-        case 12: _t->close_icon_panel(); break;
+        case 11: _t->removeSequence(); break;
+        case 12: _t->on_removeShortCut_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

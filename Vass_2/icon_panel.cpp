@@ -30,7 +30,7 @@ icon_panel::~icon_panel()
 bool icon_panel::eventFilter(QObject *obj, QEvent *event )
 {
     int i = 0;
-    while (_app_buttons[i]!=obj and i<_app_buttons.size()) {
+    while ((_app_buttons[i]!=obj) && (i<_app_buttons.size())) {
         ++i;
     }
 //    std::vector<QPushButton *>::const_iterator it = std::find(_app_buttons.begin(),_app_buttons.end(),obj);
@@ -41,7 +41,7 @@ bool icon_panel::eventFilter(QObject *obj, QEvent *event )
              if(_range.first == -1 ){_range.first=i;}
              else {_range.second = i;}
              mark_for_removal(_app_buttons[i],i+_current_page*9,State::Single);
-             if(_range.first != -1 and _range.second != -1 ){
+             if((_range.first != -1) && (_range.second != -1 )){
                  range_selection(_range.first,_range.second);
              }
 
@@ -320,7 +320,7 @@ void icon_panel::on_removeShortCut_clicked()
 }
 void icon_panel::removeSequence()
 {
-    if(_range.first != -1 and _range.second == -1)return;
+    if((_range.first != -1) && (_range.second == -1))return;
     if(_to_remove.empty())return;
     submit_window.show();
     submit_window.setModal(true);
@@ -341,12 +341,12 @@ void icon_panel::removeSequence()
 void icon_panel::mark_for_removal(QPushButton * app,int index , State current_state){
 
     std::vector<int>::const_iterator position =std::find (_to_remove.begin(), _to_remove.end(), index);// check is element already marked for removing
-    if(current_state==State::Ranged or (current_state==State::Single and position == _to_remove.end() ))
+    if((current_state==State::Ranged) || (current_state==State::Single) || (position == _to_remove.end()) )
     {//not in the vector for remove - append
         app->setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:90px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
         _to_remove.emplace_back(index+_current_page*9);
     }
-    else if (current_state==State::Single and position != _to_remove.end())
+    else if ((current_state==State::Single) && (position != _to_remove.end()))
     {
         //deselecting object for removing
         _to_remove.erase(position);
