@@ -30,6 +30,9 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         media_player.cpp \
+        shortcut.cpp \
+        shortcut.cpp \
+        shortcut.cpp \
         submit_removal.cpp \
         timewidget.cpp
 
@@ -40,6 +43,10 @@ HEADERS += \
         icon_panel.h \
         mainwindow.h \
         media_player.h \
+        shortcut.h \
+        shortcut.h \
+        shortcut.h \
+        shortcut.h \
         submit_removal.h \
         timewidget.h
 

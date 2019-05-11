@@ -15,20 +15,12 @@
 #include <QLabel>
 #include<QDataStream>
 #include<QShortcut>
-#include "submit_removal.h"
 #include <regex>
 #include<algorithm>
 #include <vector>
-
-
-#define MODTOSTR(m) \
-    (m == Qt::NoModifier ? "NoModifier" : \
-    (m == Qt::ShiftModifier ? "ShiftModifier" : \
-    (m == Qt::ControlModifier ? "ControlModifier" : \
-    (m == Qt::AltModifier ? "AltModifier" : \
-    (m == Qt::MetaModifier ? "MetaModifier" : \
-    (m == Qt::KeypadModifier ? "KeypadModifier" : "GroupSwitchModifier"))))))
-
+#include <QProcess>
+#include "submit_removal.h"
+#include "shortcut.h"
 
 enum class State{Ranged,Single};
 namespace Ui {
@@ -48,7 +40,7 @@ public:
     ~icon_panel();
 
 protected:
-    void wheelEvent(QWheelEvent *event);
+    void wheelEvent(QWheelEvent *event) override;
 
 signals:
     void HideIconBar();
@@ -78,6 +70,7 @@ private:
     std::pair<int,int> _range;
     std::vector<int> _to_remove;
     std::vector <std::pair<std::string,QString>> _apps;
+    std::vector<Shortcut> _shortcuts_class;
 
     std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
@@ -97,6 +90,7 @@ private:
     void mark_for_removal(QPushButton * ,int , State );
     void return_default_style();
     void range_selection(int begin, int end);
+    void execute(int index);
 
 
 };

@@ -93,6 +93,8 @@ void icon_panel::parse_names(QString filename)
     std::string app = matches[2];
     std::string extension = matches[3];
     std::pair<std::string,QString> name_icon;
+
+
     if(std::find(_image_ext.begin(), _image_ext.end(), extension) != _image_ext.end())
     {
         name_icon = std::make_pair(app,QString::fromStdString(":/icons/images/picture.png"));
@@ -104,6 +106,7 @@ void icon_panel::parse_names(QString filename)
     else {
         name_icon = std::make_pair(app,QString::fromStdString(path + "/" + app + ".png"));
     }
+    _shortcuts_class.emplace_back(extension,name_icon.first,filename,name_icon.second);
     _apps.emplace_back(name_icon);
 
 }
@@ -250,7 +253,8 @@ void icon_panel::fill_shortcuts()
 void icon_panel::on_app_1_clicked()
 {
 
-    if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(0 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    if(!_removal)execute(0);
+//        QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(0 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else {
         mark_for_removal(ui->app_1,0+_current_page*9,State::Single);
     };
@@ -258,7 +262,8 @@ void icon_panel::on_app_1_clicked()
 
 void icon_panel::on_app_2_clicked()
 {
-    if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(1 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    if(!_removal)execute(1);
+//        QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(1 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else {
         mark_for_removal(ui->app_2,1+_current_page*9,State::Single);
     }
@@ -266,30 +271,36 @@ void icon_panel::on_app_2_clicked()
 
 void icon_panel::on_app_3_clicked()
 {
-    if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(2 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    if(!_removal)execute(2);
+        //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(2 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else mark_for_removal(ui->app_3,2+_current_page*9,State::Single);;
 }
 void icon_panel::on_app_4_clicked()
 {
-    if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(3 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    if(!_removal)execute(3);
+        //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(3 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else mark_for_removal(ui->app_4,3+_current_page*9,State::Single);
 }
-void icon_panel::on_app_5_clicked(){  if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(4 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+void icon_panel::on_app_5_clicked(){  if(!_removal)execute(4);
+        //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(4 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else mark_for_removal(ui->app_5,4+_current_page*9,State::Single);
 }
-void icon_panel::on_app_6_clicked(){ if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(5 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+void icon_panel::on_app_6_clicked(){ if(!_removal)execute(5);
+        //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(5 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else mark_for_removal(ui->app_6,5+_current_page*9,State::Single);
 }
 
 void icon_panel::on_app_7_clicked()
 {
-    if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(6 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    if(!_removal)execute(6);
+        //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(6 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else mark_for_removal(ui->app_7,6+_current_page*9,State::Single);;
 }
 
 void icon_panel::on_app_8_clicked()
 {
-    if(!_removal)QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(7 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    if(!_removal)execute(7);
+//        QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(7 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else mark_for_removal(ui->app_8,7+_current_page*9,State::Single);;
 }
 
@@ -363,7 +374,15 @@ void icon_panel::range_selection(int begin , int end){
         mark_for_removal(_app_buttons[i],i+_current_page*9,State::Ranged);
     }
 }
+void icon_panel::execute(int index)
+{
+    int current_index = index + _current_page*9;
+//    if(_shortcuts_class[current_index].get_extension() == ".sh"){
+    QProcess process;
+    process.startDetached("/bin/sh", QStringList()<< _shortcuts_class[current_index].get_path());
+//    }else {
 
-
+//}
+}
 
 

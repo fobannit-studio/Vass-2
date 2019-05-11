@@ -5,6 +5,10 @@ config::config(QWidget *parent) :
     ui(new Ui::config)
 {
     ui->setupUi(this);
+    ui ->Music_Player_settings->hide();
+    ui ->MainSettings->hide();
+    ui ->Quick_Panel_settings->hide();
+
 }
 
 //void config::show()
@@ -19,5 +23,22 @@ config::~config()
 
 void config::on_app_config_clicked()
 {
+    ui ->Music_Player_settings->hide();
+    ui ->Quick_Panel_settings->hide();
+    ui->MainSettings->show();
 
+}
+
+void config::on_mp_config_clicked()
+{
+    ui ->Music_Player_settings->show();
+    ui ->MainSettings->hide();
+    ui ->Quick_Panel_settings->hide();
+}
+
+void config::on_ic_config_clicked()
+{
+    ui ->Music_Player_settings->hide();
+    ui ->MainSettings->hide();
+    ui ->Quick_Panel_settings->show();
 }

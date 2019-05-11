@@ -18,6 +18,10 @@ public:
 private slots:
     void on_app_config_clicked();
 
+    void on_mp_config_clicked();
+
+    void on_ic_config_clicked();
+
 private:
     Ui::config *ui;
 

@@ -55,6 +55,9 @@ SOURCES       = ../Vass_2/config.cpp \
 		../Vass_2/main.cpp \
 		../Vass_2/mainwindow.cpp \
 		../Vass_2/media_player.cpp \
+		../Vass_2/shortcut.cpp \
+		../Vass_2/shortcut.cpp \
+		../Vass_2/shortcut.cpp \
 		../Vass_2/submit_removal.cpp \
 		../Vass_2/timewidget.cpp qrc_resources.cpp \
 		moc_config.cpp \
@@ -68,6 +71,9 @@ OBJECTS       = config.o \
 		main.o \
 		mainwindow.o \
 		media_player.o \
+		shortcut.o \
+		shortcut.o \
+		shortcut.o \
 		submit_removal.o \
 		timewidget.o \
 		qrc_resources.o \
@@ -259,12 +265,19 @@ DIST          = ../../../Computer_Vision/anaconda3/mkspecs/features/spec_pre.prf
 		../Vass_2/icon_panel.h \
 		../Vass_2/mainwindow.h \
 		../Vass_2/media_player.h \
+		../Vass_2/shortcut.h \
+		../Vass_2/shortcut.h \
+		../Vass_2/shortcut.h \
+		../Vass_2/shortcut.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/timewidget.h ../Vass_2/config.cpp \
 		../Vass_2/icon_panel.cpp \
 		../Vass_2/main.cpp \
 		../Vass_2/mainwindow.cpp \
 		../Vass_2/media_player.cpp \
+		../Vass_2/shortcut.cpp \
+		../Vass_2/shortcut.cpp \
+		../Vass_2/shortcut.cpp \
 		../Vass_2/submit_removal.cpp \
 		../Vass_2/timewidget.cpp
 QMAKE_TARGET  = Vass_2
@@ -665,8 +678,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/resources.qrc ../Vass_2/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Computer_Vision/anaconda3/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/config.ui ../Vass_2/icon_panel.ui ../Vass_2/mainwindow.ui ../Vass_2/media_player.ui ../Vass_2/submit_removal.ui $(DISTDIR)/
 
 
@@ -930,6 +943,7 @@ moc_icon_panel.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWid
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvector2d.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtouchdevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstandardpaths.h \
@@ -942,6 +956,7 @@ moc_icon_panel.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWid
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdir.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfileinfo.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QUrl \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QWheelEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QIODevice \
@@ -951,8 +966,12 @@ moc_icon_panel.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWid
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QShortcut \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qshortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QProcess \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocess.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
+		../Vass_2/shortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
 		../Vass_2/icon_panel.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
@@ -1129,18 +1148,23 @@ moc_mainwindow.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMai
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstandardpaths.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMessageBox \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmessagebox.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QFile \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QWheelEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QIODevice \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QProcess \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocess.h \
+		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		../Vass_2/mainwindow.h \
 		moc_predefs.h \
@@ -1533,6 +1557,8 @@ ui_icon_panel.h: ../Vass_2/icon_panel.ui \
 ui_mainwindow.h: ../Vass_2/mainwindow.ui \
 		../../../Computer_Vision/anaconda3/bin/uic \
 		../Vass_2/timewidget.h \
+		../Vass_2/icon_panel.h \
+		../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtwidgetsglobal.h \
@@ -1641,7 +1667,236 @@ ui_mainwindow.h: ../Vass_2/mainwindow.ui \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtimer.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasictimer.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QTime \
-		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdatetime.h
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdatetime.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWidget \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qwidget.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtwidgetsglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtguiglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtgui-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtwidgets-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qwindowdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qwindowdefs_win.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qalgorithms.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiterator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhashfunctions.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpair.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearraylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregexp.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringmatcher.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qscopedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmetatype.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvarlengtharray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontainerfwd.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmargins.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpaintdevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrect.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsize.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpoint.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpalette.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qcolor.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qrgb.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qrgba64.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qbrush.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvector.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qmatrix.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpolygon.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qregion.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdatastream.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiodevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qline.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtransform.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpainterpath.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qimage.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpixelformat.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpixmap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsharedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qshareddata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhash.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsharedpointer_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qfont.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qfontmetrics.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qfontinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qsizepolicy.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qcursor.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qkeysequence.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvariant.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdebug.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtextstream.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlocale.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qset.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontiguouscache.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qurl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qurlquery.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfile.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvector2d.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtouchdevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstandardpaths.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMessageBox \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmessagebox.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qdialog.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QFile \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QFileDialog \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qfiledialog.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdir.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfileinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QUrl \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QEvent \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/QWheelEvent \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QIODevice \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qframe.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QShortcut \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qshortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QProcess \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocess.h \
+		../Vass_2/submit_removal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
+		../Vass_2/shortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWidget \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qwidget.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtwidgetsglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtguiglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtgui-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtwidgets-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qwindowdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qwindowdefs_win.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qalgorithms.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiterator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhashfunctions.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpair.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearraylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregexp.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringmatcher.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qscopedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmetatype.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvarlengtharray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontainerfwd.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmargins.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpaintdevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrect.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsize.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpoint.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpalette.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qcolor.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qrgb.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qrgba64.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qbrush.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvector.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qmatrix.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpolygon.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qregion.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdatastream.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiodevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qline.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtransform.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpainterpath.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qimage.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpixelformat.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qpixmap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsharedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qshareddata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhash.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsharedpointer_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qfont.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qfontmetrics.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qfontinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qsizepolicy.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qcursor.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qkeysequence.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvariant.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdebug.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtextstream.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlocale.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qset.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontiguouscache.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qurl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qurlquery.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfile.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvector2d.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtouchdevice.h
 	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/uic ../Vass_2/mainwindow.ui -o ui_mainwindow.h
 
 ui_media_player.h: ../Vass_2/media_player.ui \
@@ -1763,7 +2018,53 @@ config.o: ../Vass_2/config.cpp ../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvector2d.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtouchdevice.h \
-		ui_config.h
+		ui_config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QVariant \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QAction \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qaction.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qicon.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qactiongroup.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreapplication.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qeventloop.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qdesktopwidget.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qguiapplication.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qinputmethod.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QButtonGroup \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qbuttongroup.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QCheckBox \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qcheckbox.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractbutton.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QGridLayout \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qgridlayout.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlayout.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlayoutitem.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qboxlayout.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QHeaderView \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qheaderview.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractitemview.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractscrollarea.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qframe.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractitemmodel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qitemselectionmodel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractitemdelegate.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyleoption.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractspinbox.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvalidator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregularexpression.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qslider.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractslider.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabwidget.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QKeySequenceEdit \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qkeysequenceedit.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QPushButton \
+		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o config.o ../Vass_2/config.cpp
 
 icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
@@ -1867,6 +2168,7 @@ icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qvector2d.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtouchdevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstandardpaths.h \
@@ -1879,6 +2181,7 @@ icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdir.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfileinfo.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QUrl \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QWheelEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QIODevice \
@@ -1888,8 +2191,12 @@ icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QShortcut \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qshortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QProcess \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocess.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
+		../Vass_2/shortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
 		ui_icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QVariant \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QAction \
@@ -2099,18 +2406,23 @@ main.o: ../Vass_2/main.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstandardpaths.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMessageBox \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmessagebox.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QFile \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QWheelEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QIODevice \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QProcess \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocess.h \
+		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
@@ -2294,18 +2606,23 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstandardpaths.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMessageBox \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmessagebox.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QFile \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QWheelEvent \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QIODevice \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDataStream \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QProcess \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocess.h \
+		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		ui_mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
@@ -2506,6 +2823,102 @@ media_player.o: ../Vass_2/media_player.cpp ../Vass_2/media_player.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o media_player.o ../Vass_2/media_player.cpp
+
+shortcut.o: ../Vass_2/shortcut.cpp ../Vass_2/shortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shortcut.o ../Vass_2/shortcut.cpp
+
+shortcut.o: ../Vass_2/shortcut.cpp ../Vass_2/shortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shortcut.o ../Vass_2/shortcut.cpp
+
+shortcut.o: ../Vass_2/shortcut.cpp ../Vass_2/shortcut.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shortcut.o ../Vass_2/shortcut.cpp
 
 submit_removal.o: ../Vass_2/submit_removal.cpp ../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
