@@ -2,11 +2,13 @@
 #define ICON_PANEL_H
 
 #include <QWidget>
+#include <QObject>
 #include <QDesktopServices>
 #include <QMessageBox>
 #include <QFile>
 #include<QFileDialog>
 #include<QUrl>
+#include<QEvent>
 #include<QWheelEvent>
 #include<QDebug>
 #include<QIODevice>
@@ -17,6 +19,16 @@
 #include <regex>
 #include<algorithm>
 #include <vector>
+
+
+#define MODTOSTR(m) \
+    (m == Qt::NoModifier ? "NoModifier" : \
+    (m == Qt::ShiftModifier ? "ShiftModifier" : \
+    (m == Qt::ControlModifier ? "ControlModifier" : \
+    (m == Qt::AltModifier ? "AltModifier" : \
+    (m == Qt::MetaModifier ? "MetaModifier" : \
+    (m == Qt::KeypadModifier ? "KeypadModifier" : "GroupSwitchModifier"))))))
+
 
 enum class State{Ranged,Single};
 namespace Ui {
@@ -30,6 +42,8 @@ class icon_panel : public QWidget
 
 public:
     explicit icon_panel(QWidget *parent = nullptr);
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
 
     ~icon_panel();
 
@@ -59,7 +73,9 @@ private:
     Ui::icon_panel *ui;
 
     bool _removal;
+    bool _range_selection; //is shift modifier pressed
     int _current_page;
+    std::pair<int,int> _range;
     std::vector<int> _to_remove;
     std::vector <std::pair<std::string,QString>> _apps;
 
@@ -80,6 +96,8 @@ private:
     void readFromFile();
     void mark_for_removal(QPushButton * ,int , State );
     void return_default_style();
+    void range_selection(int begin, int end);
+
 
 };
 
