@@ -29,8 +29,8 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
     connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
 
-    _is_panel_active = false;
-    _is_config_active = false;
+
+
     _D_dims = dim;
 
 
@@ -54,40 +54,36 @@ MainWindow::~MainWindow()
 
 }
 
-//void MainWindow::on_pushButton_clicked()
-//{
-//  qDebug()<<"called";
-//  M_Player.show();
-//}
 
 
 void MainWindow::setVisibleIcons()
 {
-    if(!_is_panel_active){
+    if(!ui->icons->isVisible()){
         QPoint position = QCursor::pos();
         ui-> icons -> move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
 //        Icons.setWindowFlags(Qt::FramelessWindowHint);
 //        Icons.setAttribute(Qt::WA_TranslucentBackground);
 //        Icons.setFocus();
         ui ->icons -> show();
-        _is_panel_active =true;
+
     }else {
         ui ->icons -> hide();
-        _is_panel_active=false;
+
 }
 }
 
 void MainWindow::setVisibleConfig()
 {
-    qDebug()<<"called";
-    if(! _is_config_active){
-        ui-> configuration -> move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
 
+    if(!ui->configuration->isVisible()){
+        ui-> configuration -> move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
+        openConfig->setText("Hide configuration window");
         ui ->configuration -> show();
-        _is_config_active =true;
+
     }else {
         ui ->configuration -> hide();
-        _is_config_active=false;
+
+        openConfig->setText("Show configuration window");
 }
 
 }
@@ -99,36 +95,51 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::InitActions()
 {
    openConfig = new QAction(tr("Show configuration window"),this);
-   connect(openConfig, &QAction::triggered, this, &MainWindow::setVisibleConfig);
-   minimize = new QAction(tr("Hide configuration"),this);
-   connect(minimize, &QAction::triggered, this, &MainWindow::setVisibleConfig);
-   openPlayer = new QAction(tr("Open Player"),this);
-   connect(openPlayer,&QAction::triggered,&M_Player,&QWidget::show);
+   connect(openConfig, &QAction::triggered, this,&MainWindow::setVisibleConfig);
+   openTime= new QAction(tr("Show Time"),this);
+   connect(openTime, &QAction::triggered, this,&MainWindow::setVisibleTime);
+   openPlayer = new QAction(tr("Show Player"),this);
+   connect(openPlayer,&QAction::triggered,this,&MainWindow::setVisibleMusic);
    exit = new QAction(tr("Quit"),this);
    connect(exit,&QAction::triggered,qApp,&QApplication::quit);
 }
-/*
-void MainWindow::on_pushbutton_2_clicked()
+
+void MainWindow::setVisibleTime()
 {
-  if (this->ui->pushButton_2->text()=="Show")
+  if (this->ui->TimeLabel->isHidden())
   {
-      ui->pushButton_2->setText("Hide");
+      openTime->setText("Hide Time");
       ui->TimeLabel->show();
   }
   else {
       {
-           ui->pushButton_2->setText("Show");
+           openTime->setText("Show Time");
            ui->TimeLabel->hide();
       }
   }
 }
-*/
+
+void MainWindow::setVisibleMusic()
+{
+    if (!M_Player.isVisible())
+    {
+        openPlayer->setText("Hide Player");
+        M_Player.show();
+    }
+    else
+        {
+        openPlayer->setText("Show Player");
+        M_Player.hide();
+        }
+}
+
+
 void MainWindow::createTrayIcons()
 {
     trayIconMenu = new QMenu(this);
     trayIconMenu-> addAction(openConfig);
-    trayIconMenu->addAction(minimize);
     trayIconMenu->addAction(openPlayer);
+    trayIconMenu->addAction(openTime);
     trayIconMenu->addAction(exit);
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);

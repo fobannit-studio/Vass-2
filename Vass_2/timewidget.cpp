@@ -11,7 +11,7 @@ TimeWidget::TimeWidget(QWidget *parent) : QLabel(parent)
   timer->start(update_interval);
   buffer.start();
   QPalette qpal= this->palette();
-
+  this->hide();
 
 
 

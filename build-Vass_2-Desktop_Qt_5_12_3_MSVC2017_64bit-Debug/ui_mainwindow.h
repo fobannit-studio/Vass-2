@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #include <icon_panel.h>
 #include <timewidget.h>
@@ -26,9 +25,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButton;
     TimeWidget *TimeLabel;
-    QPushButton *pushButton_2;
     icon_panel *icons;
     config *configuration;
     QMenuBar *menuBar;
@@ -60,11 +57,9 @@ public:
         QFont font;
         font.setPointSize(12);
         centralWidget->setFont(font);
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(10, 10, 191, 41));
         TimeLabel = new TimeWidget(centralWidget);
         TimeLabel->setObjectName(QString::fromUtf8("TimeLabel"));
+        TimeLabel->setEnabled(true);
         TimeLabel->setGeometry(QRect(640, 0, 161, 31));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Rubik"));
@@ -73,9 +68,6 @@ public:
         font1.setWeight(75);
         TimeLabel->setFont(font1);
         TimeLabel->setAlignment(Qt::AlignCenter);
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(220, 10, 191, 41));
         icons = new icon_panel(centralWidget);
         icons->setObjectName(QString::fromUtf8("icons"));
         icons->setGeometry(QRect(370, 90, 421, 382));
@@ -85,7 +77,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 799, 22));
+        menuBar->setGeometry(QRect(0, 0, 799, 21));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);
@@ -96,9 +88,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Vass 2", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "Open Music", nullptr));
         TimeLabel->setText(QApplication::translate("MainWindow", "12:45:37", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Hide", nullptr));
     } // retranslateUi
 
 };

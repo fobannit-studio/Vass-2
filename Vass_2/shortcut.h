@@ -12,7 +12,7 @@ public:
         _path=path;
         _icon_path=icon_path;
 
-    };
+    }
     std::string get_extension(){return _extension;}
     std::string get_filename(){return _filename;}
     QString get_path(){return _path;}

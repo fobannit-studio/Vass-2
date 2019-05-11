@@ -36,13 +36,15 @@ private slots:
 //    void on_pushButton_clicked();
     void setVisibleIcons();
     void setVisibleConfig();
+    void setVisibleTime();
+    void setVisibleMusic();
     void createTrayIcons();
     void InitActions();
 private:
     Ui::MainWindow *ui;
     void closeEvent(QCloseEvent* event);
     bool _is_panel_active;
-    bool _is_config_active;
+
     std::pair<int,int> _D_dims;
 
     Media_Player M_Player;
@@ -54,9 +56,8 @@ private:
     QMenu * trayIconMenu;
     QAction * openConfig;
     QAction * openPlayer;
-    QAction * maximize;
-    QAction * minimize;
     QAction * exit;
+    QAction *openTime;
 
 
 

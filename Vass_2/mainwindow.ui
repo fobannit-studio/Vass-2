@@ -50,20 +50,10 @@
      <pointsize>12</pointsize>
     </font>
    </property>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Open Music</string>
-    </property>
-   </widget>
    <widget class="TimeWidget" name="TimeLabel">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>640</x>
@@ -85,19 +75,6 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>10</y>
-      <width>191</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Hide</string>
     </property>
    </widget>
    <widget class="icon_panel" name="icons" native="true">
@@ -127,7 +104,7 @@
      <x>0</x>
      <y>0</y>
      <width>799</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
