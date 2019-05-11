@@ -25,23 +25,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        config.cpp \
         icon_panel.cpp \
         main.cpp \
         mainwindow.cpp \
         media_player.cpp \
+        shortcut.cpp \
+        shortcut.cpp \
+        shortcut.cpp \
         submit_removal.cpp \
         timewidget.cpp
 
 RC_ICONS=icon2.png
 
 HEADERS += \
+        config.h \
         icon_panel.h \
         mainwindow.h \
         media_player.h \
+        shortcut.h \
+        shortcut.h \
+        shortcut.h \
+        shortcut.h \
         submit_removal.h \
         timewidget.h
 
 FORMS += \
+        config.ui \
         icon_panel.ui \
         mainwindow.ui \
         media_player.ui \
