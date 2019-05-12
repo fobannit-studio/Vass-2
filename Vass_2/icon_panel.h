@@ -76,6 +76,7 @@ private:
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
     std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
     std::vector<QPushButton * > _app_buttons; // buttons on ui , connected to shortcuts
+    std::vector<QLabel *> _image_labels;
 
     submit_removal submit_window;
     QString _shortcuts_file;

@@ -16,6 +16,7 @@ icon_panel::icon_panel(QWidget *parent) :
     _shortcuts_file = tr("shortcuts.abk");
     sumbmit = new QShortcut(QKeySequence(Qt::Key_Enter), this, SLOT(removeSequence()));
     _app_buttons ={ui->app_1,ui->app_2,ui->app_3,ui->app_4,ui->app_5,ui->app_6,ui->app_7,ui->app_8};
+    _image_labels = {ui->label_1,ui->label_2,ui->label_3,ui->label_4,ui->label_5,ui->label_6,ui->label_7,ui->label_8};
     for(QPushButton * app:_app_buttons)app->installEventFilter(this);
     readFromFile();
     fill_shortcuts();
@@ -166,88 +167,98 @@ void icon_panel::initShortcut(QPushButton * app , QLabel * label , int current_p
 void icon_panel::fill_shortcuts()
 {
     int end = 0;
+    int i = 0;
     if(_current_page+8<_shortcuts.size())end = _current_page + 8;
     else end=_shortcuts.size();
-    for(int i=_current_page;i<_current_page+8;++i)
+    for(i=_current_page;i<end;++i)
     {
-        switch (i%8) {
-        case 0:
-            if (i<end){
-                initShortcut(ui->app_1,ui->label_1,i);
-            }
-            else{
-                ui->label_1->hide();
-                ui->app_1->hide();;
-            }
-            break;
-        case 1:
-            if (i<end){
-                initShortcut(ui->app_2,ui->label_2,i);
-            }
-            else{
-                ui->label_2->hide();
-                ui->app_2->hide();
-            }
-            break;
-        case 2:
-            if (i<end){
-                initShortcut(ui->app_3,ui->label_3,i);
-            }
-            else{
-                ui->label_3->hide();
-                ui->app_3->hide();
-            }
-            break;
-        case 3:
-            if (i<end){
-                initShortcut(ui->app_4,ui->label_4,i);
-            }
-            else{
-                ui->label_4->hide();
-                ui->app_4->hide();
-            }
-            break;
-        case 4:
-            if (i<end){
-                initShortcut(ui->app_5,ui->label_5,i);
-            }
-            else{
-
-                ui->label_5->hide();
-                ui->app_5->hide();
-            }
-            break;
-        case 5:
-            if (i<end){
-                initShortcut(ui->app_6,ui->label_6,i);
-            }
-            else{
-                ui->label_6->hide();
-                ui->app_6->hide();
-            }
-            break;
-        case 6:
-            if (i<end){
-                initShortcut(ui->app_7,ui->label_7,i);
-            }
-            else{
-                ui->label_7->hide();
-                ui->app_7->hide();
-            }
-            break;
-        case 7:
-            if (i<end){
-               initShortcut(ui->app_8,ui->label_8,i);
-            }
-            else{
-                ui->label_8->hide();
-                ui->app_8->hide();
-            }
-            break;
-        default:
-            break;
-        }
+        initShortcut(_app_buttons[i%_app_buttons.size()],_image_labels[i%_image_labels.size()],i);
     }
+    for(;i<_current_page+8;++i)
+    {
+        _app_buttons[i%_app_buttons.size()]->hide();
+        _image_labels[i%_image_labels.size()]->hide();
+    }
+//    for(int i=_current_page;i<_current_page+8;++i)
+//    {
+//        switch (i%8) {
+//        case 0:
+//            if (i<end){
+//                initShortcut(ui->app_1,ui->label_1,i);
+//            }
+//            else{
+//                ui->label_1->hide();
+//                ui->app_1->hide();;
+//            }
+//            break;
+//        case 1:
+//            if (i<end){
+//                initShortcut(ui->app_2,ui->label_2,i);
+//            }
+//            else{
+//                ui->label_2->hide();
+//                ui->app_2->hide();
+//            }
+//            break;
+//        case 2:
+//            if (i<end){
+//                initShortcut(ui->app_3,ui->label_3,i);
+//            }
+//            else{
+//                ui->label_3->hide();
+//                ui->app_3->hide();
+//            }
+//            break;
+//        case 3:
+//            if (i<end){
+//                initShortcut(ui->app_4,ui->label_4,i);
+//            }
+//            else{
+//                ui->label_4->hide();
+//                ui->app_4->hide();
+//            }
+//            break;
+//        case 4:
+//            if (i<end){
+//                initShortcut(ui->app_5,ui->label_5,i);
+//            }
+//            else{
+
+//                ui->label_5->hide();
+//                ui->app_5->hide();
+//            }
+//            break;
+//        case 5:
+//            if (i<end){
+//                initShortcut(ui->app_6,ui->label_6,i);
+//            }
+//            else{
+//                ui->label_6->hide();
+//                ui->app_6->hide();
+//            }
+//            break;
+//        case 6:
+//            if (i<end){
+//                initShortcut(ui->app_7,ui->label_7,i);
+//            }
+//            else{
+//                ui->label_7->hide();
+//                ui->app_7->hide();
+//            }
+//            break;
+//        case 7:
+//            if (i<end){
+//               initShortcut(ui->app_8,ui->label_8,i);
+//            }
+//            else{
+//                ui->label_8->hide();
+//                ui->app_8->hide();
+//            }
+//            break;
+//        default:
+//            break;
+//        }
+//    }
 }
 
 void icon_panel::on_app_1_clicked()
