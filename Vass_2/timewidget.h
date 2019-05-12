@@ -11,6 +11,7 @@ class TimeWidget : public QLabel
     Q_OBJECT
 public:
     explicit TimeWidget(QWidget *parent = nullptr);
+    ~TimeWidget();
 
 protected:
     void mouseMoveEvent(QMouseEvent* event);

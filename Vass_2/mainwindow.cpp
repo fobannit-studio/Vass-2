@@ -1,12 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QTimer>
-#include <QPainter>
-#include <QColor>
-#include<QCursor>
-#include <QTime>
-#include <QDebug>
-#include <iostream>
+
+
 
 MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),

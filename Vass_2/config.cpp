@@ -19,6 +19,7 @@ config::config(QWidget *parent) :
 config::~config()
 {
     delete ui;
+    delete this;
 }
 
 void config::on_app_config_clicked()

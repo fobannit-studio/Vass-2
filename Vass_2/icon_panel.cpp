@@ -24,7 +24,11 @@ icon_panel::icon_panel(QWidget *parent) :
 icon_panel::~icon_panel()
 {
     writeToFile();
+    delete this->sumbmit;
+    this->_app_buttons.clear();
+
     delete ui;
+    delete this;
 }
 
 bool icon_panel::eventFilter(QObject *obj, QEvent *event )

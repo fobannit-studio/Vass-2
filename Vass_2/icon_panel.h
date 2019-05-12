@@ -1,8 +1,6 @@
 #ifndef ICON_PANEL_H
 #define ICON_PANEL_H
 
-#include <QWidget>
-#include <QObject>
 #include <QDesktopServices>
 #include <QMessageBox>
 #include <QFile>
@@ -16,7 +14,7 @@
 #include<QDataStream>
 #include<QShortcut>
 #include <regex>
-#include<algorithm>
+#include <algorithm>
 #include <vector>
 #include <QProcess>
 #include "submit_removal.h"

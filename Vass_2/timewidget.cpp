@@ -16,6 +16,14 @@ TimeWidget::TimeWidget(QWidget *parent) : QLabel(parent)
 
 
 }
+TimeWidget::~TimeWidget()
+{
+    delete this->timer;
+
+    delete this;
+
+
+}
 
 void TimeWidget::mouseMoveEvent(QMouseEvent *event)
 {

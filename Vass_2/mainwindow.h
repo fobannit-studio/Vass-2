@@ -2,17 +2,10 @@
 #define MAINWINDOW_H
 #include <QMainWindow>
 #include <QAction>
-#include<QShortcut>
-#include <QSystemTrayIcon>
-#include <QMouseEvent>
-#include <fstream>
-#include <QCloseEvent>
-#include<QKeySequence>
-#include <QTimer>
 #include <QPainter>
 #include <QColor>
-#include<QCursor>
-#include <QTime>
+#include <QDebug>
+#include <QSystemTrayIcon>
 #include "media_player.h"
 #include "submit_removal.h"
 #include"icon_panel.h"

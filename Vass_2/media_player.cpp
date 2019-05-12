@@ -1,8 +1,6 @@
 #include "media_player.h"
 #include "ui_media_player.h"
-#include <iostream>
 #include <QLabel>
-#include <iostream>
 #include <regex>
 Media_Player::Media_Player(QWidget *parent) :
     QWidget(parent),
@@ -16,8 +14,11 @@ Media_Player::Media_Player(QWidget *parent) :
 }
 
 Media_Player::~Media_Player()
-{
+
+{   this->songs.clear();
+    delete this->m_player;
     delete ui;
+    delete this;
 }
 
 void Media_Player::on_ProgressSlider_sliderMoved(int position)
@@ -79,7 +80,7 @@ void Media_Player::on_AddButton_clicked()
         for (int i=0;i<songs.count();i++)
         {   tmp=songs[i].toStdString();
             tmp=tmp.substr(tmp.find_last_of("/")+1);
-            std::cout<<tmp<<std::endl;
+
             ui->listWidget->addItem(QString::fromStdString(tmp));
         }
     }
