@@ -37,7 +37,7 @@ bool icon_panel::eventFilter(QObject *obj, QEvent *event )
     if(i==_app_buttons.size())return QWidget::eventFilter(obj, event);;
     if (event->type() == QEvent::MouseButtonPress) {
          QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-         if (mouseEvent->modifiers() == Qt::ShiftModifier) {
+         if (mouseEvent->modifiers() == Qt::ShiftModifier and _removal) {
              if(_range.first == -1 ){_range.first=i;}
              else {_range.second = i;}
              mark_for_removal(_app_buttons[i],i+_current_page*9,State::Single);
@@ -326,22 +326,42 @@ void icon_panel::removeSequence()
     submit_window.setModal(true);
     if(submit_window.exec()){
      for(int i:_to_remove){
-    _shortcuts.removeAt(i);
-    _apps.erase(_apps.begin() + i);
-
+     qDebug()<<i;
+//    _shortcuts.removeAt(i);
+//    _apps.erase(_apps.begin() + i);
+     //first change elements on zeroz to later delete all zeros in that objects
+     _shortcuts[i] = tr(" ");
+     _apps[i] = std::make_pair<std::string,QString>("",nullptr);
     }
+     for (auto it = _shortcuts.begin(); it != _shortcuts.end(); /* NOTHING */)
+     {
+       if ((*it) == " ")
+         it = _shortcuts.erase(it);
+       else
+         ++it;
+     }
+     for (auto it = _apps.begin(); it != _apps.end(); /* NOTHING */)
+     {
+       if (it->second == nullptr and it -> first.empty())
+         it = _apps.erase(it);
+       else
+         ++it;
+     }
+
      _removal = false;
     ui ->addShortCut->setText("Add");
     ui -> removeShortCut ->setText("Remove");
     ui -> removeShortCut -> setStyleSheet("QPushButton { background-color: rgb(211, 10, 0); color: white; border: 1px solid gray; border-radius:10px} QPushButton:pressed { background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FF7832, stop: 1 #FF9739); }QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(188, 71, 66), stop: 1 rgb(209, 70, 64));}");
     return_default_style();
     fill_shortcuts();
+//    _current_page -= _to_remove.size();
+    _to_remove.clear();
     }else return;
 }
 void icon_panel::mark_for_removal(QPushButton * app,int index , State current_state){
 
     std::vector<int>::const_iterator position =std::find (_to_remove.begin(), _to_remove.end(), index);// check is element already marked for removing
-    if(current_state==State::Ranged or (current_state==State::Single and position == _to_remove.end() ))
+    if((current_state==State::Ranged and position == _to_remove.end() )or (current_state==State::Single and position == _to_remove.end() ))
     {//not in the vector for remove - append
         app->setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:90px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
         _to_remove.emplace_back(index+_current_page*9);
@@ -365,6 +385,7 @@ void icon_panel::return_default_style()
 
 }
 void icon_panel::range_selection(int begin , int end){
+
     int first_el;
     int last_el;
     if(begin>end){first_el= end;last_el=begin;}
@@ -377,12 +398,12 @@ void icon_panel::range_selection(int begin , int end){
 void icon_panel::execute(int index)
 {
     int current_index = index + _current_page*9;
-//    if(_shortcuts_class[current_index].get_extension() == ".sh"){
+    if(_shortcuts_class[current_index].get_extension() == ".sh"){
     QProcess process;
     process.startDetached("/bin/sh", QStringList()<< _shortcuts_class[current_index].get_path());
-//    }else {
-
-//}
+    }else {
+    QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(current_index).toLocal8Bit().constData() ,QUrl::TolerantMode));
+}
 }
 
 
