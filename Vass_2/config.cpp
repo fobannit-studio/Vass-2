@@ -42,3 +42,25 @@ void config::on_ic_config_clicked()
     ui ->MainSettings->hide();
     ui ->Quick_Panel_settings->show();
 }
+
+
+
+void config::mouseMoveEvent(QMouseEvent *event)
+{
+    if (isMouseDown)
+    {
+        mousePosition=event->globalPos();
+        move(mousePosition.rx() - this->width()/5,mousePosition.ry() - this->height()/5);
+    }
+}
+
+void config::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button()==Qt::LeftButton)
+    {
+        isMouseDown=true;
+    }
+}
+
+
+
