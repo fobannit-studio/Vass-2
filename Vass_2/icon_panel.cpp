@@ -70,7 +70,6 @@ void icon_panel::writeToFile()
 
     QDataStream out(&file);
     out.setVersion(QDataStream::Qt_4_5);
-//    out << _shortcuts;
     out << data_to_save;
 };
 
@@ -86,13 +85,11 @@ void icon_panel::readFromFile()
     QDataStream in(&file);
     QStringList data_from_file;
     in.setVersion(QDataStream::Qt_4_5);
-//    in >> _shortcuts;
     in >> data_from_file;
-//    for(int i = 0;i<_shortcuts.size();++i)
     for(int i = 0 ; i< data_from_file.size();++i)
     {
         parse_names(data_from_file.at(i).toLocal8Bit().constData());
-//        parse_names(_shortcuts.at(i).toLocal8Bit().constData());
+
     }
 };
 
@@ -120,7 +117,6 @@ void icon_panel::parse_names(QString filename)
         name_icon = std::make_pair(app,QString::fromStdString(path + "/" + app + ".png"));
     }
     _shortcuts_class.emplace_back(extension,name_icon.first,filename,name_icon.second);
-//    _apps.emplace_back(name_icon);
 
 }
 
@@ -139,7 +135,6 @@ void icon_panel::on_addShortCut_clicked()
     std::string tmp;
     for (int i=0;i<filenames.count();i++)
      {   tmp=filenames[i].toStdString();
-        _shortcuts << filenames[i];
         parse_names(filenames[i]);
      }
     fill_shortcuts();
@@ -156,9 +151,10 @@ void icon_panel::on_addShortCut_clicked()
 
 void icon_panel::wheelEvent(QWheelEvent *event)
 {
+
     QPoint degrees = event -> angleDelta();
     qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
-    if((degrees.ry()>0) and (_current_page + 8 < _shortcuts.size())){
+    if((degrees.ry()>0) and (_current_page + 8 < _shortcuts_class.size())){
         _current_page += 8;
         fill_shortcuts();
     }
@@ -166,6 +162,7 @@ void icon_panel::wheelEvent(QWheelEvent *event)
         _current_page -=8;
         fill_shortcuts();
     }
+    setStyle(_current_page);
 }
 
 void icon_panel::initShortcut(QPushButton * app , QLabel * label , int current_position)
@@ -200,7 +197,7 @@ void icon_panel::on_app_1_clicked()
     if(!_removal)execute(0);
 //        QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(0 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else {
-        mark_for_removal(ui->app_1,0+_current_page*9,State::Single);
+        mark_for_removal(ui->app_1,0+_current_page,State::Single);
     };
 }
 
@@ -209,7 +206,7 @@ void icon_panel::on_app_2_clicked()
     if(!_removal)execute(1);
 //        QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(1 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
     else {
-        mark_for_removal(ui->app_2,1+_current_page*9,State::Single);
+        mark_for_removal(ui->app_2,1+_current_page,State::Single);
     }
 }
 
@@ -217,35 +214,35 @@ void icon_panel::on_app_3_clicked()
 {
     if(!_removal)execute(2);
         //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(2 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
-    else mark_for_removal(ui->app_3,2+_current_page*9,State::Single);;
+    else mark_for_removal(ui->app_3,2+_current_page,State::Single);;
 }
 void icon_panel::on_app_4_clicked()
 {
     if(!_removal)execute(3);
         //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(3 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
-    else mark_for_removal(ui->app_4,3+_current_page*9,State::Single);
+    else mark_for_removal(ui->app_4,3+_current_page,State::Single);
 }
 void icon_panel::on_app_5_clicked(){  if(!_removal)execute(4);
         //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(4 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
-    else mark_for_removal(ui->app_5,4+_current_page*9,State::Single);
+    else mark_for_removal(ui->app_5,4+_current_page,State::Single);
 }
 void icon_panel::on_app_6_clicked(){ if(!_removal)execute(5);
         //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(5 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
-    else mark_for_removal(ui->app_6,5+_current_page*9,State::Single);
+    else mark_for_removal(ui->app_6,5+_current_page,State::Single);
 }
 
 void icon_panel::on_app_7_clicked()
 {
     if(!_removal)execute(6);
         //QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(6 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
-    else mark_for_removal(ui->app_7,6+_current_page*9,State::Single);;
+    else mark_for_removal(ui->app_7,6+_current_page,State::Single);;
 }
 
 void icon_panel::on_app_8_clicked()
 {
     if(!_removal)execute(7);
 //        QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(7 + _current_page*9).toLocal8Bit().constData() ,QUrl::TolerantMode));
-    else mark_for_removal(ui->app_8,7+_current_page*9,State::Single);;
+    else mark_for_removal(ui->app_8,7+_current_page,State::Single);;
 }
 
 void icon_panel::on_removeShortCut_clicked()
@@ -271,13 +268,9 @@ void icon_panel::removeSequence()
     if(submit_window.exec()){
      for(int i:_to_remove){
      qDebug()<<i;
-//    _shortcuts.removeAt(i);
-//    _apps.erase(_apps.begin() + i);
-     //first change elements on zeroz to later delete all zeros in that objects
-     _shortcuts_class[i].set_removable();
 
-//     _shortcuts[i] = tr(" ");
-//     _apps[i] = std::make_pair<std::string,QString>("",nullptr);
+     _shortcuts_class[i].set_removable(true);
+
     }
 
      for (auto it = _shortcuts_class.begin(); it != _shortcuts_class.end(); /* NOTHING */)
@@ -287,20 +280,7 @@ void icon_panel::removeSequence()
             else
               ++it;
           }
-//     for (auto it = _shortcuts.begin(); it != _shortcuts.end(); /* NOTHING */)
-//     {
-//       if ((*it) == " ")
-//         it = _shortcuts.erase(it);
-//       else
-//         ++it;
-//     }
-//     for (auto it = _apps.begin(); it != _apps.end(); /* NOTHING */)
-//     {
-//       if (it->second == nullptr and it -> first.empty())
-//         it = _apps.erase(it);
-//       else
-//         ++it;
-//     }
+
 
      _removal = false;
     ui ->addShortCut->setText("Add");
@@ -308,7 +288,6 @@ void icon_panel::removeSequence()
     ui -> removeShortCut -> setStyleSheet("QPushButton { background-color: rgb(211, 10, 0); color: white; border: 1px solid gray; border-radius:10px} QPushButton:pressed { background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FF7832, stop: 1 #FF9739); }QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(188, 71, 66), stop: 1 rgb(209, 70, 64));}");
     return_default_style();
     fill_shortcuts();
-//    _current_page -= _to_remove.size();
     _to_remove.clear();
     }else return;
 }
@@ -317,12 +296,14 @@ void icon_panel::mark_for_removal(QPushButton * app,int index , State current_st
     std::vector<int>::const_iterator position =std::find (_to_remove.begin(), _to_remove.end(), index);// check is element already marked for removing
     if((current_state==State::Ranged and position == _to_remove.end() )or (current_state==State::Single and position == _to_remove.end() ))
     {//not in the vector for remove - append
+        _shortcuts_class[index].set_removable(true);
         app->setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:90px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
-        _to_remove.emplace_back(index+_current_page*9);
+        _to_remove.emplace_back(index);
     }
     else if (current_state==State::Single and position != _to_remove.end())
     {
         //deselecting object for removing
+        _shortcuts_class[index].set_removable(false);
         _to_remove.erase(position);
         app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
     }
@@ -334,9 +315,21 @@ void icon_panel::return_default_style()
     _range={-1,-1};
     for(QPushButton * app:_app_buttons)
     {
-        app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
+       app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
     }
 
+}
+
+void icon_panel::setStyle(int index){ //index - position of this element in shortuct_class vector
+for(int i=index;i<index + 8;++i){
+    if(_shortcuts_class[i].get_removable())//returns true if removable
+    {
+        _app_buttons[i%_app_buttons.size()] -> setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:90px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
+    }else {
+        _app_buttons[i%_app_buttons.size()]->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
+
+}
+}
 }
 void icon_panel::range_selection(int begin , int end){
 
@@ -351,12 +344,12 @@ void icon_panel::range_selection(int begin , int end){
 }
 void icon_panel::execute(int index)
 {
-    int current_index = index + _current_page*9;
+    int current_index = index + _current_page;
     if(_shortcuts_class[current_index].get_extension() == ".sh"){
     QProcess process;
     process.startDetached("/bin/sh", QStringList()<< _shortcuts_class[current_index].get_path());
     }else {
-    QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts.at(current_index).toLocal8Bit().constData() ,QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl(tr("file:///") + _shortcuts_class[current_index].get_path().toLocal8Bit().constData() ,QUrl::TolerantMode));
 }
 }
 
