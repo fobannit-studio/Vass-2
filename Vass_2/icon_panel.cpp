@@ -264,7 +264,9 @@ void icon_panel::on_removeShortCut_clicked()
     ui -> removeShortCut -> setStyleSheet("QPushButton { background-color: rgba(255, 210, 50 , 0.7); color: white; border: 1px solid gray; border-radius:10px}QPushButton:hover{ background-color: rgb(255, 210, 50)}");
     }else {
     _to_remove.clear();
-    for(auto i:_shortcuts_class)
+//    for(int i=0;i<_shortcuts_class.size();++i)
+    for(Shortcut i:_shortcuts_class)
+//        _shortcuts_class[i].set_removable(false);
         i.set_removable(false);
     return_default_style();
 }
