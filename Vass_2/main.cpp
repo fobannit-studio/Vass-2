@@ -11,9 +11,10 @@ int main(int argc, char *argv[])
     MainWindow w(dims);
 
 
-    w.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);  //сделать без рамки и всегда наверху других окон
+    w.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);// |Qt::Tool);  //сделать без рамки и всегда наверху других окон и //не отображать в панеле задач
     w.setAttribute(Qt::WA_TranslucentBackground); // сделать прозрачным  => profit!
     w.setFixedSize(dw.width(),dw.height()); // сделать на весь екран
+
     w.show();
 
     return a.exec();

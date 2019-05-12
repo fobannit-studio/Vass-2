@@ -1,7 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
-
+#include <QTimer>
+#include <QPainter>
+#include <QColor>
+#include<QCursor>
+#include <QTime>
+#include <QDebug>
+#include <iostream>
 
 MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),
@@ -70,7 +75,7 @@ void MainWindow::setVisibleIcons()
 void MainWindow::setVisibleConfig()
 {
 
-    if(!ui->configuration->isVisible()){
+    if(!Configuration.isVisible()){
         ui-> configuration -> move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
         openConfig->setText("Hide configuration window");
         ui ->configuration -> show();
