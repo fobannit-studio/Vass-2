@@ -61,9 +61,17 @@ void icon_panel::writeToFile()
         QMessageBox::information(this,tr("Unable to open the file"),file.errorString());
         return;
     }
+    //
+    QStringList data_to_save;
+    for(auto& i:_shortcuts_class)
+    {
+      data_to_save.append(i.get_path());
+    }
+
     QDataStream out(&file);
     out.setVersion(QDataStream::Qt_4_5);
-    out << _shortcuts;
+//    out << _shortcuts;
+    out << data_to_save;
 };
 
 void icon_panel::readFromFile()
@@ -76,11 +84,15 @@ void icon_panel::readFromFile()
         return;
     }
     QDataStream in(&file);
+    QStringList data_from_file;
     in.setVersion(QDataStream::Qt_4_5);
-    in >> _shortcuts;
-    for(int i = 0;i<_shortcuts.size();++i)
+//    in >> _shortcuts;
+    in >> data_from_file;
+//    for(int i = 0;i<_shortcuts.size();++i)
+    for(int i = 0 ; i< data_from_file.size();++i)
     {
-        parse_names(_shortcuts.at(i).toLocal8Bit().constData());
+        parse_names(data_from_file.at(i).toLocal8Bit().constData());
+//        parse_names(_shortcuts.at(i).toLocal8Bit().constData());
     }
 };
 
@@ -108,13 +120,13 @@ void icon_panel::parse_names(QString filename)
         name_icon = std::make_pair(app,QString::fromStdString(path + "/" + app + ".png"));
     }
     _shortcuts_class.emplace_back(extension,name_icon.first,filename,name_icon.second);
-    _apps.emplace_back(name_icon);
+//    _apps.emplace_back(name_icon);
 
 }
 
 void icon_panel::setIcon(QLabel * label, int current_icon)
 {
-    QPixmap icon(_apps[current_icon].second);
+    QPixmap icon(_shortcuts_class[current_icon].get_path_to_icon());
     label -> setPixmap(icon.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
 };
 
@@ -146,11 +158,11 @@ void icon_panel::wheelEvent(QWheelEvent *event)
 {
     QPoint degrees = event -> angleDelta();
     qDebug()<<degrees.ry()<<degrees.rx()<<_current_page;
-    if((degrees.ry()>0) && (_current_page + 8 < _shortcuts.size())){
+    if((degrees.ry()>0) and (_current_page + 8 < _shortcuts.size())){
         _current_page += 8;
         fill_shortcuts();
     }
-    else if (_current_page > 0){
+    else if (_current_page > 0 and degrees.ry()<0){
         _current_page -=8;
         fill_shortcuts();
     }
@@ -160,16 +172,17 @@ void icon_panel::initShortcut(QPushButton * app , QLabel * label , int current_p
 {
     app->show();
     label->show();
-    app->setText(QString::fromStdString(_apps[current_position].first));
+    app->setText(QString::fromStdString(_shortcuts_class[current_position].get_filename()));
     setIcon(label,current_position);
+//    app->setText(QString::fromStdString(_apps[current_position].first));
 };
 
 void icon_panel::fill_shortcuts()
 {
     int end = 0;
     int i = 0;
-    if(_current_page+8<_shortcuts.size())end = _current_page + 8;
-    else end=_shortcuts.size();
+    if(_current_page+8<_shortcuts_class.size())end = _current_page + 8;
+    else end=_shortcuts_class.size();
     for(i=_current_page;i<end;++i)
     {
         initShortcut(_app_buttons[i%_app_buttons.size()],_image_labels[i%_image_labels.size()],i);
@@ -179,86 +192,6 @@ void icon_panel::fill_shortcuts()
         _app_buttons[i%_app_buttons.size()]->hide();
         _image_labels[i%_image_labels.size()]->hide();
     }
-//    for(int i=_current_page;i<_current_page+8;++i)
-//    {
-//        switch (i%8) {
-//        case 0:
-//            if (i<end){
-//                initShortcut(ui->app_1,ui->label_1,i);
-//            }
-//            else{
-//                ui->label_1->hide();
-//                ui->app_1->hide();;
-//            }
-//            break;
-//        case 1:
-//            if (i<end){
-//                initShortcut(ui->app_2,ui->label_2,i);
-//            }
-//            else{
-//                ui->label_2->hide();
-//                ui->app_2->hide();
-//            }
-//            break;
-//        case 2:
-//            if (i<end){
-//                initShortcut(ui->app_3,ui->label_3,i);
-//            }
-//            else{
-//                ui->label_3->hide();
-//                ui->app_3->hide();
-//            }
-//            break;
-//        case 3:
-//            if (i<end){
-//                initShortcut(ui->app_4,ui->label_4,i);
-//            }
-//            else{
-//                ui->label_4->hide();
-//                ui->app_4->hide();
-//            }
-//            break;
-//        case 4:
-//            if (i<end){
-//                initShortcut(ui->app_5,ui->label_5,i);
-//            }
-//            else{
-
-//                ui->label_5->hide();
-//                ui->app_5->hide();
-//            }
-//            break;
-//        case 5:
-//            if (i<end){
-//                initShortcut(ui->app_6,ui->label_6,i);
-//            }
-//            else{
-//                ui->label_6->hide();
-//                ui->app_6->hide();
-//            }
-//            break;
-//        case 6:
-//            if (i<end){
-//                initShortcut(ui->app_7,ui->label_7,i);
-//            }
-//            else{
-//                ui->label_7->hide();
-//                ui->app_7->hide();
-//            }
-//            break;
-//        case 7:
-//            if (i<end){
-//               initShortcut(ui->app_8,ui->label_8,i);
-//            }
-//            else{
-//                ui->label_8->hide();
-//                ui->app_8->hide();
-//            }
-//            break;
-//        default:
-//            break;
-//        }
-//    }
 }
 
 void icon_panel::on_app_1_clicked()
@@ -341,23 +274,33 @@ void icon_panel::removeSequence()
 //    _shortcuts.removeAt(i);
 //    _apps.erase(_apps.begin() + i);
      //first change elements on zeroz to later delete all zeros in that objects
-     _shortcuts[i] = tr(" ");
-     _apps[i] = std::make_pair<std::string,QString>("",nullptr);
+     _shortcuts_class[i].set_removable();
+
+//     _shortcuts[i] = tr(" ");
+//     _apps[i] = std::make_pair<std::string,QString>("",nullptr);
     }
-     for (auto it = _shortcuts.begin(); it != _shortcuts.end(); /* NOTHING */)
-     {
-       if ((*it) == " ")
-         it = _shortcuts.erase(it);
-       else
-         ++it;
-     }
-     for (auto it = _apps.begin(); it != _apps.end(); /* NOTHING */)
-     {
-       if (it->second == nullptr and it -> first.empty())
-         it = _apps.erase(it);
-       else
-         ++it;
-     }
+
+     for (auto it = _shortcuts_class.begin(); it != _shortcuts_class.end(); /* NOTHING */)
+          {
+            if ((*it).get_removable())
+              it = _shortcuts_class.erase(it);
+            else
+              ++it;
+          }
+//     for (auto it = _shortcuts.begin(); it != _shortcuts.end(); /* NOTHING */)
+//     {
+//       if ((*it) == " ")
+//         it = _shortcuts.erase(it);
+//       else
+//         ++it;
+//     }
+//     for (auto it = _apps.begin(); it != _apps.end(); /* NOTHING */)
+//     {
+//       if (it->second == nullptr and it -> first.empty())
+//         it = _apps.erase(it);
+//       else
+//         ++it;
+//     }
 
      _removal = false;
     ui ->addShortCut->setText("Add");
