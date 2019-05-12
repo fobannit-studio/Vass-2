@@ -11,8 +11,7 @@
 MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    Icons(),
-    Configuration()
+    M_Player()
 {
     QIcon icon = QIcon(":/icons/images/icon2.png");
     setWindowIcon(icon);
@@ -27,7 +26,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     //shortcut for open icons
 
     openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
-    connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
+    connect(ui->icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
 
 
 
@@ -50,6 +49,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+
     delete ui;
 
 }
@@ -60,7 +60,7 @@ void MainWindow::setVisibleIcons()
 {
     if(!ui->icons->isVisible()){
         QPoint position = QCursor::pos();
-        ui-> icons -> move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
+        ui-> icons -> move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
 //        Icons.setWindowFlags(Qt::FramelessWindowHint);
 //        Icons.setAttribute(Qt::WA_TranslucentBackground);
 //        Icons.setFocus();
@@ -75,8 +75,8 @@ void MainWindow::setVisibleIcons()
 void MainWindow::setVisibleConfig()
 {
 
-    if(!Configuration.isVisible()){
-        ui-> configuration -> move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
+    if(!ui->configuration->isVisible()){
+        ui-> configuration -> move(_D_dims.first/2- ui->configuration->geometry().width()/2,_D_dims.second/2- ui->configuration->geometry().height()/2);
         openConfig->setText("Hide configuration window");
         ui ->configuration -> show();
 

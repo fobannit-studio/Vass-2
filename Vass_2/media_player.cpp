@@ -15,10 +15,11 @@ Media_Player::Media_Player(QWidget *parent) :
 
 Media_Player::~Media_Player()
 
-{   this->songs.clear();
+{
+    this->songs.clear();
     delete this->m_player;
     delete ui;
-    delete this;
+//    delete this;
 }
 
 void Media_Player::on_ProgressSlider_sliderMoved(int position)

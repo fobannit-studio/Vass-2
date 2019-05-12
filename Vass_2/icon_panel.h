@@ -55,7 +55,10 @@ private slots:
     void on_app_7_clicked();
     void on_app_8_clicked();
     void removeSequence();
+
     void on_removeShortCut_clicked();
+
+
 
 private:
     Ui::icon_panel *ui;
@@ -79,7 +82,7 @@ private:
 
     void initShortcut(QPushButton * app , QLabel * label , int current_position);
     void parse_names(QString);
-    void setIcon(QLabel *,int);
+    void setIcon(QLabel *,QPushButton * button,int);
     void writeToFile();
     void readFromFile();
     void mark_for_removal(QPushButton * ,int , State );

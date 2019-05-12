@@ -27,9 +27,10 @@ icon_panel::~icon_panel()
     writeToFile();
     delete this->sumbmit;
     this->_app_buttons.clear();
+    this -> _image_labels.clear();
 
     delete ui;
-    delete this;
+//    delete this;
 }
 
 bool icon_panel::eventFilter(QObject *obj, QEvent *event )
@@ -124,10 +125,14 @@ void icon_panel::parse_names(QString filename)
 
 }
 
-void icon_panel::setIcon(QLabel * label, int current_icon)
+void icon_panel::setIcon(QLabel * label, QPushButton * button,int current_icon)
 {
     QPixmap icon(_shortcuts_class[current_icon].get_path_to_icon());
-    label -> setPixmap(icon.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+    icon = icon.scaled(label->width(),label->height(),Qt::KeepAspectRatio);
+    button->setIcon(icon);
+    button ->setIconSize(icon.rect().size());
+//    label -> setPixmap(icon.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+
 };
 
 void icon_panel::on_addShortCut_clicked()
@@ -173,8 +178,9 @@ void icon_panel::initShortcut(QPushButton * app , QLabel * label , int current_p
 {
     app->show();
     label->show();
-    app->setText(QString::fromStdString(_shortcuts_class[current_position].get_filename()));
-    setIcon(label,current_position);
+    label->setText(QString::fromStdString(_shortcuts_class[current_position].get_filename()));
+    setIcon(label,app,current_position);
+
 //    app->setText(QString::fromStdString(_apps[current_position].first));
 };
 
@@ -341,7 +347,7 @@ void icon_panel::range_selection(int begin , int end){
     int last_el;
     if(begin>end){first_el= end;last_el=begin;}
     else{first_el=begin;last_el=end;}
-    for(int i = begin;i<end;++i)
+    for(int i = first_el;i<last_el;++i)
     {
         mark_for_removal(_app_buttons[i],i+_current_page*9,State::Ranged);
     }

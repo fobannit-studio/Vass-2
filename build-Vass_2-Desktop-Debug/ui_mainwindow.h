@@ -16,7 +16,6 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 #include <icon_panel.h>
 #include <timewidget.h>
@@ -28,9 +27,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButton;
     TimeWidget *TimeLabel;
-    QPushButton *pushButton_2;
     icon_panel *icons;
     config *configuration;
     QMenuBar *menuBar;
@@ -62,11 +59,9 @@ public:
         QFont font;
         font.setPointSize(12);
         centralWidget->setFont(font);
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(10, 10, 191, 41));
         TimeLabel = new TimeWidget(centralWidget);
         TimeLabel->setObjectName(QStringLiteral("TimeLabel"));
+        TimeLabel->setEnabled(true);
         TimeLabel->setGeometry(QRect(640, 0, 161, 31));
         QFont font1;
         font1.setFamily(QStringLiteral("Rubik"));
@@ -75,9 +70,6 @@ public:
         font1.setWeight(75);
         TimeLabel->setFont(font1);
         TimeLabel->setAlignment(Qt::AlignCenter);
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(220, 10, 191, 41));
         icons = new icon_panel(centralWidget);
         icons->setObjectName(QStringLiteral("icons"));
         icons->setGeometry(QRect(370, 90, 421, 382));
@@ -98,9 +90,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Vass 2", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "Open Music", Q_NULLPTR));
         TimeLabel->setText(QApplication::translate("MainWindow", "12:45:37", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("MainWindow", "Open Time Widget", Q_NULLPTR));
     } // retranslateUi
 
 };

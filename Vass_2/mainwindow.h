@@ -35,14 +35,14 @@ private slots:
     void InitActions();
 private:
     Ui::MainWindow *ui;
-    void closeEvent(QCloseEvent* event);
+    void closeEvent(QCloseEvent* event) override;
     bool _is_panel_active;
 
     std::pair<int,int> _D_dims;
 
     Media_Player M_Player;
-    icon_panel Icons;
-    config Configuration;
+//    icon_panel Icons;
+//    config Configuration;
 
     QShortcut * openIcons;
     QSystemTrayIcon *trayIcon;

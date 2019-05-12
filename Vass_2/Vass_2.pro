@@ -71,12 +71,12 @@ RESOURCES += \
 
 
 
-unix|win32: LIBS += -L$$PWD/../ -lUGlobalHotkey
+#unix|win32: LIBS += -L$$PWD/../ -lUGlobalHotkey
 
 INCLUDEPATH += $$PWD/../
 DEPENDPATH += $$PWD/../
 
-INCLUDEPATH +=$$PWD/../UGlobalHotkey
+#INCLUDEPATH +=$$PWD/../UGlobalHotkey
 
-win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../UGlobalHotkey.lib
-else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../libUGlobalHotkey.a
+#win32:!win32-g++: PRE_TARGETDEPS += $$PWD/../UGlobalHotkey.lib
+#else:unix|win32-g++: PRE_TARGETDEPS += $$PWD/../libUGlobalHotkey.a

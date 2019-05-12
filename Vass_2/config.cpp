@@ -18,8 +18,9 @@ config::config(QWidget *parent) :
 //}
 config::~config()
 {
+// config is a part of main window ui
     delete ui;
-    delete this;
+//    delete this;
 }
 
 void config::on_app_config_clicked()

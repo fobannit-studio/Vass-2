@@ -20,7 +20,7 @@ TimeWidget::~TimeWidget()
 {
     delete this->timer;
 
-    delete this;
+//    delete this;
 
 
 }
