@@ -13,8 +13,8 @@ int main(int argc, char *argv[])
 
     w.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);// |Qt::Tool);  //сделать без рамки и всегда наверху других окон и //не отображать в панеле задач
     w.setAttribute(Qt::WA_TranslucentBackground); // сделать прозрачным  => profit!
-//    w.setFixedSize(dw.width(),dw.height()); // сделать на весь екран
-    w.setFixedSize(1000,1000);
+    w.setFixedSize(dw.width(),dw.height()); // сделать на весь екран
+//    w.setFixedSize(1000,1000);
     w.show();
 
     return a.exec();
