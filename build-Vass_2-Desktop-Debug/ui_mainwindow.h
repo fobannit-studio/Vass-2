@@ -72,7 +72,7 @@ public:
         TimeLabel->setAlignment(Qt::AlignCenter);
         icons = new icon_panel(centralWidget);
         icons->setObjectName(QStringLiteral("icons"));
-        icons->setGeometry(QRect(370, 90, 421, 382));
+        icons->setGeometry(QRect(370, 90, 422, 420));
         configuration = new config(centralWidget);
         configuration->setObjectName(QStringLiteral("configuration"));
         configuration->setGeometry(QRect(20, 90, 600, 500));

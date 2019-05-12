@@ -128,7 +128,7 @@ void icon_panel::parse_names(QString filename)
 void icon_panel::setIcon(QLabel * label, QPushButton * button,int current_icon)
 {
     QPixmap icon(_shortcuts_class[current_icon].get_path_to_icon());
-    icon = icon.scaled(label->width(),label->height(),Qt::KeepAspectRatio);
+    icon = icon.scaled(button->width(),label->width(),Qt::KeepAspectRatio);
     button->setIcon(icon);
     button ->setIconSize(icon.rect().size());
 //    label -> setPixmap(icon.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
@@ -264,6 +264,8 @@ void icon_panel::on_removeShortCut_clicked()
     ui -> removeShortCut -> setStyleSheet("QPushButton { background-color: rgba(255, 210, 50 , 0.7); color: white; border: 1px solid gray; border-radius:10px}QPushButton:hover{ background-color: rgb(255, 210, 50)}");
     }else {
     _to_remove.clear();
+    for(auto i:_shortcuts_class)
+        i.set_removable(false);
     return_default_style();
 }
 
@@ -307,7 +309,7 @@ void icon_panel::mark_for_removal(QPushButton * app,int index , State current_st
     if((current_state==State::Ranged and position == _to_remove.end() )or (current_state==State::Single and position == _to_remove.end() ))
     {//not in the vector for remove - append
         _shortcuts_class[index].set_removable(true);
-        app->setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:90px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
+        app->setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:0px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
         _to_remove.emplace_back(index);
     }
     else if (current_state==State::Single and position != _to_remove.end())
@@ -315,7 +317,7 @@ void icon_panel::mark_for_removal(QPushButton * app,int index , State current_st
         //deselecting object for removing
         _shortcuts_class[index].set_removable(false);
         _to_remove.erase(position);
-        app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
+        app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:0px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
     }
 
 
@@ -325,7 +327,7 @@ void icon_panel::return_default_style()
     _range={-1,-1};
     for(QPushButton * app:_app_buttons)
     {
-       app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
+       app->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:0px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
     }
 
 }
@@ -334,9 +336,9 @@ void icon_panel::setStyle(int index){ //index - position of this element in shor
 for(int i=index;i<index + 8;++i){
     if(_shortcuts_class[i].get_removable())//returns true if removable
     {
-        _app_buttons[i%_app_buttons.size()] -> setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:90px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
+        _app_buttons[i%_app_buttons.size()] -> setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:0px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
     }else {
-        _app_buttons[i%_app_buttons.size()]->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:90px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
+        _app_buttons[i%_app_buttons.size()]->setStyleSheet("QPushButton { background-color: rgb(215, 215, 215); border: 1px solid gray;border-radius:10px ; padding-top:0px} QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgba(75, 70, 89 ,0.5), stop: 1 rgba(66, 61, 79,0.7)); }QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }");
 
 }
 }
