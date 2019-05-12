@@ -23,8 +23,8 @@ protected:
     void startStopwatch();
     void endStopwatch();
     void Update_Time();
-    QPoint mousePosition;
     QTimer* timer;
+    QPoint mousePosition;
     QTime buffer;
     short int mode=0;  // 0 обычные часы 1 секундомер 2 таймер
     short int update_interval=300;
