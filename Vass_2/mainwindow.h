@@ -10,7 +10,7 @@
 #include "submit_removal.h"
 #include"icon_panel.h"
 #include"config.h"
-
+#include "saver.h"
 namespace Ui {
 class MainWindow;
 }
@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(std::pair<int,int> dim,QWidget *parent = nullptr);
     ~MainWindow() override;
-
+    Saver saver;
 
 
 private slots:
@@ -41,8 +41,8 @@ private:
     std::pair<int,int> _D_dims;
 
     Media_Player M_Player;
-//    icon_panel Icons;
-//    config Configuration;
+    icon_panel Icons;
+    config Configuration;
 
     QShortcut * openIcons;
     QSystemTrayIcon *trayIcon;

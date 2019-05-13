@@ -25,8 +25,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     painter.drawRect(0, 0, width(),  height());
     //shortcut for open icons
 
-    openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
-    connect(ui->icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
+
 
 
 
@@ -40,7 +39,9 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     ui->setupUi(this);
     ui ->icons -> hide();
     ui ->configuration -> hide();
-
+    M_Player.add_files(saver.load_music());
+    openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
+    connect(ui->icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
 
     // считать настройки из файла
 
@@ -49,8 +50,11 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-
+    qWarning("saving");
+    if (M_Player.playlist.mediaCount()>0)
+        saver.save_music(M_Player.playlist);
     delete ui;
+
 
 }
 
@@ -89,7 +93,9 @@ void MainWindow::setVisibleConfig()
 }
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    // функия что записывает настройки
+    qWarning("saving");
+    saver.save_music(M_Player.playlist);
+
     event->accept(); // event->ignore() игнорировать закрытие окна
 }
 void MainWindow::InitActions()

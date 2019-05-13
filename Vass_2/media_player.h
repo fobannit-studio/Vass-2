@@ -6,6 +6,7 @@
 #include <QFileDialog>
 #include <QtDebug>
 #include <QListWidgetItem>
+#include <QMediaPlaylist>
 namespace Ui {
 class Media_Player;
 }
@@ -17,17 +18,18 @@ class Media_Player : public QWidget
 public:
     explicit Media_Player(QWidget *parent = nullptr);
     ~Media_Player();
+     QMediaPlaylist playlist;
 
+     void add_files(const QStringList& filenames);
 private slots:
     void on_ProgressSlider_sliderMoved(int position);
-
 
 
     void on_PlayButton_clicked();
 
     void on_durationChanged(quint64 position);
     void on_positionChanged(quint64 position);
-
+    void on_media_Changed();
     void on_AddButton_clicked();
 
     void on_VolumeSlider_valueChanged(int value);
@@ -39,11 +41,14 @@ private slots:
 
     void on_NextButton_clicked();
 
+    void on_RepeatButton_clicked();
+
 private:
     Ui::Media_Player *ui;
     QMediaPlayer* m_player;
-    QStringList songs;
+
     int current_song=0;
+
 };
 
 #endif // MEDIA_PLAYER_H

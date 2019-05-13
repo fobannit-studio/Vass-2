@@ -30,6 +30,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         media_player.cpp \
+        saver.cpp \
         shortcut.cpp \
         shortcut.cpp \
         shortcut.cpp \
@@ -43,13 +44,13 @@ HEADERS += \
         icon_panel.h \
         mainwindow.h \
         media_player.h \
+        saver.h \
         shortcut.h \
         shortcut.h \
         shortcut.h \
         shortcut.h \
         submit_removal.h \
         timewidget.h
-
 FORMS += \
         config.ui \
         icon_panel.ui \

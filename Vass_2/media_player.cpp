@@ -2,24 +2,26 @@
 #include "ui_media_player.h"
 #include <QLabel>
 #include <regex>
+#include <QtDebug>
 Media_Player::Media_Player(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Media_Player)
 {
     ui->setupUi(this);
     m_player=new QMediaPlayer(this);
+    m_player->setPlaylist(&playlist);
     connect(m_player,&QMediaPlayer::positionChanged,this,&Media_Player::on_positionChanged);
     connect(m_player,&QMediaPlayer::durationChanged,this,&Media_Player::on_durationChanged);
-
+    connect(m_player,&QMediaPlayer::mediaChanged,this,&Media_Player::on_media_Changed);
 }
 
 Media_Player::~Media_Player()
 
 {
-    this->songs.clear();
+
     delete this->m_player;
     delete ui;
-//    delete this;
+
 }
 
 void Media_Player::on_ProgressSlider_sliderMoved(int position)
@@ -36,7 +38,7 @@ void Media_Player::on_PlayButton_clicked()
   if (ui->PlayButton->text()=="Play")
   {
 
-      if (m_player->mediaStatus()==QMediaPlayer::NoMedia) m_player->setMedia(QUrl::fromLocalFile(songs[0]));
+      if (m_player->mediaStatus()==QMediaPlayer::NoMedia) {playlist.setCurrentIndex(0); m_player->play();}
       else
       {
           ui->PlayButton->setText("Pause");
@@ -68,23 +70,39 @@ void Media_Player::on_positionChanged(quint64 position)
 
 }
 
+void Media_Player::on_media_Changed()
+{
 
+
+    m_player->play();
+
+}
+
+void Media_Player::add_files(const QStringList& filenames )
+{   qWarning("hit");
+    if (!filenames.isEmpty())
+    {   std::string tmp;
+        for (int i=0;i<filenames.count();i++)
+        {
+            playlist.addMedia(QMediaContent(filenames[i]));
+
+            tmp=filenames[i].toStdString();
+            tmp=tmp.substr(tmp.find_last_of("/")+1);
+
+            ui->listWidget->addItem(QString::fromStdString(tmp));
+
+        }
+
+    }
+}
 
 void Media_Player::on_AddButton_clicked()
 {
     QStringList filenames = QFileDialog::getOpenFileNames(this,"Select Media Files","/",tr("Media Files(*.mp3 *.waw *.ogg *.m4a)"));
-    songs.append(filenames);
 
-    std::string tmp;
-    if (!filenames.isEmpty())
-    {
-        for (int i=0;i<songs.count();i++)
-        {   tmp=songs[i].toStdString();
-            tmp=tmp.substr(tmp.find_last_of("/")+1);
+   add_files(filenames);
 
-            ui->listWidget->addItem(QString::fromStdString(tmp));
-        }
-    }
+
 }
 
 void Media_Player::on_VolumeSlider_valueChanged(int value)
@@ -94,26 +112,55 @@ void Media_Player::on_VolumeSlider_valueChanged(int value)
 
 
 void Media_Player::on_listWidget_itemDoubleClicked()
-{  current_song= ui->listWidget->currentRow();
-   m_player->setMedia(QUrl::fromLocalFile(songs[current_song]));
-   m_player->play();
-   ui->PlayButton->setText("Play");
+{
+   playlist.setCurrentIndex( ui->listWidget->currentRow());
+
+   this->m_player->play();
+   ui->PlayButton->setText("Pause");
 }
 
 void Media_Player::on_PreviousButton_clicked()
 {
-    current_song=(current_song-1)%songs.length();
-    if (current_song<=-1) current_song=0;
-    m_player->setMedia(QUrl::fromLocalFile(songs[current_song]));
+    playlist.setCurrentIndex(playlist.previousIndex());
+
     m_player->play();
-    ui->PlayButton->setText("Play");
+    ui->PlayButton->setText("Pause");
 }
 
 void Media_Player::on_NextButton_clicked()
 {
-    current_song=(current_song+1)%songs.length();
-    //if (current_song>=songs.length()) current_song=songs.length()-1;
-    m_player->setMedia(QUrl::fromLocalFile(songs[current_song]));
+    playlist.setCurrentIndex(playlist.nextIndex());
+
     m_player->play();
-    ui->PlayButton->setText("Play");
+    ui->PlayButton->setText("Pause");
+}
+
+void Media_Player::on_RepeatButton_clicked()
+{
+    if (playlist.playbackMode()==playlist.Loop)
+    {
+        playlist.setPlaybackMode(playlist.Random);
+        ui->RepeatButton->setText("Mode: Random");
+    }
+    else if (playlist.playbackMode()==playlist.Random)
+    {
+        playlist.setPlaybackMode(playlist.Sequential);
+        ui->RepeatButton->setText("Mode: Sequential");
+    }
+    else if (playlist.playbackMode()==playlist.Sequential)
+    {
+        playlist.setPlaybackMode(playlist.CurrentItemOnce);
+        ui->RepeatButton->setText("Mode: One Song One Time");
+    }
+    else if (playlist.playbackMode()==playlist.CurrentItemOnce)
+    {
+        playlist.setPlaybackMode(playlist.CurrentItemInLoop);
+        ui->RepeatButton->setText("Mode: Repeat One Song");
+    }
+    else if (playlist.playbackMode()==playlist.CurrentItemInLoop)
+    {
+        playlist.setPlaybackMode(playlist.Loop);
+        ui->RepeatButton->setText("Mode: Repeat All");
+    }
+
 }
