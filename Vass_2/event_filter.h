@@ -1,7 +1,7 @@
 #ifndef EVENT_FILTER_H
 #define EVENT_FILTER_H
-#ifdef linux
 #include <QObject>
+//#ifdef linux
 #include <QAbstractNativeEventFilter>
 #include <QVector>
 #include <QX11Info>
@@ -10,11 +10,12 @@
 #include <xcb/xcb.h>
 enum class Apps{Player,Config,Icons,Clock};
 
-class event_filter: public QObject , public QAbstractNativeEventFilter
+class event_filter : public QObject, public QAbstractNativeEventFilter
 {
     Q_OBJECT
+
 public:
-    explicit event_filter(KeySym icons , KeySym config , KeySym param , KeySym clock , QObject *parent = nullptr);
+    explicit event_filter(KeySym icons , KeySym config , KeySym media , KeySym clock , QObject *parent = nullptr);
 
     bool nativeEventFilter(const QByteArray &eventType , void *message ,long *result);
 //    void setShortcut(KeySym);
@@ -32,5 +33,6 @@ private:
     int _media_keycode;
     int _clock_keycode;
 };
-#endif
+//#endif
 #endif // EVENT_FILTER_H
+

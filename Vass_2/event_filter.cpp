@@ -1,3 +1,4 @@
+//#ifdef linux
 #include "event_filter.h"
 
 namespace
@@ -12,7 +13,7 @@ namespace
     }
 }
 
-event_filter::event_filter(KeySym icons , KeySym config , KeySym media , KeySym clock , QObject *parent):QObject (parent)
+event_filter::event_filter(KeySym icons , KeySym config , KeySym media , KeySym clock , QObject *parent): QObject (parent)
 {
     m_display = QX11Info::display();
     m_win = DefaultRootWindow(m_display);
@@ -110,3 +111,4 @@ void event_filter::unsetShortcut(int key){
                    m_win);
     }
 }
+//#endif

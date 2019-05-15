@@ -14,7 +14,8 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     M_Player(),
-    Icons()
+    Icons(),
+    Configuration()
 {
     QIcon icon = QIcon(":/icons/images/icon2.png");
     setWindowIcon(icon);
@@ -27,24 +28,31 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     painter.setBrush(QColor(100,100,100, 127));
     painter.drawRect(0, 0, width(),  height());
     //shortcut for open icons
-    nativeEventFilter = new event_filter(this);
+#ifdef linux
+    nativeEventFilter = new event_filter(XK_M,XK_Q,XK_P,XK_T,this);
     qApp->installNativeEventFilter(nativeEventFilter);
-    connect(nativeEventFilter,&event_filter::activated,this,&MainWindow::slotGlobalHotkey);
-    nativeEventFilter -> setShortcut();
+    connect(nativeEventFilter,&event_filter::icon_called,this,&MainWindow::setVisibleIcons);
+    connect(nativeEventFilter,&event_filter::clock_called,this,&MainWindow::setVisibleTime);
+    connect(nativeEventFilter,&event_filter::config_called,this,&MainWindow::setVisibleConfig);
+    connect(nativeEventFilter,&event_filter::player_called,this,&MainWindow::setVisibleMusic);
+    nativeEventFilter -> setShortcut(Apps::Clock);
+    nativeEventFilter -> setShortcut(Apps::Player);
+    nativeEventFilter -> setShortcut(Apps::Config);
+    nativeEventFilter -> setShortcut(Apps::Icons);
+#endif
 
-
-
+    Configuration.setWindowFlags(Qt::FramelessWindowHint);
+    Configuration.setAttribute(Qt::WA_TranslucentBackground);
 
     _D_dims = dim;
-
 
     //systray set up
     trayIcon->setIcon(icon);
     trayIcon-> show();
     //
     ui->setupUi(this);
-    ui ->icons -> hide();
-    ui ->configuration -> hide();
+//    ui ->icons -> hide();
+//    ui ->configuration -> hide();
     M_Player.add_files(saver.load_music());
     openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
     connect(ui->icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
@@ -72,7 +80,7 @@ void MainWindow::setVisibleIcons()
     if(!Icons.isVisible()){
         qDebug()<<"called";
         QPoint position = QCursor::pos();
-        Icons.move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
+        Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
 //        ui-> icons -> move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
         Icons.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
         Icons.setAttribute(Qt::WA_TranslucentBackground);
@@ -91,13 +99,13 @@ void MainWindow::setVisibleIcons()
 void MainWindow::setVisibleConfig()
 {
 
-    if(!ui->configuration->isVisible()){
-        ui-> configuration -> move(_D_dims.first/2- ui->configuration->geometry().width()/2,_D_dims.second/2- ui->configuration->geometry().height()/2);
+    if(!Configuration.isVisible()){
+        Configuration.move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
         openConfig->setText("Hide configuration window");
-        ui ->configuration -> show();
+        Configuration.show();
 
     }else {
-        ui ->configuration -> hide();
+        Configuration.hide();
 
         openConfig->setText("Show configuration window");
 }

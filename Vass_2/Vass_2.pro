@@ -4,8 +4,9 @@
 #
 #-------------------------------------------------_
 
-QT       += core gui x11extras multimedia
-#QT       += gui x11extras
+QT       += core gui
+QT       += multimedia
+QT       += x11extras
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Vass_2

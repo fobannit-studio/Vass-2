@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'icon_panel.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.7)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.7.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,14 +12,12 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'icon_panel.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.9.7. It"
+#error "This file was generated using the moc from 5.7.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-QT_WARNING_PUSH
-QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_icon_panel_t {
     QByteArrayData data[15];
     char stringdata0[239];
@@ -131,9 +129,10 @@ void icon_panel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (icon_panel::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&icon_panel::HideIconBar)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&icon_panel::HideIconBar)) {
                 *result = 0;
                 return;
             }
@@ -144,7 +143,7 @@ void icon_panel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 
 const QMetaObject icon_panel::staticMetaObject = {
     { &QWidget::staticMetaObject, qt_meta_stringdata_icon_panel.data,
-      qt_meta_data_icon_panel,  qt_static_metacall, nullptr, nullptr}
+      qt_meta_data_icon_panel,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
@@ -155,9 +154,9 @@ const QMetaObject *icon_panel::metaObject() const
 
 void *icon_panel::qt_metacast(const char *_clname)
 {
-    if (!_clname) return nullptr;
+    if (!_clname) return Q_NULLPTR;
     if (!strcmp(_clname, qt_meta_stringdata_icon_panel.stringdata0))
-        return static_cast<void*>(this);
+        return static_cast<void*>(const_cast< icon_panel*>(this));
     return QWidget::qt_metacast(_clname);
 }
 
@@ -181,7 +180,6 @@ int icon_panel::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void icon_panel::HideIconBar()
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }
-QT_WARNING_POP
 QT_END_MOC_NAMESPACE
