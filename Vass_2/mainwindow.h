@@ -11,6 +11,8 @@
 #include"icon_panel.h"
 #include"config.h"
 #include "saver.h"
+#include "event_filter.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -27,6 +29,7 @@ public:
 
 private slots:
 //    void on_pushButton_clicked();
+    void slotGlobalHotkey();
     void setVisibleIcons();
     void setVisibleConfig();
     void setVisibleTime();
@@ -43,6 +46,7 @@ private:
     Media_Player M_Player;
     icon_panel Icons;
     config Configuration;
+    event_filter *nativeEventFilter;
 
     QShortcut * openIcons;
     QSystemTrayIcon *trayIcon;

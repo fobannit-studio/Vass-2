@@ -13,7 +13,8 @@
 MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    M_Player()
+    M_Player(),
+    Icons()
 {
     QIcon icon = QIcon(":/icons/images/icon2.png");
     setWindowIcon(icon);
@@ -26,7 +27,10 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     painter.setBrush(QColor(100,100,100, 127));
     painter.drawRect(0, 0, width(),  height());
     //shortcut for open icons
-
+    nativeEventFilter = new event_filter(this);
+    qApp->installNativeEventFilter(nativeEventFilter);
+    connect(nativeEventFilter,&event_filter::activated,this,&MainWindow::slotGlobalHotkey);
+    nativeEventFilter -> setShortcut();
 
 
 
@@ -64,16 +68,22 @@ MainWindow::~MainWindow()
 
 void MainWindow::setVisibleIcons()
 {
-    if(!ui->icons->isVisible()){
+//    if(!ui->icons->isVisible())
+    if(!Icons.isVisible()){
+        qDebug()<<"called";
         QPoint position = QCursor::pos();
-        ui-> icons -> move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
-//        Icons.setWindowFlags(Qt::FramelessWindowHint);
-//        Icons.setAttribute(Qt::WA_TranslucentBackground);
-//        Icons.setFocus();
-        ui ->icons -> show();
+        Icons.move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
+//        ui-> icons -> move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
+        Icons.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
+        Icons.setAttribute(Qt::WA_TranslucentBackground);
+        Icons.setFocus();
+        Icons.show();
+//        ui ->icons -> show();
+
 
     }else {
-        ui ->icons -> hide();
+        Icons.hide();
+//        ui ->icons -> hide();
 
 }
 }
@@ -151,4 +161,10 @@ void MainWindow::createTrayIcons()
     trayIconMenu->addAction(exit);
     trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
+}
+
+
+void MainWindow::slotGlobalHotkey()
+{
+    setVisibleIcons();
 }

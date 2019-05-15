@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_X11EXTRAS_LIB -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../Vass_2 -I. -I../../Vass-2 -I../../../Computer_Vision/anaconda3/include/qt -I../../../Computer_Vision/anaconda3/include/qt/QtMultimedia -I../../../Computer_Vision/anaconda3/include/qt/QtWidgets -I../../../Computer_Vision/anaconda3/include/qt/QtGui -I../../../Computer_Vision/anaconda3/include/qt/QtNetwork -I../../../Computer_Vision/anaconda3/include/qt/QtCore -I. -I. -I../../../Computer_Vision/anaconda3/mkspecs/linux-g++
+INCPATH       = -I../Vass_2 -I. -I../../Vass-2 -I../../../Computer_Vision/anaconda3/include/qt -I../../../Computer_Vision/anaconda3/include/qt/QtX11Extras -I../../../Computer_Vision/anaconda3/include/qt/QtMultimedia -I../../../Computer_Vision/anaconda3/include/qt/QtWidgets -I../../../Computer_Vision/anaconda3/include/qt/QtGui -I../../../Computer_Vision/anaconda3/include/qt/QtNetwork -I../../../Computer_Vision/anaconda3/include/qt/QtCore -I. -I. -I../../../Computer_Vision/anaconda3/mkspecs/linux-g++
 QMAKE         = /home/bohdan/Projects/Computer_Vision/anaconda3/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,8 +37,8 @@ COMPRESS      = gzip -9f
 DISTNAME      = Vass_21.0.0
 DISTDIR = /home/bohdan/Projects/Fobannit/Vass-2/build-Vass_2-Desktop-Debug/.tmp/Vass_21.0.0
 LINK          = g++
-LFLAGS        = -Wl,-rpath,/home/bohdan/Projects/Computer_Vision/anaconda3/lib
-LIBS          = $(SUBLIBS) -L/home/bohdan/Projects/Computer_Vision/anaconda3/lib -lQt5Multimedia -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
+LFLAGS        = -Wl,-rpath,/home/bohdan/Projects/Computer_Vision/anaconda3/lib -Wl,-rpath-link,/home/bohdan/Projects/Computer_Vision/anaconda3/lib
+LIBS          = $(SUBLIBS) -lX11 -L/home/bohdan/Projects/Computer_Vision/anaconda3/lib -lQt5X11Extras -lQt5Multimedia -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -51,6 +51,7 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Vass_2/config.cpp \
+		../Vass_2/event_filter.cpp \
 		../Vass_2/icon_panel.cpp \
 		../Vass_2/main.cpp \
 		../Vass_2/mainwindow.cpp \
@@ -62,12 +63,14 @@ SOURCES       = ../Vass_2/config.cpp \
 		../Vass_2/submit_removal.cpp \
 		../Vass_2/timewidget.cpp qrc_resources.cpp \
 		moc_config.cpp \
+		moc_event_filter.cpp \
 		moc_icon_panel.cpp \
 		moc_mainwindow.cpp \
 		moc_media_player.cpp \
 		moc_submit_removal.cpp \
 		moc_timewidget.cpp
 OBJECTS       = config.o \
+		event_filter.o \
 		icon_panel.o \
 		main.o \
 		mainwindow.o \
@@ -80,6 +83,7 @@ OBJECTS       = config.o \
 		timewidget.o \
 		qrc_resources.o \
 		moc_config.o \
+		moc_event_filter.o \
 		moc_icon_panel.o \
 		moc_mainwindow.o \
 		moc_media_player.o \
@@ -249,6 +253,7 @@ DIST          = ../../../Computer_Vision/anaconda3/mkspecs/features/spec_pre.prf
 		../../../Computer_Vision/anaconda3/mkspecs/features/default_pre.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/resolve_config.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/default_post.prf \
+		../../../Computer_Vision/anaconda3/mkspecs/features/link_pkgconfig.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/qml_debug.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/warn_on.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/qt.prf \
@@ -264,6 +269,7 @@ DIST          = ../../../Computer_Vision/anaconda3/mkspecs/features/spec_pre.prf
 		../../../Computer_Vision/anaconda3/mkspecs/features/yacc.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/lex.prf \
 		../Vass_2/Vass_2.pro ../Vass_2/config.h \
+		../Vass_2/event_filter.h \
 		../Vass_2/icon_panel.h \
 		../Vass_2/mainwindow.h \
 		../Vass_2/media_player.h \
@@ -274,6 +280,7 @@ DIST          = ../../../Computer_Vision/anaconda3/mkspecs/features/spec_pre.prf
 		../Vass_2/shortcut.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/timewidget.h ../Vass_2/config.cpp \
+		../Vass_2/event_filter.cpp \
 		../Vass_2/icon_panel.cpp \
 		../Vass_2/main.cpp \
 		../Vass_2/mainwindow.cpp \
@@ -459,6 +466,7 @@ Makefile: ../Vass_2/Vass_2.pro ../../../Computer_Vision/anaconda3/mkspecs/linux-
 		../../../Computer_Vision/anaconda3/mkspecs/features/default_pre.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/resolve_config.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/default_post.prf \
+		../../../Computer_Vision/anaconda3/mkspecs/features/link_pkgconfig.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/qml_debug.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/warn_on.prf \
 		../../../Computer_Vision/anaconda3/mkspecs/features/qt.prf \
@@ -475,6 +483,7 @@ Makefile: ../Vass_2/Vass_2.pro ../../../Computer_Vision/anaconda3/mkspecs/linux-
 		../../../Computer_Vision/anaconda3/mkspecs/features/lex.prf \
 		../Vass_2/Vass_2.pro \
 		../Vass_2/resources.qrc \
+		../../../Computer_Vision/anaconda3/lib/libQt5X11Extras.prl \
 		../../../Computer_Vision/anaconda3/lib/libQt5Multimedia.prl \
 		../../../Computer_Vision/anaconda3/lib/libQt5Widgets.prl \
 		../../../Computer_Vision/anaconda3/lib/libQt5Gui.prl \
@@ -645,6 +654,7 @@ Makefile: ../Vass_2/Vass_2.pro ../../../Computer_Vision/anaconda3/mkspecs/linux-
 ../../../Computer_Vision/anaconda3/mkspecs/features/default_pre.prf:
 ../../../Computer_Vision/anaconda3/mkspecs/features/resolve_config.prf:
 ../../../Computer_Vision/anaconda3/mkspecs/features/default_post.prf:
+../../../Computer_Vision/anaconda3/mkspecs/features/link_pkgconfig.prf:
 ../../../Computer_Vision/anaconda3/mkspecs/features/qml_debug.prf:
 ../../../Computer_Vision/anaconda3/mkspecs/features/warn_on.prf:
 ../../../Computer_Vision/anaconda3/mkspecs/features/qt.prf:
@@ -661,6 +671,7 @@ Makefile: ../Vass_2/Vass_2.pro ../../../Computer_Vision/anaconda3/mkspecs/linux-
 ../../../Computer_Vision/anaconda3/mkspecs/features/lex.prf:
 ../Vass_2/Vass_2.pro:
 ../Vass_2/resources.qrc:
+../../../Computer_Vision/anaconda3/lib/libQt5X11Extras.prl:
 ../../../Computer_Vision/anaconda3/lib/libQt5Multimedia.prl:
 ../../../Computer_Vision/anaconda3/lib/libQt5Widgets.prl:
 ../../../Computer_Vision/anaconda3/lib/libQt5Gui.prl:
@@ -682,8 +693,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/resources.qrc ../Vass_2/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Computer_Vision/anaconda3/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/event_filter.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/event_filter.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/config.ui ../Vass_2/icon_panel.ui ../Vass_2/mainwindow.ui ../Vass_2/media_player.ui ../Vass_2/submit_removal.ui $(DISTDIR)/
 
 
@@ -739,9 +750,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../Computer_Vision/anaconda3/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h ../../../Computer_Vision/anaconda3/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_config.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
+compiler_moc_header_make_all: moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_config.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
+	-$(DEL_FILE) moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
 moc_config.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWidget \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qwidget.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtwidgetsglobal.h \
@@ -846,7 +857,61 @@ moc_config.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWidget 
 		../Vass_2/config.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
-	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/config.h -o moc_config.cpp
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/config.h -o moc_config.cpp
+
+moc_event_filter.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qalgorithms.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiterator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhashfunctions.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpair.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearraylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregexp.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringmatcher.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qscopedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmetatype.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvarlengtharray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontainerfwd.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QAbstractNativeEventFilter \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractnativeeventfilter.h \
+		../Vass_2/event_filter.h \
+		moc_predefs.h \
+		../../../Computer_Vision/anaconda3/bin/moc
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/event_filter.h -o moc_event_filter.cpp
 
 moc_icon_panel.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
@@ -978,7 +1043,7 @@ moc_icon_panel.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktop
 		../Vass_2/icon_panel.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
-	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/icon_panel.h -o moc_icon_panel.cpp
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/icon_panel.h -o moc_icon_panel.cpp
 
 moc_mainwindow.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMainWindow \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmainwindow.h \
@@ -1173,10 +1238,14 @@ moc_mainwindow.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMai
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
+		../Vass_2/event_filter.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QAbstractNativeEventFilter \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractnativeeventfilter.h \
 		../Vass_2/mainwindow.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
-	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/mainwindow.h -o moc_mainwindow.cpp
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/mainwindow.h -o moc_mainwindow.cpp
 
 moc_media_player.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QWidget \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qwidget.h \
@@ -1329,7 +1398,7 @@ moc_media_player.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QW
 		../Vass_2/media_player.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
-	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/media_player.h -o moc_media_player.cpp
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/media_player.h -o moc_media_player.cpp
 
 moc_submit_removal.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qdialog.h \
@@ -1435,7 +1504,7 @@ moc_submit_removal.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/
 		../Vass_2/submit_removal.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
-	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/submit_removal.h -o moc_submit_removal.cpp
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/submit_removal.h -o moc_submit_removal.cpp
 
 moc_timewidget.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h \
@@ -1549,7 +1618,7 @@ moc_timewidget.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLab
 		../Vass_2/timewidget.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
-	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/timewidget.h -o moc_timewidget.cpp
+	/home/bohdan/Projects/Computer_Vision/anaconda3/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bohdan/Projects/Computer_Vision/anaconda3/mkspecs/linux-g++ -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtX11Extras -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtMultimedia -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtWidgets -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtGui -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtNetwork -I/home/bohdan/Projects/Computer_Vision/anaconda3/include/qt/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/timewidget.h -o moc_timewidget.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -2077,6 +2146,64 @@ config.o: ../Vass_2/config.cpp ../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qpushbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o config.o ../Vass_2/config.cpp
 
+event_filter.o: ../Vass_2/event_filter.cpp ../Vass_2/event_filter.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qalgorithms.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiterator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhashfunctions.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpair.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearraylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregexp.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringmatcher.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qscopedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmetatype.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvarlengtharray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontainerfwd.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QAbstractNativeEventFilter \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractnativeeventfilter.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QVector \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvector.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpoint.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtX11Extras/QX11Info \
+		../../../Computer_Vision/anaconda3/include/qt/QtX11Extras/qx11info_x11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtX11Extras/qtx11extrasglobal.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o event_filter.o ../Vass_2/event_filter.cpp
+
 icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QDesktopServices \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/qdesktopservices.h \
@@ -2437,6 +2564,10 @@ main.o: ../Vass_2/main.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
+		../Vass_2/event_filter.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QAbstractNativeEventFilter \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractnativeeventfilter.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreapplication.h \
@@ -2641,6 +2772,10 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
+		../Vass_2/event_filter.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QAbstractNativeEventFilter \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qabstractnativeeventfilter.h \
 		ui_mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
@@ -3302,6 +3437,9 @@ qrc_resources.o: qrc_resources.cpp
 
 moc_config.o: moc_config.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_config.o moc_config.cpp
+
+moc_event_filter.o: moc_event_filter.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_event_filter.o moc_event_filter.cpp
 
 moc_icon_panel.o: moc_icon_panel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_icon_panel.o moc_icon_panel.cpp

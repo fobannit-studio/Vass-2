@@ -4,8 +4,8 @@
 #
 #-------------------------------------------------_
 
-QT       += core gui multimedia
-
+QT       += core gui x11extras multimedia
+#QT       += gui x11extras
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Vass_2
@@ -23,9 +23,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
+CONFIG    += link_pkgconfig
+PKGCONFIG += x11
 
 SOURCES += \
         config.cpp \
+        event_filter.cpp \
         icon_panel.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -41,6 +44,7 @@ RC_ICONS=icon2.png
 
 HEADERS += \
         config.h \
+        event_filter.h \
         icon_panel.h \
         mainwindow.h \
         media_player.h \
@@ -57,7 +61,7 @@ FORMS += \
         mainwindow.ui \
         media_player.ui \
         submit_removal.ui
-QT+=multimedia
+#QT+=multimedia
 
 
 
