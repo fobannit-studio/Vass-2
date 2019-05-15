@@ -80,11 +80,12 @@ void Media_Player::on_media_Changed()
 
 void Media_Player::add_files(const QStringList& filenames )
 {   qWarning("hit");
+
     if (!filenames.isEmpty())
     {   std::string tmp;
         for (int i=0;i<filenames.count();i++)
         {
-            playlist.addMedia(QMediaContent(filenames[i]));
+            playlist.addMedia(QMediaContent("file://" + filenames[i]));
 
             tmp=filenames[i].toStdString();
             tmp=tmp.substr(tmp.find_last_of("/")+1);

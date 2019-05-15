@@ -1,6 +1,5 @@
 #ifndef ICON_PANEL_H
 #define ICON_PANEL_H
-
 #include <QDesktopServices>
 #include <QMessageBox>
 #include <QFile>

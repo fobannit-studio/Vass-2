@@ -55,6 +55,7 @@ SOURCES       = ../Vass_2/config.cpp \
 		../Vass_2/main.cpp \
 		../Vass_2/mainwindow.cpp \
 		../Vass_2/media_player.cpp \
+		../Vass_2/saver.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
@@ -71,6 +72,7 @@ OBJECTS       = config.o \
 		main.o \
 		mainwindow.o \
 		media_player.o \
+		saver.o \
 		shortcut.o \
 		shortcut.o \
 		shortcut.o \
@@ -265,6 +267,7 @@ DIST          = ../../../Computer_Vision/anaconda3/mkspecs/features/spec_pre.prf
 		../Vass_2/icon_panel.h \
 		../Vass_2/mainwindow.h \
 		../Vass_2/media_player.h \
+		../Vass_2/saver.h \
 		../Vass_2/shortcut.h \
 		../Vass_2/shortcut.h \
 		../Vass_2/shortcut.h \
@@ -275,6 +278,7 @@ DIST          = ../../../Computer_Vision/anaconda3/mkspecs/features/spec_pre.prf
 		../Vass_2/main.cpp \
 		../Vass_2/mainwindow.cpp \
 		../Vass_2/media_player.cpp \
+		../Vass_2/saver.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
@@ -678,8 +682,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/resources.qrc ../Vass_2/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Computer_Vision/anaconda3/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/config.ui ../Vass_2/icon_panel.ui ../Vass_2/mainwindow.ui ../Vass_2/media_player.ui ../Vass_2/submit_removal.ui $(DISTDIR)/
 
 
@@ -1135,6 +1139,9 @@ moc_mainwindow.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMai
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/QMediaPlaylist \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaplaylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediabindableinterface.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
@@ -1157,6 +1164,15 @@ moc_mainwindow.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMai
 		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QMouseEvent \
+		../Vass_2/saver.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonValue \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonvalue.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonArray \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonarray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
 		../Vass_2/mainwindow.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
@@ -1307,6 +1323,9 @@ moc_media_player.cpp: ../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QW
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabwidget.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/QMediaPlaylist \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaplaylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediabindableinterface.h \
 		../Vass_2/media_player.h \
 		moc_predefs.h \
 		../../../Computer_Vision/anaconda3/bin/moc
@@ -2384,6 +2403,9 @@ main.o: ../Vass_2/main.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/QMediaPlaylist \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaplaylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediabindableinterface.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
@@ -2406,6 +2428,15 @@ main.o: ../Vass_2/main.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QMouseEvent \
+		../Vass_2/saver.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonValue \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonvalue.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonArray \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonarray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreapplication.h \
@@ -2576,6 +2607,9 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qstyle.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/QMediaPlaylist \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaplaylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediabindableinterface.h \
 		../Vass_2/submit_removal.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QDialog \
 		../Vass_2/icon_panel.h \
@@ -2598,6 +2632,15 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtGui/QMouseEvent \
+		../Vass_2/saver.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonValue \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonvalue.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonArray \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonarray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
 		ui_mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QApplication \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qapplication.h \
@@ -2613,9 +2656,6 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QMenuBar \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmenubar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qmenu.h \
-		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QPushButton \
-		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qpushbutton.h \
-		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qabstractbutton.h \
 		../Vass_2/timewidget.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QPoint \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QTimer \
@@ -2772,6 +2812,9 @@ media_player.o: ../Vass_2/media_player.cpp ../Vass_2/media_player.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabbar.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qtabwidget.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qrubberband.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/QMediaPlaylist \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaplaylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediabindableinterface.h \
 		ui_media_player.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QAction \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qaction.h \
@@ -2803,6 +2846,103 @@ media_player.o: ../Vass_2/media_player.cpp ../Vass_2/media_player.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/QLabel \
 		../../../Computer_Vision/anaconda3/include/qt/QtWidgets/qlabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o media_player.o ../Vass_2/media_player.cpp
+
+saver.o: ../Vass_2/saver.cpp ../Vass_2/saver.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonValue \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonvalue.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig-bootstrapped.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qconfig.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtcore-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsystemdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qprocessordetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcompilerdetection.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtypeinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsysinfo.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlogging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qflags.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbasicatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_bootstrap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qgenericatomic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_cxx11.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qatomic_msvc.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qglobalstatic.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmutex.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnumeric.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qversiontagging.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstring.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qchar.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qrefcount.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qnamespace.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qarraydata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringbuilder.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonArray \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonarray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiterator.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonObject \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsonobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpair.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QFile \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfile.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qfiledevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qiodevice.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobjectdefs_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qalgorithms.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhashfunctions.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qbytearraylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringlist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qregexp.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qstringmatcher.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcoreevent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qscopedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmetatype.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvarlengtharray.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontainerfwd.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qobject_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QDebug \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qdebug.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qhash.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmap.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qtextstream.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qlocale.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvariant.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qshareddata.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qvector.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qpoint.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qset.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qcontiguouscache.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsharedpointer.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qsharedpointer_impl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QJsonDocument \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qjsondocument.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/QMediaPlaylist \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaplaylist.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediacontent.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaresource.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtNetwork/qnetworkrequest.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtNetwork/qtnetworkglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtNetwork/qtnetwork-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QSharedDataPointer \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QUrl \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qurl.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qurlquery.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/QVariant \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qtmultimediaglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtguiglobal.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtGui/qtgui-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qtmultimedia-config.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaobject.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmultimedia.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediabindableinterface.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtMultimedia/qmediaenumdebug.h \
+		../../../Computer_Vision/anaconda3/include/qt/QtCore/qmetaobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o saver.o ../Vass_2/saver.cpp
 
 shortcut.o: ../Vass_2/shortcut.cpp ../Vass_2/shortcut.h \
 		../../../Computer_Vision/anaconda3/include/qt/QtCore/QString \

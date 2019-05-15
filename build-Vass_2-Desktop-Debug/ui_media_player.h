@@ -38,7 +38,7 @@ public:
     QSpinBox *SecondsSpinBox;
     QHBoxLayout *horizontalLayout;
     QPushButton *AddButton;
-    QPushButton *ShuffleButton;
+    QPushButton *RepeatButton;
     QSlider *VolumeSlider;
     QListWidget *listWidget;
 
@@ -46,6 +46,7 @@ public:
     {
         if (Media_Player->objectName().isEmpty())
             Media_Player->setObjectName(QStringLiteral("Media_Player"));
+        Media_Player->setWindowModality(Qt::WindowModal);
         Media_Player->resize(400, 400);
         QPalette palette;
         QBrush brush(QColor(255, 255, 255, 255));
@@ -129,15 +130,15 @@ public:
 
         horizontalLayout->addWidget(AddButton);
 
-        ShuffleButton = new QPushButton(Media_Player);
-        ShuffleButton->setObjectName(QStringLiteral("ShuffleButton"));
-        ShuffleButton->setFont(font);
+        RepeatButton = new QPushButton(Media_Player);
+        RepeatButton->setObjectName(QStringLiteral("RepeatButton"));
+        RepeatButton->setFont(font);
 
-        horizontalLayout->addWidget(ShuffleButton);
+        horizontalLayout->addWidget(RepeatButton);
 
         VolumeSlider = new QSlider(Media_Player);
         VolumeSlider->setObjectName(QStringLiteral("VolumeSlider"));
-        VolumeSlider->setValue(50);
+        VolumeSlider->setValue(10);
         VolumeSlider->setOrientation(Qt::Horizontal);
 
         horizontalLayout->addWidget(VolumeSlider);
@@ -163,7 +164,7 @@ public:
         PlayButton->setText(QApplication::translate("Media_Player", "Play", Q_NULLPTR));
         NextButton->setText(QApplication::translate("Media_Player", "Next", Q_NULLPTR));
         AddButton->setText(QApplication::translate("Media_Player", "Add", Q_NULLPTR));
-        ShuffleButton->setText(QApplication::translate("Media_Player", "Shuffle", Q_NULLPTR));
+        RepeatButton->setText(QApplication::translate("Media_Player", "Mode: Repeat All", Q_NULLPTR));
     } // retranslateUi
 
 };

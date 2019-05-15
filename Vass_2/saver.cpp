@@ -49,8 +49,9 @@ void Saver::save_music(const QMediaPlaylist& songs)
 QStringList Saver::load_music()
 {
 
-  QJsonDocument Saved_Data= open_file();
-  QJsonArray songlist=Saved_Data["song list"].toArray();
+  QJsonDocument Saved_Data = open_file();
+//  read(Saved_Data.object());
+  QJsonArray songlist=Saved_Data.object()["song list"].toArray();
   QStringList arr;
   for (auto item : songlist)
   {
