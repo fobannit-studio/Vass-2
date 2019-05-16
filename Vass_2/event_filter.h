@@ -1,13 +1,14 @@
 #ifndef EVENT_FILTER_H
 #define EVENT_FILTER_H
 #include <QObject>
-//#ifdef linux
+#ifdef linux
 #include <QAbstractNativeEventFilter>
 #include <QVector>
 #include <QX11Info>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <xcb/xcb.h>
+#endif
 enum class Apps{Player,Config,Icons,Clock};
 
 class event_filter : public QObject, public QAbstractNativeEventFilter
@@ -27,6 +28,9 @@ signals:
     void config_called();
     void player_called();
     void clock_called();
+
+
+
 private:
     int _icon_keycode;
     int _config_keycode;

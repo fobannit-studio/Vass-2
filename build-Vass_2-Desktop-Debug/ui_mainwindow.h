@@ -17,9 +17,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QWidget>
-#include <icon_panel.h>
 #include <timewidget.h>
-#include "config.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -28,15 +26,13 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     TimeWidget *TimeLabel;
-    icon_panel *icons;
-    config *configuration;
     QMenuBar *menuBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(799, 539);
+        MainWindow->resize(400, 422);
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -62,7 +58,7 @@ public:
         TimeLabel = new TimeWidget(centralWidget);
         TimeLabel->setObjectName(QStringLiteral("TimeLabel"));
         TimeLabel->setEnabled(true);
-        TimeLabel->setGeometry(QRect(640, 0, 161, 31));
+        TimeLabel->setGeometry(QRect(0, 0, 181, 51));
         QFont font1;
         font1.setFamily(QStringLiteral("Rubik"));
         font1.setPointSize(25);
@@ -70,16 +66,10 @@ public:
         font1.setWeight(75);
         TimeLabel->setFont(font1);
         TimeLabel->setAlignment(Qt::AlignCenter);
-        icons = new icon_panel(centralWidget);
-        icons->setObjectName(QStringLiteral("icons"));
-        icons->setGeometry(QRect(370, 90, 422, 420));
-        configuration = new config(centralWidget);
-        configuration->setObjectName(QStringLiteral("configuration"));
-        configuration->setGeometry(QRect(20, 90, 600, 500));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 799, 22));
+        menuBar->setGeometry(QRect(0, 0, 400, 22));
         MainWindow->setMenuBar(menuBar);
 
         retranslateUi(MainWindow);

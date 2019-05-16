@@ -55,7 +55,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
 //    ui ->configuration -> hide();
     M_Player.add_files(saver.load_music());
     openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
-    connect(ui->icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
+    connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
 
     // считать настройки из файла
 
@@ -134,13 +134,16 @@ void MainWindow::setVisibleTime()
 {
   if (this->ui->TimeLabel->isHidden())
   {
+      this -> show();
       openTime->setText("Hide Time");
-      ui->TimeLabel->show();
+
+      this->ui->TimeLabel->show();
   }
   else {
       {
+           this -> hide();
            openTime->setText("Show Time");
-           ui->TimeLabel->hide();
+           this->ui->TimeLabel->hide();
       }
   }
 }

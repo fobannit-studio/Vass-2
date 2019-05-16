@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 #endif
     w.setAttribute(Qt::WA_TranslucentBackground); // сделать прозрачным  => profit!
     w.setFixedSize(dw.width(),dw.height()); // сделать на весь екран
-//    w.setFixedSize(1000,1000);
+//    w.setFixedSize(200,100);
 #ifndef linux
     w.show();
 #endif

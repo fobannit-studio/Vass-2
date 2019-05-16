@@ -6,6 +6,8 @@
 #include <QPoint>
 #include <QTimer>
 #include <QTime>
+
+
 class TimeWidget : public QLabel
 {
     Q_OBJECT
@@ -30,6 +32,7 @@ protected:
     short int update_interval=300;
 
 private:
+
     bool isMouseDown=true;
 
 };

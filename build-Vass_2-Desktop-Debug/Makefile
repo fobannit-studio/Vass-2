@@ -454,11 +454,7 @@ ui_icon_panel.h: ../Vass_2/icon_panel.ui \
 
 ui_mainwindow.h: ../Vass_2/mainwindow.ui \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/uic \
-		../Vass_2/timewidget.h \
-		../Vass_2/icon_panel.h \
-		../Vass_2/config.h \
-		../Vass_2/submit_removal.h \
-		../Vass_2/shortcut.h
+		../Vass_2/timewidget.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../Vass_2/mainwindow.ui -o ui_mainwindow.h
 
 ui_media_player.h: ../Vass_2/media_player.ui \
@@ -510,7 +506,8 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/config.h \
 		../Vass_2/saver.h \
 		../Vass_2/event_filter.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../Vass_2/timewidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Vass_2/mainwindow.cpp
 
 media_player.o: ../Vass_2/media_player.cpp ../Vass_2/media_player.h \

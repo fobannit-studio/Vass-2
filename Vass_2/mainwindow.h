@@ -13,6 +13,7 @@
 #include "saver.h"
 #include "event_filter.h"
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -47,6 +48,8 @@ private:
     icon_panel Icons;
     config Configuration;
     event_filter *nativeEventFilter;
+
+
 
     QShortcut * openIcons;
     QSystemTrayIcon *trayIcon;

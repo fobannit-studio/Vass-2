@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>799</width>
-    <height>539</height>
+    <width>400</width>
+    <height>422</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -56,10 +56,10 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>0</x>
       <y>0</y>
-      <width>161</width>
-      <height>31</height>
+      <width>181</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -77,33 +77,13 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="icon_panel" name="icons" native="true">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>90</y>
-      <width>422</width>
-      <height>420</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="config" name="configuration" native="true">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>600</width>
-      <height>500</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>799</width>
+     <width>400</width>
      <height>22</height>
     </rect>
    </property>
@@ -115,18 +95,6 @@
    <class>TimeWidget</class>
    <extends>QLabel</extends>
    <header location="global">timewidget.h</header>
-  </customwidget>
-  <customwidget>
-   <class>icon_panel</class>
-   <extends>QWidget</extends>
-   <header location="global">icon_panel.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>config</class>
-   <extends>QWidget</extends>
-   <header>config.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
