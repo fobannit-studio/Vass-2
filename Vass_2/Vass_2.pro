@@ -38,6 +38,7 @@ SOURCES += \
         shortcut.cpp \
         shortcut.cpp \
         shortcut.cpp \
+        shortcut_v.cpp \
         submit_removal.cpp \
         timewidget.cpp
 
@@ -54,6 +55,7 @@ HEADERS += \
         shortcut.h \
         shortcut.h \
         shortcut.h \
+        shortcut_v.h \
         submit_removal.h \
         timewidget.h
 FORMS += \

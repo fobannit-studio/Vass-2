@@ -3,12 +3,12 @@
 #include <QDesktopServices>
 #include <QMessageBox>
 #include <QFile>
+#include<QIODevice>
 #include<QFileDialog>
 #include<QUrl>
 #include<QEvent>
 #include<QWheelEvent>
 #include<QDebug>
-#include<QIODevice>
 #include <QLabel>
 #include<QDataStream>
 #include<QShortcut>
@@ -18,6 +18,7 @@
 #include <QProcess>
 #include "submit_removal.h"
 #include "shortcut.h"
+#include "shortcut_v.h"
 
 enum class State{Ranged,Single};
 namespace Ui {
@@ -67,23 +68,24 @@ private:
     int _current_page; // number of elements before first element on this page
     std::pair<int,int> _range;
     std::vector<int> _to_remove;
-    std::vector<Shortcut> _shortcuts_class;
+    shortcut_v shortcuts;
+//    std::vector<Shortcut> _shortcuts_class;
 
-    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
-    std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
-    std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
+//    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
+//    std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
+//    std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
     std::vector<QPushButton * > _app_buttons; // buttons on ui , connected to shortcuts
     std::vector<QLabel *> _image_labels;
 
     submit_removal submit_window;
-    QString _shortcuts_file;
+//    QString _shortcuts_file;
     QShortcut * sumbmit;
 
     void initShortcut(QPushButton * app , QLabel * label , int current_position);
-    void parse_names(QString);
+//    void parse_names(QString);
+//    void writeToFile();
+//    void readFromFile();
     void setIcon(QLabel *,QPushButton * button,int);
-    void writeToFile();
-    void readFromFile();
     void mark_for_removal(QPushButton * ,int , State );
     void return_default_style();
     void range_selection(int begin, int end);

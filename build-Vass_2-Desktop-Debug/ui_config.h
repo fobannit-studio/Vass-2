@@ -13,12 +13,11 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCheckBox>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QKeySequenceEdit>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,176 +25,144 @@ QT_BEGIN_NAMESPACE
 class Ui_config
 {
 public:
-    QPushButton *app_config;
-    QPushButton *mp_config;
-    QPushButton *ic_config;
-    QLabel *MainLayout;
-    QWidget *MainSettings;
-    QGridLayout *Main_settins;
-    QCheckBox *checkBox_3;
-    QCheckBox *checkBox;
-    QKeySequenceEdit *keySequenceEdit_5;
-    QKeySequenceEdit *keySequenceEdit;
-    QKeySequenceEdit *keySequenceEdit_6;
-    QKeySequenceEdit *keySequenceEdit_3;
-    QLabel *label_6;
-    QKeySequenceEdit *keySequenceEdit_4;
-    QLabel *label_3;
-    QKeySequenceEdit *keySequenceEdit_2;
-    QCheckBox *checkBox_5;
-    QLabel *label;
-    QLabel *label_4;
-    QCheckBox *checkBox_6;
-    QCheckBox *checkBox_2;
-    QLabel *label_2;
-    QLabel *label_5;
-    QCheckBox *checkBox_4;
-    QWidget *Music_Player_settings;
-    QGridLayout *MP_settings;
-    QLabel *label_7;
-    QWidget *Quick_Panel_settings;
-    QGridLayout *Quick_panel_sett;
-    QLabel *label_8;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *mainLay;
+    QTabWidget *tabWidget;
+    QWidget *main_config;
+    QWidget *icon_panel;
+    QPushButton *b_up;
+    QPushButton *b_down;
+    QGroupBox *apps;
+    QPushButton *app_1;
+    QPushButton *app_2;
+    QPushButton *app_3;
+    QPushButton *app_4;
+    QPushButton *app_5;
+    QPushButton *app_6;
+    QPushButton *app_7;
+    QPushButton *app_8;
+    QWidget *player;
 
     void setupUi(QWidget *config)
     {
         if (config->objectName().isEmpty())
             config->setObjectName(QStringLiteral("config"));
-        config->resize(600, 500);
-        app_config = new QPushButton(config);
-        app_config->setObjectName(QStringLiteral("app_config"));
-        app_config->setGeometry(QRect(0, 0, 150, 50));
-        app_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
-        mp_config = new QPushButton(config);
-        mp_config->setObjectName(QStringLiteral("mp_config"));
-        mp_config->setGeometry(QRect(150, 0, 121, 50));
-        mp_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
-        ic_config = new QPushButton(config);
-        ic_config->setObjectName(QStringLiteral("ic_config"));
-        ic_config->setGeometry(QRect(269, 0, 191, 50));
-        ic_config->setStyleSheet(QStringLiteral("QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}"));
-        MainLayout = new QLabel(config);
-        MainLayout->setObjectName(QStringLiteral("MainLayout"));
-        MainLayout->setGeometry(QRect(0, 30, 600, 470));
-        MainLayout->setAutoFillBackground(false);
-        MainLayout->setStyleSheet(QStringLiteral("QLabel{background-color:white;}"));
-        MainSettings = new QWidget(config);
-        MainSettings->setObjectName(QStringLiteral("MainSettings"));
-        MainSettings->setGeometry(QRect(33, 130, 551, 351));
-        Main_settins = new QGridLayout(MainSettings);
-        Main_settins->setObjectName(QStringLiteral("Main_settins"));
-        checkBox_3 = new QCheckBox(MainSettings);
-        checkBox_3->setObjectName(QStringLiteral("checkBox_3"));
+        config->resize(600, 570);
+        verticalLayoutWidget = new QWidget(config);
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(-1, -1, 601, 511));
+        mainLay = new QVBoxLayout(verticalLayoutWidget);
+        mainLay->setObjectName(QStringLiteral("mainLay"));
+        mainLay->setContentsMargins(0, 0, 0, 0);
+        tabWidget = new QTabWidget(verticalLayoutWidget);
+        tabWidget->setObjectName(QStringLiteral("tabWidget"));
+        tabWidget->setStyleSheet(QLatin1String("QTabWidget::pane { /* The tab widget frame */\n"
+"    border-top: 2px solid #C2C7CB;\n"
+"}\n"
+"\n"
+"QTabWidget::tab-bar {\n"
+"    left: 5px; /* move to the right by 5px */\n"
+"}\n"
+"\n"
+"/* Style the tab using the tab sub-control. Note that\n"
+"    it reads QTabBar _not_ QTabWidget */\n"
+"QTabBar::tab {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,\n"
+"                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);\n"
+"    border: 2px solid #C4C4C3;\n"
+"    border-bottom-color: #C2C7CB; /* same as the pane color */\n"
+"    border-top-left-radius: 4px;\n"
+"    border-top-right-radius: 4px;\n"
+"    min-width: 8ex;\n"
+"    padding: 10px;\n"
+"\n"
+"}\n"
+"\n"
+"QTabBar::tab:selected, QTabBar::tab:hover {\n"
+"    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,\n"
+"                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);\n"
+"}\n"
+""
+                        "\n"
+"QTabBar::tab:selected {\n"
+"    border-color: #9B9B9B;\n"
+"    border-bottom-color: #C2C7CB; /* same as pane color */\n"
+"}\n"
+"\n"
+"QTabBar::tab:!selected {\n"
+"    margin-top: 2px; /* make non-selected tabs look smaller */\n"
+"}\n"
+"\n"
+"/* make use of negative margins for overlapping tabs */\n"
+"QTabBar::tab:selected {\n"
+"    /* expand/overlap to the left and right by 4px */\n"
+"    margin-left: -4px;\n"
+"    margin-right: -4px;\n"
+"}\n"
+"\n"
+"QTabBar::tab:first:selected {\n"
+"    margin-left: 0; /* the first selected tab has nothing to overlap with on the left */\n"
+"}\n"
+"\n"
+"QTabBar::tab:last:selected {\n"
+"    margin-right: 0; /* the last selected tab has nothing to overlap with on the right */\n"
+"}\n"
+"\n"
+"QTabBar::tab:only-one {\n"
+"    margin: 0; /* if there is only one tab, we don't want overlapping margins */\n"
+"}"));
+        main_config = new QWidget();
+        main_config->setObjectName(QStringLiteral("main_config"));
+        tabWidget->addTab(main_config, QString());
+        icon_panel = new QWidget();
+        icon_panel->setObjectName(QStringLiteral("icon_panel"));
+        b_up = new QPushButton(icon_panel);
+        b_up->setObjectName(QStringLiteral("b_up"));
+        b_up->setGeometry(QRect(520, 120, 80, 60));
+        b_down = new QPushButton(icon_panel);
+        b_down->setObjectName(QStringLiteral("b_down"));
+        b_down->setGeometry(QRect(520, 180, 80, 60));
+        apps = new QGroupBox(icon_panel);
+        apps->setObjectName(QStringLiteral("apps"));
+        apps->setGeometry(QRect(310, 20, 211, 421));
+        app_1 = new QPushButton(apps);
+        app_1->setObjectName(QStringLiteral("app_1"));
+        app_1->setGeometry(QRect(0, 20, 211, 51));
+        app_2 = new QPushButton(apps);
+        app_2->setObjectName(QStringLiteral("app_2"));
+        app_2->setGeometry(QRect(0, 70, 211, 51));
+        app_3 = new QPushButton(apps);
+        app_3->setObjectName(QStringLiteral("app_3"));
+        app_3->setGeometry(QRect(0, 120, 211, 51));
+        app_4 = new QPushButton(apps);
+        app_4->setObjectName(QStringLiteral("app_4"));
+        app_4->setGeometry(QRect(0, 170, 211, 51));
+        app_5 = new QPushButton(apps);
+        app_5->setObjectName(QStringLiteral("app_5"));
+        app_5->setGeometry(QRect(0, 220, 211, 51));
+        app_6 = new QPushButton(apps);
+        app_6->setObjectName(QStringLiteral("app_6"));
+        app_6->setGeometry(QRect(0, 270, 211, 51));
+        app_7 = new QPushButton(apps);
+        app_7->setObjectName(QStringLiteral("app_7"));
+        app_7->setGeometry(QRect(0, 320, 211, 51));
+        app_8 = new QPushButton(apps);
+        app_8->setObjectName(QStringLiteral("app_8"));
+        app_8->setGeometry(QRect(0, 370, 211, 51));
+        tabWidget->addTab(icon_panel, QString());
+        player = new QWidget();
+        player->setObjectName(QStringLiteral("player"));
+        tabWidget->addTab(player, QString());
 
-        Main_settins->addWidget(checkBox_3, 2, 1, 1, 1);
-
-        checkBox = new QCheckBox(MainSettings);
-        checkBox->setObjectName(QStringLiteral("checkBox"));
-
-        Main_settins->addWidget(checkBox, 0, 1, 1, 1);
-
-        keySequenceEdit_5 = new QKeySequenceEdit(MainSettings);
-        keySequenceEdit_5->setObjectName(QStringLiteral("keySequenceEdit_5"));
-
-        Main_settins->addWidget(keySequenceEdit_5, 4, 2, 1, 1);
-
-        keySequenceEdit = new QKeySequenceEdit(MainSettings);
-        keySequenceEdit->setObjectName(QStringLiteral("keySequenceEdit"));
-
-        Main_settins->addWidget(keySequenceEdit, 0, 2, 1, 1);
-
-        keySequenceEdit_6 = new QKeySequenceEdit(MainSettings);
-        keySequenceEdit_6->setObjectName(QStringLiteral("keySequenceEdit_6"));
-
-        Main_settins->addWidget(keySequenceEdit_6, 5, 2, 1, 1);
-
-        keySequenceEdit_3 = new QKeySequenceEdit(MainSettings);
-        keySequenceEdit_3->setObjectName(QStringLiteral("keySequenceEdit_3"));
-
-        Main_settins->addWidget(keySequenceEdit_3, 2, 2, 1, 1);
-
-        label_6 = new QLabel(MainSettings);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        Main_settins->addWidget(label_6, 5, 0, 1, 1);
-
-        keySequenceEdit_4 = new QKeySequenceEdit(MainSettings);
-        keySequenceEdit_4->setObjectName(QStringLiteral("keySequenceEdit_4"));
-
-        Main_settins->addWidget(keySequenceEdit_4, 3, 2, 1, 1);
-
-        label_3 = new QLabel(MainSettings);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        Main_settins->addWidget(label_3, 3, 0, 1, 1);
-
-        keySequenceEdit_2 = new QKeySequenceEdit(MainSettings);
-        keySequenceEdit_2->setObjectName(QStringLiteral("keySequenceEdit_2"));
-
-        Main_settins->addWidget(keySequenceEdit_2, 1, 2, 1, 1);
-
-        checkBox_5 = new QCheckBox(MainSettings);
-        checkBox_5->setObjectName(QStringLiteral("checkBox_5"));
-
-        Main_settins->addWidget(checkBox_5, 4, 1, 1, 1);
-
-        label = new QLabel(MainSettings);
-        label->setObjectName(QStringLiteral("label"));
-
-        Main_settins->addWidget(label, 1, 0, 1, 1);
-
-        label_4 = new QLabel(MainSettings);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        Main_settins->addWidget(label_4, 2, 0, 1, 1);
-
-        checkBox_6 = new QCheckBox(MainSettings);
-        checkBox_6->setObjectName(QStringLiteral("checkBox_6"));
-
-        Main_settins->addWidget(checkBox_6, 5, 1, 1, 1);
-
-        checkBox_2 = new QCheckBox(MainSettings);
-        checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-
-        Main_settins->addWidget(checkBox_2, 1, 1, 1, 1);
-
-        label_2 = new QLabel(MainSettings);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        Main_settins->addWidget(label_2, 4, 0, 1, 1);
-
-        label_5 = new QLabel(MainSettings);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        Main_settins->addWidget(label_5, 0, 0, 1, 1);
-
-        checkBox_4 = new QCheckBox(MainSettings);
-        checkBox_4->setObjectName(QStringLiteral("checkBox_4"));
-
-        Main_settins->addWidget(checkBox_4, 3, 1, 1, 1);
-
-        Music_Player_settings = new QWidget(config);
-        Music_Player_settings->setObjectName(QStringLiteral("Music_Player_settings"));
-        Music_Player_settings->setGeometry(QRect(30, 130, 551, 351));
-        MP_settings = new QGridLayout(Music_Player_settings);
-        MP_settings->setObjectName(QStringLiteral("MP_settings"));
-        label_7 = new QLabel(Music_Player_settings);
-        label_7->setObjectName(QStringLiteral("label_7"));
-
-        MP_settings->addWidget(label_7, 0, 0, 1, 1);
-
-        Quick_Panel_settings = new QWidget(config);
-        Quick_Panel_settings->setObjectName(QStringLiteral("Quick_Panel_settings"));
-        Quick_Panel_settings->setGeometry(QRect(29, 130, 551, 351));
-        Quick_panel_sett = new QGridLayout(Quick_Panel_settings);
-        Quick_panel_sett->setObjectName(QStringLiteral("Quick_panel_sett"));
-        label_8 = new QLabel(Quick_Panel_settings);
-        label_8->setObjectName(QStringLiteral("label_8"));
-
-        Quick_panel_sett->addWidget(label_8, 0, 0, 1, 1);
+        mainLay->addWidget(tabWidget);
 
 
         retranslateUi(config);
+
+        tabWidget->setCurrentIndex(1);
+
 
         QMetaObject::connectSlotsByName(config);
     } // setupUi
@@ -203,24 +170,20 @@ public:
     void retranslateUi(QWidget *config)
     {
         config->setWindowTitle(QApplication::translate("config", "Form", Q_NULLPTR));
-        app_config->setText(QApplication::translate("config", "Main settings", Q_NULLPTR));
-        mp_config->setText(QApplication::translate("config", "Music player", Q_NULLPTR));
-        ic_config->setText(QApplication::translate("config", "Quick panel settings", Q_NULLPTR));
-        MainLayout->setText(QString());
-        checkBox_3->setText(QApplication::translate("config", "On/off", Q_NULLPTR));
-        checkBox->setText(QApplication::translate("config", "On/off", Q_NULLPTR));
-        label_6->setText(QApplication::translate("config", "Notes", Q_NULLPTR));
-        label_3->setText(QApplication::translate("config", "Clock", Q_NULLPTR));
-        checkBox_5->setText(QApplication::translate("config", "On/off", Q_NULLPTR));
-        label->setText(QApplication::translate("config", "Book shelf", Q_NULLPTR));
-        label_4->setText(QApplication::translate("config", "Quick panel", Q_NULLPTR));
-        checkBox_6->setText(QApplication::translate("config", "On/off", Q_NULLPTR));
-        checkBox_2->setText(QApplication::translate("config", "On/off", Q_NULLPTR));
-        label_2->setText(QApplication::translate("config", "Painter", Q_NULLPTR));
-        label_5->setText(QApplication::translate("config", "Music player                                            ", Q_NULLPTR));
-        checkBox_4->setText(QApplication::translate("config", "On/off", Q_NULLPTR));
-        label_7->setText(QApplication::translate("config", "Music Player settings", Q_NULLPTR));
-        label_8->setText(QApplication::translate("config", "Quick panel settings", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(main_config), QApplication::translate("config", "Main configuration", Q_NULLPTR));
+        b_up->setText(QApplication::translate("config", "Up", Q_NULLPTR));
+        b_down->setText(QApplication::translate("config", "Down", Q_NULLPTR));
+        apps->setTitle(QApplication::translate("config", "Applications priority", Q_NULLPTR));
+        app_1->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_2->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_3->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_4->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_5->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_6->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_7->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        app_8->setText(QApplication::translate("config", "PushButton", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(icon_panel), QApplication::translate("config", "Icon Panel", Q_NULLPTR));
+        tabWidget->setTabText(tabWidget->indexOf(player), QApplication::translate("config", "Music player", Q_NULLPTR));
     } // retranslateUi
 
 };

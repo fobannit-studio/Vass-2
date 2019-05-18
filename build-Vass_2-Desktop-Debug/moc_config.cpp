@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_config_t {
     QByteArrayData data[5];
-    char stringdata0[72];
+    char stringdata0[59];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,14 +30,14 @@ struct qt_meta_stringdata_config_t {
 static const qt_meta_stringdata_config_t qt_meta_stringdata_config = {
     {
 QT_MOC_LITERAL(0, 0, 6), // "config"
-QT_MOC_LITERAL(1, 7, 21), // "on_app_config_clicked"
-QT_MOC_LITERAL(2, 29, 0), // ""
-QT_MOC_LITERAL(3, 30, 20), // "on_mp_config_clicked"
-QT_MOC_LITERAL(4, 51, 20) // "on_ic_config_clicked"
+QT_MOC_LITERAL(1, 7, 15), // "on_b_up_clicked"
+QT_MOC_LITERAL(2, 23, 0), // ""
+QT_MOC_LITERAL(3, 24, 17), // "on_b_down_clicked"
+QT_MOC_LITERAL(4, 42, 16) // "on_app_1_clicked"
 
     },
-    "config\0on_app_config_clicked\0\0"
-    "on_mp_config_clicked\0on_ic_config_clicked"
+    "config\0on_b_up_clicked\0\0on_b_down_clicked\0"
+    "on_app_1_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,9 +73,9 @@ void config::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         config *_t = static_cast<config *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_app_config_clicked(); break;
-        case 1: _t->on_mp_config_clicked(); break;
-        case 2: _t->on_ic_config_clicked(); break;
+        case 0: _t->on_b_up_clicked(); break;
+        case 1: _t->on_b_down_clicked(); break;
+        case 2: _t->on_app_1_clicked(); break;
         default: ;
         }
     }

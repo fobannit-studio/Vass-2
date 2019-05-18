@@ -7,227 +7,243 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>500</height>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="app_config">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>150</width>
-     <height>50</height>
+     <x>-1</x>
+     <y>-1</y>
+     <width>601</width>
+     <height>511</height>
     </rect>
    </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}</string>
-   </property>
-   <property name="text">
-    <string>Main settings</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="mp_config">
-   <property name="geometry">
-    <rect>
-     <x>150</x>
-     <y>0</y>
-     <width>121</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}</string>
-   </property>
-   <property name="text">
-    <string>Music player</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="ic_config">
-   <property name="geometry">
-    <rect>
-     <x>269</x>
-     <y>0</y>
-     <width>191</width>
-     <height>50</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{text-align:top;padding-top:10px;border:1px solid lightgrey;background-color:white;border-radius:10px ;color:lightgery}</string>
-   </property>
-   <property name="text">
-    <string>Quick panel settings</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="MainLayout">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>30</y>
-     <width>600</width>
-     <height>470</height>
-    </rect>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel{background-color:white;}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QWidget" name="MainSettings" native="true">
-   <property name="geometry">
-    <rect>
-     <x>33</x>
-     <y>130</y>
-     <width>551</width>
-     <height>351</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="Main_settins">
-    <item row="2" column="1">
-     <widget class="QCheckBox" name="checkBox_3">
-      <property name="text">
-       <string>On/off</string>
+   <layout class="QVBoxLayout" name="mainLay">
+    <item>
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">QTabWidget::pane { /* The tab widget frame */
+    border-top: 2px solid #C2C7CB;
+}
+
+QTabWidget::tab-bar {
+    left: 5px; /* move to the right by 5px */
+}
+
+/* Style the tab using the tab sub-control. Note that
+    it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+    border: 2px solid #C4C4C3;
+    border-bottom-color: #C2C7CB; /* same as the pane color */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    min-width: 8ex;
+    padding: 10px;
+
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QTabBar::tab:selected {
+    border-color: #9B9B9B;
+    border-bottom-color: #C2C7CB; /* same as pane color */
+}
+
+QTabBar::tab:!selected {
+    margin-top: 2px; /* make non-selected tabs look smaller */
+}
+
+/* make use of negative margins for overlapping tabs */
+QTabBar::tab:selected {
+    /* expand/overlap to the left and right by 4px */
+    margin-left: -4px;
+    margin-right: -4px;
+}
+
+QTabBar::tab:first:selected {
+    margin-left: 0; /* the first selected tab has nothing to overlap with on the left */
+}
+
+QTabBar::tab:last:selected {
+    margin-right: 0; /* the last selected tab has nothing to overlap with on the right */
+}
+
+QTabBar::tab:only-one {
+    margin: 0; /* if there is only one tab, we don't want overlapping margins */
+}</string>
       </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QCheckBox" name="checkBox">
-      <property name="text">
-       <string>On/off</string>
+      <property name="currentIndex">
+       <number>1</number>
       </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QKeySequenceEdit" name="keySequenceEdit_5"/>
-    </item>
-    <item row="0" column="2">
-     <widget class="QKeySequenceEdit" name="keySequenceEdit"/>
-    </item>
-    <item row="5" column="2">
-     <widget class="QKeySequenceEdit" name="keySequenceEdit_6"/>
-    </item>
-    <item row="2" column="2">
-     <widget class="QKeySequenceEdit" name="keySequenceEdit_3"/>
-    </item>
-    <item row="5" column="0">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Notes</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QKeySequenceEdit" name="keySequenceEdit_4"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Clock</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QKeySequenceEdit" name="keySequenceEdit_2"/>
-    </item>
-    <item row="4" column="1">
-     <widget class="QCheckBox" name="checkBox_5">
-      <property name="text">
-       <string>On/off</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Book shelf</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Quick panel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QCheckBox" name="checkBox_6">
-      <property name="text">
-       <string>On/off</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QCheckBox" name="checkBox_2">
-      <property name="text">
-       <string>On/off</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Painter</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>Music player                                            </string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QCheckBox" name="checkBox_4">
-      <property name="text">
-       <string>On/off</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="Music_Player_settings" native="true">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>551</width>
-     <height>351</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="MP_settings">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>Music Player settings</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="Quick_Panel_settings" native="true">
-   <property name="geometry">
-    <rect>
-     <x>29</x>
-     <y>130</y>
-     <width>551</width>
-     <height>351</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="Quick_panel_sett">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>Quick panel settings</string>
-      </property>
+      <widget class="QWidget" name="main_config">
+       <attribute name="title">
+        <string>Main configuration</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="icon_panel">
+       <attribute name="title">
+        <string>Icon Panel</string>
+       </attribute>
+       <widget class="QPushButton" name="b_up">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>120</y>
+          <width>80</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Up</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="b_down">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>180</y>
+          <width>80</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Down</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="apps">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>20</y>
+          <width>211</width>
+          <height>421</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Applications priority</string>
+        </property>
+        <widget class="QPushButton" name="app_1">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>20</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>70</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>120</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_4">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>170</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>220</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_6">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>270</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_7">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>320</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="app_8">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>370</y>
+           <width>211</width>
+           <height>51</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="player">
+       <attribute name="title">
+        <string>Music player</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>

@@ -58,6 +58,7 @@ SOURCES       = ../Vass_2/config.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
+		../Vass_2/shortcut_v.cpp \
 		../Vass_2/submit_removal.cpp \
 		../Vass_2/timewidget.cpp qrc_resources.cpp \
 		moc_config.cpp \
@@ -77,6 +78,7 @@ OBJECTS       = config.o \
 		shortcut.o \
 		shortcut.o \
 		shortcut.o \
+		shortcut_v.o \
 		submit_removal.o \
 		timewidget.o \
 		qrc_resources.o \
@@ -162,6 +164,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Vass_2/shortcut.h \
 		../Vass_2/shortcut.h \
 		../Vass_2/shortcut.h \
+		../Vass_2/shortcut_v.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/timewidget.h ../Vass_2/config.cpp \
 		../Vass_2/event_filter.cpp \
@@ -173,6 +176,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
 		../Vass_2/shortcut.cpp \
+		../Vass_2/shortcut_v.cpp \
 		../Vass_2/submit_removal.cpp \
 		../Vass_2/timewidget.cpp
 QMAKE_TARGET  = Vass_2
@@ -348,8 +352,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/resources.qrc ../Vass_2/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/event_filter.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/event_filter.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/event_filter.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut_v.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/event_filter.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut_v.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/config.ui ../Vass_2/icon_panel.ui ../Vass_2/mainwindow.ui ../Vass_2/media_player.ui ../Vass_2/submit_removal.ui $(DISTDIR)/
 
 
@@ -402,7 +406,8 @@ qrc_resources.cpp: ../Vass_2/resources.qrc \
 compiler_moc_header_make_all: moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
-moc_config.cpp: ../Vass_2/config.h \
+moc_config.cpp: ../Vass_2/shortcut.h \
+		../Vass_2/config.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/config.h -o moc_config.cpp
 
@@ -412,6 +417,7 @@ moc_event_filter.cpp: ../Vass_2/event_filter.h \
 
 moc_icon_panel.cpp: ../Vass_2/submit_removal.h \
 		../Vass_2/shortcut.h \
+		../Vass_2/shortcut_v.h \
 		../Vass_2/icon_panel.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/icon_panel.h -o moc_icon_panel.cpp
@@ -420,6 +426,7 @@ moc_mainwindow.cpp: ../Vass_2/media_player.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/icon_panel.h \
 		../Vass_2/shortcut.h \
+		../Vass_2/shortcut_v.h \
 		../Vass_2/config.h \
 		../Vass_2/saver.h \
 		../Vass_2/event_filter.h \
@@ -476,6 +483,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 config.o: ../Vass_2/config.cpp ../Vass_2/config.h \
+		../Vass_2/shortcut.h \
 		ui_config.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o config.o ../Vass_2/config.cpp
 
@@ -485,6 +493,7 @@ event_filter.o: ../Vass_2/event_filter.cpp ../Vass_2/event_filter.h
 icon_panel.o: ../Vass_2/icon_panel.cpp ../Vass_2/icon_panel.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/shortcut.h \
+		../Vass_2/shortcut_v.h \
 		ui_icon_panel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o icon_panel.o ../Vass_2/icon_panel.cpp
 
@@ -493,6 +502,7 @@ main.o: ../Vass_2/main.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/icon_panel.h \
 		../Vass_2/shortcut.h \
+		../Vass_2/shortcut_v.h \
 		../Vass_2/config.h \
 		../Vass_2/saver.h \
 		../Vass_2/event_filter.h
@@ -503,6 +513,7 @@ mainwindow.o: ../Vass_2/mainwindow.cpp ../Vass_2/mainwindow.h \
 		../Vass_2/submit_removal.h \
 		../Vass_2/icon_panel.h \
 		../Vass_2/shortcut.h \
+		../Vass_2/shortcut_v.h \
 		../Vass_2/config.h \
 		../Vass_2/saver.h \
 		../Vass_2/event_filter.h \
@@ -525,6 +536,10 @@ shortcut.o: ../Vass_2/shortcut.cpp ../Vass_2/shortcut.h
 
 shortcut.o: ../Vass_2/shortcut.cpp ../Vass_2/shortcut.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shortcut.o ../Vass_2/shortcut.cpp
+
+shortcut_v.o: ../Vass_2/shortcut_v.cpp ../Vass_2/shortcut_v.h \
+		../Vass_2/shortcut.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shortcut_v.o ../Vass_2/shortcut_v.cpp
 
 submit_removal.o: ../Vass_2/submit_removal.cpp ../Vass_2/submit_removal.h \
 		ui_submit_removal.h
