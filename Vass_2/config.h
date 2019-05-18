@@ -6,7 +6,8 @@
 #include<QMouseEvent>
 #include <regex>
 #include<vector>
-#include"shortcut.h"
+//#include"shortcut.h"
+#include"shortcut_v.h"
 
 namespace Ui {
 class config;
@@ -33,18 +34,38 @@ private slots:
 
     void on_app_1_clicked();
 
+    void on_app_2_clicked();
+
+    void on_app_3_clicked();
+
+    void on_app_4_clicked();
+
+    void on_app_5_clicked();
+
+    void on_app_6_clicked();
+
+    void on_app_7_clicked();
+
+    void on_app_8_clicked();
+
 private:
     Ui::config *ui;
 
     bool isMouseDown=true;
-    unsigned long active_button;
-    unsigned long buttons_before;
-    std::vector<Shortcut> _shortcuts_class;
-    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
-    std::vector<QPushButton * > _app_buttons;
-    QString _shortcuts_file;
+    int _active_element;
+    int _current_page;
+    shortcut_v * shortcuts;
+    std::vector<QPushButton *> _app_buttons;
+
 
     QPoint mousePosition;
+
+    void initShortcut(QPushButton * app , int current_position);
+    void setIcon(QPushButton * button,int current_icon);
+    void setStyle();
+public:
+    void fill_shortcuts();
+
 
 
 };

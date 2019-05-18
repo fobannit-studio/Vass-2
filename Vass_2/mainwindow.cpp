@@ -29,7 +29,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     painter.drawRect(0, 0, width(),  height());
     //shortcut for open icons
 #ifdef linux
-    nativeEventFilter = new event_filter(XK_M,XK_Q,XK_P,XK_T,this);
+    nativeEventFilter = new event_filter(XK_M,XK_Q,XK_P,XK_T,this); // m - icons , t - clock
     qApp->installNativeEventFilter(nativeEventFilter);
     connect(nativeEventFilter,&event_filter::icon_called,this,&MainWindow::setVisibleIcons);
     connect(nativeEventFilter,&event_filter::clock_called,this,&MainWindow::setVisibleTime);
@@ -85,6 +85,7 @@ void MainWindow::setVisibleIcons()
         Icons.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
         Icons.setAttribute(Qt::WA_TranslucentBackground);
         Icons.setFocus();
+        Icons.fill_shortcuts();
         Icons.show();
 //        ui ->icons -> show();
 
@@ -102,6 +103,7 @@ void MainWindow::setVisibleConfig()
     if(!Configuration.isVisible()){
         Configuration.move(_D_dims.first/2- Configuration.geometry().width()/2,_D_dims.second/2- Configuration.geometry().height()/2);
         openConfig->setText("Hide configuration window");
+        Configuration.fill_shortcuts();
         Configuration.show();
 
     }else {
