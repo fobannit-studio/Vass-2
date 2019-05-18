@@ -68,7 +68,7 @@ private:
     int _current_page; // number of elements before first element on this page
     std::pair<int,int> _range;
     std::vector<int> _to_remove;
-    shortcut_v shortcuts;
+    shortcut_v * shortcuts;
 //    std::vector<Shortcut> _shortcuts_class;
 
 //    std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};

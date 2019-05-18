@@ -1,7 +1,11 @@
 #include "shortcut_v.h"
 
+shortcut_v * shortcut_v::Shortcuts_Base = nullptr;
+
+
 shortcut_v::shortcut_v()
 {
+    qDebug() << "created new Shortcut vector";
     _shortcuts_file = QObject::tr("shortcuts.abk");
     readFromFile();
 
