@@ -17,7 +17,6 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QKeySequenceEdit>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
@@ -36,18 +35,14 @@ public:
     QWidget *main_config;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
-    QLabel *i_p_l;
+    QLabel *m_p_l;
+    QLabel *label_3;
     QLabel *label_7;
     QLabel *t_p_l;
-    QLabel *label_3;
-    QLabel *c_p_l;
-    QKeySequenceEdit *time;
-    QLabel *m_p_l;
-    QLabel *label_5;
     QLabel *label_2;
-    QKeySequenceEdit *media;
-    QKeySequenceEdit *config_short;
-    QKeySequenceEdit *icon_short;
+    QLabel *label_5;
+    QLabel *c_p_l;
+    QLabel *i_p_l;
     QWidget *icon_panel;
     QPushButton *b_up;
     QPushButton *b_down;
@@ -100,12 +95,19 @@ public:
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        i_p_l = new QLabel(gridLayoutWidget);
-        i_p_l->setObjectName(QStringLiteral("i_p_l"));
-        i_p_l->setAutoFillBackground(false);
-        i_p_l->setMargin(10);
+        m_p_l = new QLabel(gridLayoutWidget);
+        m_p_l->setObjectName(QStringLiteral("m_p_l"));
+        m_p_l->setAutoFillBackground(false);
+        m_p_l->setMargin(10);
 
-        gridLayout->addWidget(i_p_l, 0, 1, 1, 1);
+        gridLayout->addWidget(m_p_l, 2, 1, 1, 1);
+
+        label_3 = new QLabel(gridLayoutWidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setAutoFillBackground(false);
+        label_3->setMargin(10);
+
+        gridLayout->addWidget(label_3, 1, 0, 1, 1);
 
         label_7 = new QLabel(gridLayoutWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
@@ -121,31 +123,12 @@ public:
 
         gridLayout->addWidget(t_p_l, 1, 1, 1, 1);
 
-        label_3 = new QLabel(gridLayoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setAutoFillBackground(false);
-        label_3->setMargin(10);
+        label_2 = new QLabel(gridLayoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setAutoFillBackground(false);
+        label_2->setMargin(10);
 
-        gridLayout->addWidget(label_3, 1, 0, 1, 1);
-
-        c_p_l = new QLabel(gridLayoutWidget);
-        c_p_l->setObjectName(QStringLiteral("c_p_l"));
-        c_p_l->setAutoFillBackground(false);
-        c_p_l->setMargin(10);
-
-        gridLayout->addWidget(c_p_l, 3, 1, 1, 1);
-
-        time = new QKeySequenceEdit(gridLayoutWidget);
-        time->setObjectName(QStringLiteral("time"));
-
-        gridLayout->addWidget(time, 1, 3, 1, 1);
-
-        m_p_l = new QLabel(gridLayoutWidget);
-        m_p_l->setObjectName(QStringLiteral("m_p_l"));
-        m_p_l->setAutoFillBackground(false);
-        m_p_l->setMargin(10);
-
-        gridLayout->addWidget(m_p_l, 2, 1, 1, 1);
+        gridLayout->addWidget(label_2, 0, 0, 1, 1);
 
         label_5 = new QLabel(gridLayoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
@@ -154,27 +137,19 @@ public:
 
         gridLayout->addWidget(label_5, 2, 0, 1, 1);
 
-        label_2 = new QLabel(gridLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setAutoFillBackground(false);
-        label_2->setMargin(10);
+        c_p_l = new QLabel(gridLayoutWidget);
+        c_p_l->setObjectName(QStringLiteral("c_p_l"));
+        c_p_l->setAutoFillBackground(false);
+        c_p_l->setMargin(10);
 
-        gridLayout->addWidget(label_2, 0, 0, 1, 1);
+        gridLayout->addWidget(c_p_l, 3, 1, 1, 1);
 
-        media = new QKeySequenceEdit(gridLayoutWidget);
-        media->setObjectName(QStringLiteral("media"));
+        i_p_l = new QLabel(gridLayoutWidget);
+        i_p_l->setObjectName(QStringLiteral("i_p_l"));
+        i_p_l->setAutoFillBackground(false);
+        i_p_l->setMargin(10);
 
-        gridLayout->addWidget(media, 2, 3, 1, 1);
-
-        config_short = new QKeySequenceEdit(gridLayoutWidget);
-        config_short->setObjectName(QStringLiteral("config_short"));
-
-        gridLayout->addWidget(config_short, 3, 3, 1, 1);
-
-        icon_short = new QKeySequenceEdit(gridLayoutWidget);
-        icon_short->setObjectName(QStringLiteral("icon_short"));
-
-        gridLayout->addWidget(icon_short, 0, 3, 1, 1);
+        gridLayout->addWidget(i_p_l, 0, 1, 1, 1);
 
         tabWidget->addTab(main_config, QString());
         icon_panel = new QWidget();
@@ -328,14 +303,14 @@ public:
     void retranslateUi(QWidget *config)
     {
         config->setWindowTitle(QApplication::translate("config", "Form", Q_NULLPTR));
-        i_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        m_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        label_3->setText(QApplication::translate("config", "Time", Q_NULLPTR));
         label_7->setText(QApplication::translate("config", "Configuration", Q_NULLPTR));
         t_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
-        label_3->setText(QApplication::translate("config", "Time", Q_NULLPTR));
-        c_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
-        m_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
-        label_5->setText(QApplication::translate("config", "Media player", Q_NULLPTR));
         label_2->setText(QApplication::translate("config", "Icon panel", Q_NULLPTR));
+        label_5->setText(QApplication::translate("config", "Media player", Q_NULLPTR));
+        c_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        i_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(main_config), QApplication::translate("config", " Help", Q_NULLPTR));
         b_up->setText(QApplication::translate("config", "Up", Q_NULLPTR));
         b_down->setText(QApplication::translate("config", "Down", Q_NULLPTR));

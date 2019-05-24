@@ -25,8 +25,6 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void wheelEvent(QWheelEvent *event) override;
 
-
-
 private slots:
 
     void on_b_up_clicked();
@@ -65,10 +63,10 @@ private slots:
 
     void on_always_first_stateChanged(int arg1);
 
-    void on_icon_short_editingFinished();
 
 private:
     Ui::config *ui;
+
     bool _removal;
     bool isMouseDown=true;
     bool _icon_info_active;

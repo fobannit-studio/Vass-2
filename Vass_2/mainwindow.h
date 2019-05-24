@@ -30,6 +30,7 @@ public:
 
 private slots:
 //    void on_pushButton_clicked();
+
     void slotGlobalHotkey();
     void setVisibleIcons();
     void setVisibleConfig();

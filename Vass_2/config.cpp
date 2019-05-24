@@ -12,10 +12,10 @@ config::config(QWidget *parent) :
     _active_element = -1;
     ui->stackedWidget->setCurrentWidget(ui->page_4);
     _icon_info_active = false;
-    ui->i_p_l->setText("Ctrl" + QKeySequence(shortcuts->_icons).toString());
-    ui->t_p_l->setText("Ctrl" + QKeySequence(shortcuts->_time).toString());
-    ui->m_p_l->setText("Ctrl" + QKeySequence(shortcuts->_player).toString());
-    ui->c_p_l->setText("Ctrl" + QKeySequence(shortcuts->_config).toString());
+    ui->i_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_icons).toString());
+    ui->t_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_time).toString());
+    ui->m_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_player).toString());
+    ui->c_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_config).toString());
 
 
     fill_shortcuts();
@@ -352,15 +352,4 @@ void config::wCheckInit(int el)
 }
 }
 
-
-void config::on_icon_short_editingFinished()
-{
-   QKeySequence new_s = ui->icon_short->keySequence();
-   ui->i_p_l->setText(new_s.toString());
-   QString key= new_s.toString().split("+")[1];
-   qDebug() << key;
-   std::string s_key = key.toStdString();
-   shortcuts->_icons = shortcuts ->return_key_code(s_key);
-
-}
 

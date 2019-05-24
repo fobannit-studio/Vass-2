@@ -45,13 +45,26 @@
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout">
-         <item row="0" column="1">
-          <widget class="QLabel" name="i_p_l">
+         <item row="2" column="1">
+          <widget class="QLabel" name="m_p_l">
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
            <property name="text">
             <string>TextLabel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Time</string>
            </property>
            <property name="margin">
             <number>10</number>
@@ -84,42 +97,13 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_3">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Time</string>
-           </property>
-           <property name="margin">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="c_p_l">
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-           <property name="margin">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="3">
-          <widget class="QKeySequenceEdit" name="time"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="m_p_l">
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
+            <string>Icon panel</string>
            </property>
            <property name="margin">
             <number>10</number>
@@ -139,27 +123,31 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_2">
+         <item row="3" column="1">
+          <widget class="QLabel" name="c_p_l">
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
            <property name="text">
-            <string>Icon panel</string>
+            <string>TextLabel</string>
            </property>
            <property name="margin">
             <number>10</number>
            </property>
           </widget>
          </item>
-         <item row="2" column="3">
-          <widget class="QKeySequenceEdit" name="media"/>
-         </item>
-         <item row="3" column="3">
-          <widget class="QKeySequenceEdit" name="config_short"/>
-         </item>
-         <item row="0" column="3">
-          <widget class="QKeySequenceEdit" name="icon_short"/>
+         <item row="0" column="1">
+          <widget class="QLabel" name="i_p_l">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
