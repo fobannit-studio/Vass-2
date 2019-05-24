@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_config_t {
-    QByteArrayData data[21];
-    char stringdata0[353];
+    QByteArrayData data[22];
+    char stringdata0[383];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -49,7 +49,8 @@ QT_MOC_LITERAL(16, 249, 23), // "on_p_ins_i_stateChanged"
 QT_MOC_LITERAL(17, 273, 4), // "arg1"
 QT_MOC_LITERAL(18, 278, 21), // "on_chnge_icon_clicked"
 QT_MOC_LITERAL(19, 300, 23), // "on_chnge_icon_2_clicked"
-QT_MOC_LITERAL(20, 324, 28) // "on_always_first_stateChanged"
+QT_MOC_LITERAL(20, 324, 28), // "on_always_first_stateChanged"
+QT_MOC_LITERAL(21, 353, 29) // "on_icon_short_editingFinished"
 
     },
     "config\0on_b_up_clicked\0\0on_b_down_clicked\0"
@@ -61,7 +62,8 @@ QT_MOC_LITERAL(20, 324, 28) // "on_always_first_stateChanged"
     "on_remove_clicked\0on_pushButton_clicked\0"
     "on_p_ins_i_stateChanged\0arg1\0"
     "on_chnge_icon_clicked\0on_chnge_icon_2_clicked\0"
-    "on_always_first_stateChanged"
+    "on_always_first_stateChanged\0"
+    "on_icon_short_editingFinished"
 };
 #undef QT_MOC_LITERAL
 
@@ -71,7 +73,7 @@ static const uint qt_meta_data_config[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -79,24 +81,25 @@ static const uint qt_meta_data_config[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  104,    2, 0x08 /* Private */,
-       3,    0,  105,    2, 0x08 /* Private */,
-       4,    0,  106,    2, 0x08 /* Private */,
-       5,    0,  107,    2, 0x08 /* Private */,
-       6,    0,  108,    2, 0x08 /* Private */,
-       7,    0,  109,    2, 0x08 /* Private */,
-       8,    0,  110,    2, 0x08 /* Private */,
-       9,    0,  111,    2, 0x08 /* Private */,
-      10,    0,  112,    2, 0x08 /* Private */,
-      11,    0,  113,    2, 0x08 /* Private */,
-      12,    0,  114,    2, 0x08 /* Private */,
-      13,    0,  115,    2, 0x08 /* Private */,
-      14,    0,  116,    2, 0x08 /* Private */,
-      15,    0,  117,    2, 0x08 /* Private */,
-      16,    1,  118,    2, 0x08 /* Private */,
-      18,    0,  121,    2, 0x08 /* Private */,
-      19,    0,  122,    2, 0x08 /* Private */,
-      20,    1,  123,    2, 0x08 /* Private */,
+       1,    0,  109,    2, 0x08 /* Private */,
+       3,    0,  110,    2, 0x08 /* Private */,
+       4,    0,  111,    2, 0x08 /* Private */,
+       5,    0,  112,    2, 0x08 /* Private */,
+       6,    0,  113,    2, 0x08 /* Private */,
+       7,    0,  114,    2, 0x08 /* Private */,
+       8,    0,  115,    2, 0x08 /* Private */,
+       9,    0,  116,    2, 0x08 /* Private */,
+      10,    0,  117,    2, 0x08 /* Private */,
+      11,    0,  118,    2, 0x08 /* Private */,
+      12,    0,  119,    2, 0x08 /* Private */,
+      13,    0,  120,    2, 0x08 /* Private */,
+      14,    0,  121,    2, 0x08 /* Private */,
+      15,    0,  122,    2, 0x08 /* Private */,
+      16,    1,  123,    2, 0x08 /* Private */,
+      18,    0,  126,    2, 0x08 /* Private */,
+      19,    0,  127,    2, 0x08 /* Private */,
+      20,    1,  128,    2, 0x08 /* Private */,
+      21,    0,  131,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -117,6 +120,7 @@ static const uint qt_meta_data_config[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -145,6 +149,7 @@ void config::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 15: _t->on_chnge_icon_clicked(); break;
         case 16: _t->on_chnge_icon_2_clicked(); break;
         case 17: _t->on_always_first_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 18: _t->on_icon_short_editingFinished(); break;
         default: ;
         }
     }
@@ -175,13 +180,13 @@ int config::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 19)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 18;
+        _id -= 19;
     }
     return _id;
 }

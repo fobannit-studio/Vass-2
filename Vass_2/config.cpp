@@ -12,6 +12,12 @@ config::config(QWidget *parent) :
     _active_element = -1;
     ui->stackedWidget->setCurrentWidget(ui->page_4);
     _icon_info_active = false;
+    ui->i_p_l->setText("Ctrl" + QKeySequence(shortcuts->_icons).toString());
+    ui->t_p_l->setText("Ctrl" + QKeySequence(shortcuts->_time).toString());
+    ui->m_p_l->setText("Ctrl" + QKeySequence(shortcuts->_player).toString());
+    ui->c_p_l->setText("Ctrl" + QKeySequence(shortcuts->_config).toString());
+
+
     fill_shortcuts();
 }
 
@@ -109,7 +115,7 @@ void config::setStyle(bool mouse_wheel)
     {
         if(i == _active_element%(8) && !mouse_wheel)
         {
-           _app_buttons[i]-> setStyleSheet("QPushButton{background-color:rgba(160, 8, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:0px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
+           _app_buttons[i]-> setStyleSheet("QPushButton{background-color:rgba(38, 214, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:0px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
         }else {
            _app_buttons[i]-> setStyleSheet("QPushButton{background-color:white}");
 }
@@ -118,49 +124,49 @@ void config::setStyle(bool mouse_wheel)
 }
 void config::on_app_1_clicked()
 {
-_active_element = 0 + _current_page*8;
+_active_element = 0 + _current_page;
 setStyle();
 }
 
 void config::on_app_2_clicked()
 {
-    _active_element = 1 + _current_page*8;
+    _active_element = 1 + _current_page;
     setStyle();
 }
 
 void config::on_app_3_clicked()
 {
-    _active_element = 2 + _current_page*8;
+    _active_element = 2 + _current_page;
     setStyle();
 }
 
 void config::on_app_4_clicked()
 {
-    _active_element = 3 + _current_page*8;
+    _active_element = 3 + _current_page;
     setStyle();
 }
 
 void config::on_app_5_clicked()
 {
-    _active_element = 4 + _current_page*8;
+    _active_element = 4 + _current_page;
     setStyle();
 }
 
 void config::on_app_6_clicked()
 {
-    _active_element = 5 + _current_page*8;
+    _active_element = 5 + _current_page;
     setStyle();
 }
 
 void config::on_app_7_clicked()
 {
-    _active_element = 6 + _current_page*8;
+    _active_element = 6 + _current_page;
     setStyle();
 }
 
 void config::on_app_8_clicked()
 {
-    _active_element = 7 + _current_page*8;
+    _active_element = 7 + _current_page;
     setStyle();
 }
 
@@ -285,25 +291,49 @@ void config::on_chnge_icon_2_clicked()
 
 void config::on_always_first_stateChanged(int arg1)
 {
+    std::string filename = shortcuts->_shortcuts_class[_active_element].get_filename();
     if(arg1==Qt::Checked)
     {
-        std::string filename = shortcuts->_shortcuts_class[_active_element].get_filename();
         shortcuts->_summirized_weight += 1;
         shortcuts->_shortcuts_class[_active_element].increase_weight(shortcuts->_summirized_weight);
-        sort(shortcuts->_shortcuts_class.begin(),shortcuts->_shortcuts_class.end());
+//        sort(shortcuts->_shortcuts_class.begin(),shortcuts->_shortcuts_class.end());
+        int current = _active_element;
+        while (shortcuts->_shortcuts_class[current].get_weight()!=0 && current > 0) {
+            std::swap(shortcuts->_shortcuts_class[current],shortcuts->_shortcuts_class[current-1]);
+            --current;
+        }
+
         for(int i=0;i<shortcuts->_shortcuts_class.size();++i)
         {
             if(shortcuts->_shortcuts_class[i].get_filename() == filename)
             {
                 _active_element = i;
+                _current_page = i - i%8;
                 break;
             };
         }
     }
     else if(shortcuts->_shortcuts_class[_active_element].get_weight() != 0) {
-
+         int current = 0;
          shortcuts->_summirized_weight -= shortcuts->_shortcuts_class[_active_element].get_weight();
          shortcuts->_shortcuts_class[_active_element].relax_weight();
+         while (shortcuts->_shortcuts_class[current+1].get_weight()!=0 && current < shortcuts->_shortcuts_class.size()) {
+             std::swap(shortcuts->_shortcuts_class[current],shortcuts->_shortcuts_class[current+1]);
+             ++current;
+         }
+
+         for(int i=0;i<shortcuts->_shortcuts_class.size();++i)
+         {
+             if(shortcuts->_shortcuts_class[i].get_filename() == filename)
+             {
+                 _active_element = i;
+                 _current_page = i - i%8;
+                 break;
+             };
+         }
+
+
+
     }
     fill_shortcuts();
 }
@@ -311,12 +341,26 @@ void config::on_always_first_stateChanged(int arg1)
 
 void config::wCheckInit(int el)
 {
+    qDebug()<<"Element" << el;
     if (el == -1)return;
     qDebug()<<"Weight" << shortcuts -> _shortcuts_class[el].get_weight();
     if (shortcuts->_shortcuts_class[el].get_weight() == 0){
+
         ui->always_first->setCheckState(Qt::Unchecked);
     }else {
         ui->always_first->setCheckState(Qt::Checked);
 }
+}
+
+
+void config::on_icon_short_editingFinished()
+{
+   QKeySequence new_s = ui->icon_short->keySequence();
+   ui->i_p_l->setText(new_s.toString());
+   QString key= new_s.toString().split("+")[1];
+   qDebug() << key;
+   std::string s_key = key.toStdString();
+   shortcuts->_icons = shortcuts ->return_key_code(s_key);
+
 }
 

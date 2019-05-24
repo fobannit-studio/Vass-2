@@ -29,7 +29,7 @@
        <bool>true</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="main_config">
        <attribute name="title">
@@ -46,12 +46,9 @@
         </property>
         <layout class="QGridLayout" name="gridLayout">
          <item row="0" column="1">
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="i_p_l">
            <property name="autoFillBackground">
             <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
            </property>
            <property name="text">
             <string>TextLabel</string>
@@ -66,9 +63,6 @@
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
-           </property>
            <property name="text">
             <string>Configuration</string>
            </property>
@@ -78,12 +72,9 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="label_4">
+          <widget class="QLabel" name="t_p_l">
            <property name="autoFillBackground">
             <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
            </property>
            <property name="text">
             <string>TextLabel</string>
@@ -98,9 +89,6 @@
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
-           </property>
            <property name="text">
             <string>Time</string>
            </property>
@@ -110,12 +98,9 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLabel" name="label_8">
+          <widget class="QLabel" name="c_p_l">
            <property name="autoFillBackground">
             <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
            </property>
            <property name="text">
             <string>TextLabel</string>
@@ -129,12 +114,9 @@
           <widget class="QKeySequenceEdit" name="time"/>
          </item>
          <item row="2" column="1">
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="m_p_l">
            <property name="autoFillBackground">
             <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
            </property>
            <property name="text">
             <string>TextLabel</string>
@@ -149,9 +131,6 @@
            <property name="autoFillBackground">
             <bool>false</bool>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
-           </property>
            <property name="text">
             <string>Media player</string>
            </property>
@@ -164,9 +143,6 @@
           <widget class="QLabel" name="label_2">
            <property name="autoFillBackground">
             <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{font-size:15px}</string>
            </property>
            <property name="text">
             <string>Icon panel</string>
@@ -183,11 +159,7 @@
           <widget class="QKeySequenceEdit" name="config_short"/>
          </item>
          <item row="0" column="3">
-          <widget class="QKeySequenceEdit" name="icon_short">
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-          </widget>
+          <widget class="QKeySequenceEdit" name="icon_short"/>
          </item>
         </layout>
        </widget>
@@ -461,14 +433,14 @@ shortcut</string>
            <item row="2" column="1">
             <widget class="QLabel" name="label_11">
              <property name="text">
-              <string>Always first</string>
+              <string>Pin to top</string>
              </property>
             </widget>
            </item>
            <item row="2" column="2">
             <widget class="QCheckBox" name="always_first">
              <property name="text">
-              <string>Apply</string>
+              <string>Pin</string>
              </property>
             </widget>
            </item>
@@ -546,11 +518,6 @@ QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
 all</string>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="player">
-       <attribute name="title">
-        <string>Music player</string>
-       </attribute>
       </widget>
      </widget>
     </item>

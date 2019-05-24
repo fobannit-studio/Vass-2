@@ -12,7 +12,7 @@
 #include"config.h"
 #include "saver.h"
 #include "event_filter.h"
-
+#include "shortcut_v.h"
 
 namespace Ui {
 class MainWindow;
@@ -49,6 +49,7 @@ private:
     config Configuration;
     event_filter *nativeEventFilter;
 
+    shortcut_v * shortcuts;
 
 
     QShortcut * openIcons;

@@ -65,6 +65,8 @@ private slots:
 
     void on_always_first_stateChanged(int arg1);
 
+    void on_icon_short_editingFinished();
+
 private:
     Ui::config *ui;
     bool _removal;

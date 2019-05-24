@@ -21,7 +21,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     setWindowIcon(icon);
     InitActions();
     createTrayIcons();
-
+    shortcuts;
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setPen(Qt::NoPen);
@@ -30,7 +30,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     //shortcut for open icons
 #ifdef linux
     qDebug()<<"Is equal"<<(XK_M == Qt::Key_M);
-    nativeEventFilter = new event_filter(XK_M,XK_Q,XK_P,XK_T,this); // m - icons , t - clock
+    nativeEventFilter = new event_filter(shortcuts->_icons,XK_Q,XK_P,XK_T,this); // m - icons , t - clock
     qApp->installNativeEventFilter(nativeEventFilter);
     connect(nativeEventFilter,&event_filter::icon_called,this,&MainWindow::setVisibleIcons);
     connect(nativeEventFilter,&event_filter::clock_called,this,&MainWindow::setVisibleTime);
@@ -42,7 +42,8 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     nativeEventFilter -> setShortcut(Apps::Icons);
 #endif
 
-    Configuration.setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
+    Configuration.setWindowFlags(Qt::FramelessWindowHint);//|Qt::Tool);
+
     Configuration.setAttribute(Qt::WA_TranslucentBackground);
     Icons.setWindowFlags(Qt::WindowStaysOnTopHint|Qt::Tool|Qt::FramelessWindowHint);
     Icons.setAttribute(Qt::WA_TranslucentBackground);

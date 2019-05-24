@@ -36,13 +36,13 @@ public:
     QWidget *main_config;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
-    QLabel *label;
+    QLabel *i_p_l;
     QLabel *label_7;
-    QLabel *label_4;
+    QLabel *t_p_l;
     QLabel *label_3;
-    QLabel *label_8;
+    QLabel *c_p_l;
     QKeySequenceEdit *time;
-    QLabel *label_6;
+    QLabel *m_p_l;
     QLabel *label_5;
     QLabel *label_2;
     QKeySequenceEdit *media;
@@ -77,7 +77,6 @@ public:
     QLabel *label_13;
     QCheckBox *p_ins_i;
     QPushButton *pushButton;
-    QWidget *player;
 
     void setupUi(QWidget *config)
     {
@@ -101,63 +100,56 @@ public:
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(gridLayoutWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setAutoFillBackground(false);
-        label->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
-        label->setMargin(10);
+        i_p_l = new QLabel(gridLayoutWidget);
+        i_p_l->setObjectName(QStringLiteral("i_p_l"));
+        i_p_l->setAutoFillBackground(false);
+        i_p_l->setMargin(10);
 
-        gridLayout->addWidget(label, 0, 1, 1, 1);
+        gridLayout->addWidget(i_p_l, 0, 1, 1, 1);
 
         label_7 = new QLabel(gridLayoutWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setAutoFillBackground(false);
-        label_7->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
         label_7->setMargin(10);
 
         gridLayout->addWidget(label_7, 3, 0, 1, 1);
 
-        label_4 = new QLabel(gridLayoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setAutoFillBackground(false);
-        label_4->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
-        label_4->setMargin(10);
+        t_p_l = new QLabel(gridLayoutWidget);
+        t_p_l->setObjectName(QStringLiteral("t_p_l"));
+        t_p_l->setAutoFillBackground(false);
+        t_p_l->setMargin(10);
 
-        gridLayout->addWidget(label_4, 1, 1, 1, 1);
+        gridLayout->addWidget(t_p_l, 1, 1, 1, 1);
 
         label_3 = new QLabel(gridLayoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setAutoFillBackground(false);
-        label_3->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
         label_3->setMargin(10);
 
         gridLayout->addWidget(label_3, 1, 0, 1, 1);
 
-        label_8 = new QLabel(gridLayoutWidget);
-        label_8->setObjectName(QStringLiteral("label_8"));
-        label_8->setAutoFillBackground(false);
-        label_8->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
-        label_8->setMargin(10);
+        c_p_l = new QLabel(gridLayoutWidget);
+        c_p_l->setObjectName(QStringLiteral("c_p_l"));
+        c_p_l->setAutoFillBackground(false);
+        c_p_l->setMargin(10);
 
-        gridLayout->addWidget(label_8, 3, 1, 1, 1);
+        gridLayout->addWidget(c_p_l, 3, 1, 1, 1);
 
         time = new QKeySequenceEdit(gridLayoutWidget);
         time->setObjectName(QStringLiteral("time"));
 
         gridLayout->addWidget(time, 1, 3, 1, 1);
 
-        label_6 = new QLabel(gridLayoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setAutoFillBackground(false);
-        label_6->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
-        label_6->setMargin(10);
+        m_p_l = new QLabel(gridLayoutWidget);
+        m_p_l->setObjectName(QStringLiteral("m_p_l"));
+        m_p_l->setAutoFillBackground(false);
+        m_p_l->setMargin(10);
 
-        gridLayout->addWidget(label_6, 2, 1, 1, 1);
+        gridLayout->addWidget(m_p_l, 2, 1, 1, 1);
 
         label_5 = new QLabel(gridLayoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
         label_5->setAutoFillBackground(false);
-        label_5->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
         label_5->setMargin(10);
 
         gridLayout->addWidget(label_5, 2, 0, 1, 1);
@@ -165,7 +157,6 @@ public:
         label_2 = new QLabel(gridLayoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setAutoFillBackground(false);
-        label_2->setStyleSheet(QStringLiteral("QLabel{font-size:15px}"));
         label_2->setMargin(10);
 
         gridLayout->addWidget(label_2, 0, 0, 1, 1);
@@ -182,7 +173,6 @@ public:
 
         icon_short = new QKeySequenceEdit(gridLayoutWidget);
         icon_short->setObjectName(QStringLiteral("icon_short"));
-        icon_short->setStyleSheet(QStringLiteral(""));
 
         gridLayout->addWidget(icon_short, 0, 3, 1, 1);
 
@@ -322,16 +312,13 @@ public:
         pushButton->setStyleSheet(QLatin1String("QPushButton{background-color:white}\n"
 "QPushButton:hover{background-color:rgba(255,255,255,0.5)}"));
         tabWidget->addTab(icon_panel, QString());
-        player = new QWidget();
-        player->setObjectName(QStringLiteral("player"));
-        tabWidget->addTab(player, QString());
 
         mainLay->addWidget(tabWidget);
 
 
         retranslateUi(config);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
         stackedWidget->setCurrentIndex(1);
 
 
@@ -341,12 +328,12 @@ public:
     void retranslateUi(QWidget *config)
     {
         config->setWindowTitle(QApplication::translate("config", "Form", Q_NULLPTR));
-        label->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        i_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         label_7->setText(QApplication::translate("config", "Configuration", Q_NULLPTR));
-        label_4->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        t_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         label_3->setText(QApplication::translate("config", "Time", Q_NULLPTR));
-        label_8->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
-        label_6->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        c_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        m_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         label_5->setText(QApplication::translate("config", "Media player", Q_NULLPTR));
         label_2->setText(QApplication::translate("config", "Icon panel", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(main_config), QApplication::translate("config", " Help", Q_NULLPTR));
@@ -368,8 +355,8 @@ public:
         remove->setText(QApplication::translate("config", "Remove\n"
 " active \n"
 "shortcut", Q_NULLPTR));
-        label_11->setText(QApplication::translate("config", "Always first", Q_NULLPTR));
-        always_first->setText(QApplication::translate("config", "Apply", Q_NULLPTR));
+        label_11->setText(QApplication::translate("config", "Pin to top", Q_NULLPTR));
+        always_first->setText(QApplication::translate("config", "Pin", Q_NULLPTR));
         label_10->setText(QApplication::translate("config", "Change current icon", Q_NULLPTR));
         chnge_icon_2->setText(QApplication::translate("config", "Change", Q_NULLPTR));
         label_9->setText(QApplication::translate("config", "Change application \n"
@@ -381,7 +368,6 @@ public:
         pushButton->setText(QApplication::translate("config", "Remove\n"
 "all", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(icon_panel), QApplication::translate("config", "Icon Panel", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(player), QApplication::translate("config", "Music player", Q_NULLPTR));
     } // retranslateUi
 
 };

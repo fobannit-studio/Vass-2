@@ -15,6 +15,7 @@ public:
         _is_removable = false;
         _is_image = is_image;
         _weight = 0;
+        _is_pinned = false;
 
     }
     bool get_removable() const {return _is_removable;}
@@ -30,12 +31,13 @@ public:
     bool operator<(const Shortcut& other){
         return this->get_weight() > other.get_weight();// returns a > b and not a<b , to sort in descending order
     }
-    void increase_weight(long int sum){_weight+= sum;}
-    void relax_weight(){_weight=0;}
+    void increase_weight(long int sum){if(!_is_pinned){_weight+= sum;_is_pinned = true;}}
+    void relax_weight(){_weight=0;_is_pinned = false;}
 private:
     bool _is_removable; // check is this shortcut should be removed .To remove elements on right position , i first mark them as removable , and then clear all shortcuts with rem==true , to clear elements on their exact positions in vector and prevent out of range overlapping
     bool _is_image;
     long int _weight;
+    bool _is_pinned;
     std::string _extension;
     std::string _filename;
     QString _path;

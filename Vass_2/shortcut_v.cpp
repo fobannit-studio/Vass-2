@@ -11,6 +11,10 @@ shortcut_v::shortcut_v()
     _shortcuts_file = QObject::tr("shortcuts.abk");
     _summirized_weight = 0;
     readFromFile();
+    _icons = Qt::Key_M;
+    _config = Qt::Key_Q;
+    _time = Qt::Key_T;
+    _player = Qt::Key_P;
 
 
 }
@@ -100,3 +104,113 @@ void shortcut_v::parse_names(QString filename)
     _shortcuts_class.emplace_back(extension,name_icon.first,filename,name_icon.second,is_image);
 
 }
+
+
+Qt::Key shortcut_v::return_key_code(std::string _key)
+{
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "W")
+    {
+        return Qt::Key_W;
+    }
+    if(_key == "E")
+    {
+        return Qt::Key_E;
+    }
+    if(_key == "R")
+    {
+        return Qt::Key_T;
+    }
+    if(_key == "Y")
+    {
+        return Qt::Key_Y;
+    }
+    if(_key == "U")
+    {
+        return Qt::Key_I;
+    }
+    if(_key == "O")
+    {
+        return Qt::Key_O;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+    if(_key == "Q")
+    {
+        return Qt::Key_Q;
+    }
+
+    return Qt::Key_0;
+};
+
+
+

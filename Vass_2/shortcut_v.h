@@ -27,6 +27,10 @@ public:
         if(Shortcuts_Base == nullptr)Shortcuts_Base = new shortcut_v;
         return Shortcuts_Base;
     }
+    Qt::Key _icons;
+    Qt::Key _player;
+    Qt::Key _time;
+    Qt::Key _config;
     std::vector<Shortcut> _shortcuts_class;
     QString _shortcuts_file;
     std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
@@ -36,6 +40,7 @@ public:
     void parse_names(QString);
     void writeToFile();
     void readFromFile();
+    Qt::Key return_key_code(std::string);
 
 };
 
