@@ -48,7 +48,8 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Vass_2/config.cpp \
+SOURCES       = ../Vass_2/clock.cpp \
+		../Vass_2/config.cpp \
 		../Vass_2/event_filter.cpp \
 		../Vass_2/icon_panel.cpp \
 		../Vass_2/main.cpp \
@@ -61,6 +62,7 @@ SOURCES       = ../Vass_2/config.cpp \
 		../Vass_2/shortcut_v.cpp \
 		../Vass_2/submit_removal.cpp \
 		../Vass_2/timewidget.cpp qrc_resources.cpp \
+		moc_clock.cpp \
 		moc_config.cpp \
 		moc_event_filter.cpp \
 		moc_icon_panel.cpp \
@@ -68,7 +70,8 @@ SOURCES       = ../Vass_2/config.cpp \
 		moc_media_player.cpp \
 		moc_submit_removal.cpp \
 		moc_timewidget.cpp
-OBJECTS       = config.o \
+OBJECTS       = clock.o \
+		config.o \
 		event_filter.o \
 		icon_panel.o \
 		main.o \
@@ -82,6 +85,7 @@ OBJECTS       = config.o \
 		submit_removal.o \
 		timewidget.o \
 		qrc_resources.o \
+		moc_clock.o \
 		moc_config.o \
 		moc_event_filter.o \
 		moc_icon_panel.o \
@@ -154,7 +158,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../Vass_2/Vass_2.pro ../Vass_2/config.h \
+		../Vass_2/Vass_2.pro ../Vass_2/clock.h \
+		../Vass_2/config.h \
 		../Vass_2/event_filter.h \
 		../Vass_2/icon_panel.h \
 		../Vass_2/mainwindow.h \
@@ -166,7 +171,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../Vass_2/shortcut.h \
 		../Vass_2/shortcut_v.h \
 		../Vass_2/submit_removal.h \
-		../Vass_2/timewidget.h ../Vass_2/config.cpp \
+		../Vass_2/timewidget.h ../Vass_2/clock.cpp \
+		../Vass_2/config.cpp \
 		../Vass_2/event_filter.cpp \
 		../Vass_2/icon_panel.cpp \
 		../Vass_2/main.cpp \
@@ -187,7 +193,7 @@ TARGET        = Vass_2
 first: all
 ####### Build rules
 
-$(TARGET): ui_config.h ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h $(OBJECTS)  
+$(TARGET): ui_clock.h ui_config.h ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Vass_2/Vass_2.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -352,9 +358,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Vass_2/resources.qrc ../Vass_2/resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.h ../Vass_2/event_filter.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut_v.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.cpp ../Vass_2/event_filter.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut_v.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Vass_2/config.ui ../Vass_2/icon_panel.ui ../Vass_2/mainwindow.ui ../Vass_2/media_player.ui ../Vass_2/submit_removal.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/clock.h ../Vass_2/config.h ../Vass_2/event_filter.h ../Vass_2/icon_panel.h ../Vass_2/mainwindow.h ../Vass_2/media_player.h ../Vass_2/saver.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut.h ../Vass_2/shortcut_v.h ../Vass_2/submit_removal.h ../Vass_2/timewidget.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/clock.cpp ../Vass_2/config.cpp ../Vass_2/event_filter.cpp ../Vass_2/icon_panel.cpp ../Vass_2/main.cpp ../Vass_2/mainwindow.cpp ../Vass_2/media_player.cpp ../Vass_2/saver.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut.cpp ../Vass_2/shortcut_v.cpp ../Vass_2/submit_removal.cpp ../Vass_2/timewidget.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Vass_2/clock.ui ../Vass_2/config.ui ../Vass_2/icon_panel.ui ../Vass_2/mainwindow.ui ../Vass_2/media_player.ui ../Vass_2/submit_removal.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -407,9 +413,13 @@ qrc_resources.cpp: ../Vass_2/resources.qrc \
 		../Vass_2/images/engineering.png
 	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resources ../Vass_2/resources.qrc -o qrc_resources.cpp
 
-compiler_moc_header_make_all: moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
+compiler_moc_header_make_all: moc_clock.cpp moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
+	-$(DEL_FILE) moc_clock.cpp moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
+moc_clock.cpp: ../Vass_2/clock.h \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/clock.h -o moc_clock.cpp
+
 moc_config.cpp: ../Vass_2/shortcut_v.h \
 		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
@@ -453,9 +463,13 @@ moc_timewidget.cpp: ../Vass_2/timewidget.h \
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_config.h ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h
+compiler_uic_make_all: ui_clock.h ui_config.h ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_config.h ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h
+	-$(DEL_FILE) ui_clock.h ui_config.h ui_icon_panel.h ui_mainwindow.h ui_media_player.h ui_submit_removal.h
+ui_clock.h: ../Vass_2/clock.ui \
+		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../Vass_2/clock.ui -o ui_clock.h
+
 ui_config.h: ../Vass_2/config.ui \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/uic
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../Vass_2/config.ui -o ui_config.h
@@ -486,6 +500,10 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
+
+clock.o: ../Vass_2/clock.cpp ../Vass_2/clock.h \
+		ui_clock.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o clock.o ../Vass_2/clock.cpp
 
 config.o: ../Vass_2/config.cpp ../Vass_2/config.h \
 		../Vass_2/shortcut_v.h \
@@ -556,6 +574,9 @@ timewidget.o: ../Vass_2/timewidget.cpp ../Vass_2/timewidget.h
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
+
+moc_clock.o: moc_clock.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_clock.o moc_clock.cpp
 
 moc_config.o: moc_config.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_config.o moc_config.cpp

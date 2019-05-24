@@ -13,6 +13,7 @@
 #include "saver.h"
 #include "event_filter.h"
 #include "shortcut_v.h"
+#include "clock.h"
 
 namespace Ui {
 class MainWindow;
@@ -30,7 +31,6 @@ public:
 
 private slots:
 //    void on_pushButton_clicked();
-
     void slotGlobalHotkey();
     void setVisibleIcons();
     void setVisibleConfig();
@@ -49,6 +49,7 @@ private:
     icon_panel Icons;
     config Configuration;
     event_filter *nativeEventFilter;
+    Clock_W Clock;
 
     shortcut_v * shortcuts;
 

@@ -7,11 +7,11 @@ TimeWidget::TimeWidget(QWidget *parent) : QLabel(parent)
 {
   timer=new QTimer(this);
   connect(timer,&QTimer::timeout,this,&TimeWidget::Update_Time);
-  this->setStyleSheet("{color: #C0BBFE}");
+  this->setStyleSheet("QLabel{color: #C0BBFE;font-size:25px}");
   timer->start(update_interval);
   buffer.start();
   QPalette qpal= this->palette();
-  this->hide();
+//  this->hide();
 
 
 
@@ -25,22 +25,22 @@ TimeWidget::~TimeWidget()
 
 }
 
-void TimeWidget::mouseMoveEvent(QMouseEvent *event)
-{
-    if (isMouseDown)
-    {
-        mousePosition=event->globalPos();
-        move(mousePosition);
-    }
-}
+//void TimeWidget::mouseMoveEvent(QMouseEvent *event)
+//{
+//    if (isMouseDown)
+//    {
+//        mousePosition=event->globalPos();
+//        move(mousePosition);
+//    }
+//}
 
-void TimeWidget::mousePressEvent(QMouseEvent *event)
-{
-    if (event->button()==Qt::LeftButton)
-    {
-        isMouseDown=true;
-    }
-}
+//void TimeWidget::mousePressEvent(QMouseEvent *event)
+//{
+//    if (event->button()==Qt::LeftButton)
+//    {
+//        isMouseDown=true;
+//    }
+//}
 
 void TimeWidget::mouseReleaseEvent(QMouseEvent *event)
 {
@@ -69,9 +69,10 @@ void TimeWidget::mouseReleaseEvent(QMouseEvent *event)
 void TimeWidget::Update_Time()
 {
 
-   if (mode==0)   this->setText(QTime::currentTime().toString("hh:mm:ss"));
+   if (mode==0)  { this->setText(QTime::currentTime().toString("hh:mm:ss")) ;  this->setStyleSheet("{color: #C0BBFE;font-size:25px}");}
    else if (mode==1)
    {   buffer=buffer.addMSecs(update_interval);
+       this->setStyleSheet("QLabel{color: #C0BBFE;font-size:25px}");
        this->setText(buffer.toString("hh:mm:ss"));
 
    }

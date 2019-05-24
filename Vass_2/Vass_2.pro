@@ -28,6 +28,7 @@ CONFIG    += link_pkgconfig
 PKGCONFIG += x11
 
 SOURCES += \
+        clock.cpp \
         config.cpp \
         event_filter.cpp \
         icon_panel.cpp \
@@ -45,6 +46,7 @@ SOURCES += \
 RC_ICONS=icon2.png
 
 HEADERS += \
+        clock.h \
         config.h \
         event_filter.h \
         icon_panel.h \
@@ -59,6 +61,7 @@ HEADERS += \
         submit_removal.h \
         timewidget.h
 FORMS += \
+        clock.ui \
         config.ui \
         icon_panel.ui \
         mainwindow.ui \

@@ -58,7 +58,7 @@ public:
         TimeLabel = new TimeWidget(centralWidget);
         TimeLabel->setObjectName(QStringLiteral("TimeLabel"));
         TimeLabel->setEnabled(true);
-        TimeLabel->setGeometry(QRect(0, 0, 181, 51));
+        TimeLabel->setGeometry(QRect(0, 0, 311, 411));
         QFont font1;
         font1.setFamily(QStringLiteral("Rubik"));
         font1.setPointSize(25);
