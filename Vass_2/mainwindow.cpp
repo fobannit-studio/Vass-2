@@ -21,6 +21,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     setWindowIcon(icon);
     InitActions();
     createTrayIcons();
+    shortcuts = shortcut_v::Initialialize();
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     painter.setPen(Qt::NoPen);
@@ -40,7 +41,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     nativeEventFilter -> setShortcut(Apps::Config);
     nativeEventFilter -> setShortcut(Apps::Icons);
 #endif
-
+    connect(&Configuration,&config::changeHotKey,this,&MainWindow::setNewShortcut);
     Configuration.setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
 
     Configuration.setAttribute(Qt::WA_TranslucentBackground);
@@ -77,7 +78,14 @@ MainWindow::~MainWindow()
 
 }
 
-
+void MainWindow::setNewShortcut()
+{
+    qDebug()<<"In set new shortcut  " << shortcuts->_icons;
+    nativeEventFilter ->upadteHotKeys(shortcuts->_icons,Apps::Icons);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_player,Apps::Player);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_time,Apps::Clock);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_config,Apps::Config);
+}
 void MainWindow::setVisibleIcons()
 {
 //    if(!ui->icons->isVisible())

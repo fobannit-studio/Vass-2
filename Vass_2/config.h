@@ -25,6 +25,9 @@ protected:
     void mousePressEvent(QMouseEvent* event);
     void wheelEvent(QWheelEvent *event) override;
 
+
+signals:
+    void changeHotKey();
 private slots:
 
     void on_b_up_clicked();
@@ -63,6 +66,7 @@ private slots:
 
     void on_always_first_stateChanged(int arg1);
 
+    void on_submit_clicked();
 
 private:
     Ui::config *ui;

@@ -1,4 +1,5 @@
 #include "shortcut_v.h"
+#include "event_filter.h"
 #include <QString>
 #include <QFileInfo>
 
@@ -15,6 +16,7 @@ shortcut_v::shortcut_v()
     _config = Qt::Key_Q;
     _time = Qt::Key_T;
     _player = Qt::Key_P;
+    _hotKeys = {_icons,_config,_time,_player};
 
 
 }
@@ -106,107 +108,105 @@ void shortcut_v::parse_names(QString filename)
 }
 
 
-Qt::Key shortcut_v::return_key_code(std::string _key)
+ int  shortcut_v::return_key_code(QString _key)
 {
+    qDebug()<<_key;
     if(_key == "Q")
     {
-        return Qt::Key_Q;
+        return XK_Q;
     }
     if(_key == "W")
     {
-        return Qt::Key_W;
+        return XK_W;
     }
     if(_key == "E")
     {
-        return Qt::Key_E;
+        return XK_E;
     }
     if(_key == "R")
     {
-        return Qt::Key_T;
+        return XK_R;
     }
     if(_key == "Y")
     {
-        return Qt::Key_Y;
+        return XK_Y;
     }
     if(_key == "U")
     {
-        return Qt::Key_I;
+        return XK_U;
     }
     if(_key == "O")
     {
-        return Qt::Key_O;
+        return XK_O;
     }
-    if(_key == "Q")
+    if(_key == "P")
     {
-        return Qt::Key_Q;
+        return XK_P;
     }
-    if(_key == "Q")
+    if(_key == "A")
     {
-        return Qt::Key_Q;
+        return XK_A;
     }
-    if(_key == "Q")
+    if(_key == "S")
     {
-        return Qt::Key_Q;
+        return XK_S;
     }
-    if(_key == "Q")
+    if(_key == "D")
     {
-        return Qt::Key_Q;
+        return XK_D;
     }
-    if(_key == "Q")
+    if(_key == "F")
     {
-        return Qt::Key_Q;
+        return XK_F;
     }
-    if(_key == "Q")
+    if(_key == "G")
     {
-        return Qt::Key_Q;
+        return XK_G;
     }
-    if(_key == "Q")
+    if(_key == "H")
     {
-        return Qt::Key_Q;
+        return XK_H;
     }
-    if(_key == "Q")
+    if(_key == "J")
     {
-        return Qt::Key_Q;
+        return XK_J;
     }
-    if(_key == "Q")
+    if(_key == "K")
     {
-        return Qt::Key_Q;
+        return XK_K;
     }
-    if(_key == "Q")
+    if(_key == "L")
     {
-        return Qt::Key_Q;
+        return XK_L;
     }
-    if(_key == "Q")
+    if(_key == "Z")
     {
-        return Qt::Key_Q;
+        return XK_Z;
     }
-    if(_key == "Q")
+    if(_key == "X")
     {
-        return Qt::Key_Q;
+        qDebug()<<"In return key code " << XK_X;
+        return XK_X;
     }
-    if(_key == "Q")
+    if(_key == "C")
     {
-        return Qt::Key_Q;
+        return XK_C;
     }
-    if(_key == "Q")
+    if(_key == "V")
     {
-        return Qt::Key_Q;
+        return XK_V;
     }
-    if(_key == "Q")
+    if(_key == "B")
     {
-        return Qt::Key_Q;
+        return XK_B;
     }
-    if(_key == "Q")
+    if(_key == "N")
     {
-        return Qt::Key_Q;
+        return XK_N;
     }
-    if(_key == "Q")
+    if(_key == "M")
     {
-        return Qt::Key_Q;
-    }
-    if(_key == "Q")
-    {
-        return Qt::Key_Q;
+        return XK_M;
     }
 
     return Qt::Key_0;

@@ -27,11 +27,12 @@ public:
         if(Shortcuts_Base == nullptr)Shortcuts_Base = new shortcut_v;
         return Shortcuts_Base;
     }
-    Qt::Key _icons;
-    Qt::Key _player;
-    Qt::Key _time;
-    Qt::Key _config;
+    int _icons;
+    int _player;
+    int _time;
+    int _config;
     std::vector<Shortcut> _shortcuts_class;
+    std::vector<int> _hotKeys;
     QString _shortcuts_file;
     std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
     std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg",".ico"};
@@ -40,7 +41,7 @@ public:
     void parse_names(QString);
     void writeToFile();
     void readFromFile();
-    Qt::Key return_key_code(std::string);
+    int return_key_code(QString);
 
 };
 

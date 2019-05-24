@@ -1,5 +1,8 @@
+#include<QDebug>
+
 #ifdef linux
 #include "event_filter.h"
+//#include<QDebug>
 
 namespace
 {
@@ -36,10 +39,12 @@ bool event_filter::nativeEventFilter(const QByteArray &eventType, void *message,
         if((event -> response_type & 127) == XCB_KEY_PRESS)
         {
             keyEvent = static_cast<xcb_key_press_event_t *>(message);
+            qDebug()<<keyEvent->detail << "Icon keycode " << _icon_keycode;
             foreach(quint32 maskMods , maskModifiers())
             {
                 if((keyEvent->state==(modifier | maskMods)) && keyEvent ->detail == _icon_keycode)
                 {
+                    qDebug()<<"Icons called";
                     emit icon_called();
                     return true;
                 }
@@ -84,6 +89,7 @@ void event_filter::setShortcut( Apps application)
     default:
         return;
     }
+//    qDebug()<<"Shortcut set";
     unsetShortcut(key_code);
     //modify here
 //    keycode = XKeysymToKeycode(m_display,key);
@@ -110,6 +116,32 @@ void event_filter::unsetShortcut(int key){
                    modifier | maskMods,
                    m_win);
     }
+}
+
+void event_filter::upadteHotKeys(KeyCode new_hotkey, Apps app)
+{
+    switch (app) {
+    case Apps::Icons:
+        unsetShortcut(_icon_keycode);
+        _icon_keycode = XKeysymToKeycode(m_display,new_hotkey);
+        break;
+    case Apps::Clock:
+        unsetShortcut(_clock_keycode);
+        _clock_keycode = XKeysymToKeycode(m_display,new_hotkey);
+        break;
+    case Apps::Player:
+        unsetShortcut(_media_keycode);
+        _media_keycode = XKeysymToKeycode(m_display,new_hotkey);
+            break;
+    case Apps::Config:
+        unsetShortcut(_config_keycode);
+        _config_keycode = XKeysymToKeycode(m_display,new_hotkey);
+        break;
+    }
+
+    setShortcut(app);
+    qDebug() << "Keycode in event filter "<<_icon_keycode;
+
 }
 
 #endif

@@ -38,6 +38,7 @@ private slots:
     void setVisibleMusic();
     void createTrayIcons();
     void InitActions();
+    void setNewShortcut();
 private:
     Ui::MainWindow *ui;
     void closeEvent(QCloseEvent* event) override;

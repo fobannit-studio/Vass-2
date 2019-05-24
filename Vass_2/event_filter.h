@@ -23,7 +23,7 @@ public:
 //    void setShortcut(KeySym);
     void setShortcut(Apps);
     void unsetShortcut(int);
-    void upadteHotKeys(Qt::Key,int);
+    void upadteHotKeys(KeyCode,Apps);
 
 signals:
     void icon_called();

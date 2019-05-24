@@ -17,6 +17,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QKeySequenceEdit>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
@@ -36,13 +37,18 @@ public:
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QLabel *m_p_l;
+    QKeySequenceEdit *time;
     QLabel *label_3;
+    QLabel *i_p_l;
+    QKeySequenceEdit *media;
     QLabel *label_7;
+    QKeySequenceEdit *config_2;
     QLabel *t_p_l;
+    QKeySequenceEdit *icon;
     QLabel *label_2;
     QLabel *label_5;
     QLabel *c_p_l;
-    QLabel *i_p_l;
+    QPushButton *submit;
     QWidget *icon_panel;
     QPushButton *b_up;
     QPushButton *b_down;
@@ -91,7 +97,7 @@ public:
         main_config->setObjectName(QStringLiteral("main_config"));
         gridLayoutWidget = new QWidget(main_config);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(10, 20, 381, 351));
+        gridLayoutWidget->setGeometry(QRect(10, 20, 421, 351));
         gridLayout = new QGridLayout(gridLayoutWidget);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -100,28 +106,55 @@ public:
         m_p_l->setAutoFillBackground(false);
         m_p_l->setMargin(10);
 
-        gridLayout->addWidget(m_p_l, 2, 1, 1, 1);
+        gridLayout->addWidget(m_p_l, 5, 1, 1, 1);
+
+        time = new QKeySequenceEdit(gridLayoutWidget);
+        time->setObjectName(QStringLiteral("time"));
+
+        gridLayout->addWidget(time, 4, 2, 1, 1);
 
         label_3 = new QLabel(gridLayoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setAutoFillBackground(false);
         label_3->setMargin(10);
 
-        gridLayout->addWidget(label_3, 1, 0, 1, 1);
+        gridLayout->addWidget(label_3, 4, 0, 1, 1);
+
+        i_p_l = new QLabel(gridLayoutWidget);
+        i_p_l->setObjectName(QStringLiteral("i_p_l"));
+        i_p_l->setAutoFillBackground(false);
+        i_p_l->setMargin(10);
+
+        gridLayout->addWidget(i_p_l, 0, 1, 1, 1);
+
+        media = new QKeySequenceEdit(gridLayoutWidget);
+        media->setObjectName(QStringLiteral("media"));
+
+        gridLayout->addWidget(media, 5, 2, 1, 1);
 
         label_7 = new QLabel(gridLayoutWidget);
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setAutoFillBackground(false);
         label_7->setMargin(10);
 
-        gridLayout->addWidget(label_7, 3, 0, 1, 1);
+        gridLayout->addWidget(label_7, 6, 0, 1, 1);
+
+        config_2 = new QKeySequenceEdit(gridLayoutWidget);
+        config_2->setObjectName(QStringLiteral("config_2"));
+
+        gridLayout->addWidget(config_2, 6, 2, 1, 1);
 
         t_p_l = new QLabel(gridLayoutWidget);
         t_p_l->setObjectName(QStringLiteral("t_p_l"));
         t_p_l->setAutoFillBackground(false);
         t_p_l->setMargin(10);
 
-        gridLayout->addWidget(t_p_l, 1, 1, 1, 1);
+        gridLayout->addWidget(t_p_l, 4, 1, 1, 1);
+
+        icon = new QKeySequenceEdit(gridLayoutWidget);
+        icon->setObjectName(QStringLiteral("icon"));
+
+        gridLayout->addWidget(icon, 0, 2, 1, 1);
 
         label_2 = new QLabel(gridLayoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
@@ -135,21 +168,19 @@ public:
         label_5->setAutoFillBackground(false);
         label_5->setMargin(10);
 
-        gridLayout->addWidget(label_5, 2, 0, 1, 1);
+        gridLayout->addWidget(label_5, 5, 0, 1, 1);
 
         c_p_l = new QLabel(gridLayoutWidget);
         c_p_l->setObjectName(QStringLiteral("c_p_l"));
         c_p_l->setAutoFillBackground(false);
         c_p_l->setMargin(10);
 
-        gridLayout->addWidget(c_p_l, 3, 1, 1, 1);
+        gridLayout->addWidget(c_p_l, 6, 1, 1, 1);
 
-        i_p_l = new QLabel(gridLayoutWidget);
-        i_p_l->setObjectName(QStringLiteral("i_p_l"));
-        i_p_l->setAutoFillBackground(false);
-        i_p_l->setMargin(10);
+        submit = new QPushButton(gridLayoutWidget);
+        submit->setObjectName(QStringLiteral("submit"));
 
-        gridLayout->addWidget(i_p_l, 0, 1, 1, 1);
+        gridLayout->addWidget(submit, 0, 3, 1, 1);
 
         tabWidget->addTab(main_config, QString());
         icon_panel = new QWidget();
@@ -305,12 +336,13 @@ public:
         config->setWindowTitle(QApplication::translate("config", "Form", Q_NULLPTR));
         m_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         label_3->setText(QApplication::translate("config", "Time", Q_NULLPTR));
+        i_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         label_7->setText(QApplication::translate("config", "Configuration", Q_NULLPTR));
         t_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
         label_2->setText(QApplication::translate("config", "Icon panel", Q_NULLPTR));
         label_5->setText(QApplication::translate("config", "Media player", Q_NULLPTR));
         c_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
-        i_p_l->setText(QApplication::translate("config", "TextLabel", Q_NULLPTR));
+        submit->setText(QApplication::translate("config", "Submit", Q_NULLPTR));
         tabWidget->setTabText(tabWidget->indexOf(main_config), QApplication::translate("config", " Help", Q_NULLPTR));
         b_up->setText(QApplication::translate("config", "Up", Q_NULLPTR));
         b_down->setText(QApplication::translate("config", "Down", Q_NULLPTR));
