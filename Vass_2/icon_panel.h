@@ -20,7 +20,6 @@
 #include "shortcut.h"
 #include "shortcut_v.h"
 
-enum class State{Ranged,Single};
 namespace Ui {
 class icon_panel;
 }

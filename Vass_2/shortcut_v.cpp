@@ -1,4 +1,6 @@
 #include "shortcut_v.h"
+#include <QString>
+#include <QFileInfo>
 
 shortcut_v * shortcut_v::Shortcuts_Base = nullptr;
 
@@ -7,6 +9,7 @@ shortcut_v::shortcut_v()
 {
     qDebug() << "created new Shortcut vector";
     _shortcuts_file = QObject::tr("shortcuts.abk");
+    _summirized_weight = 0;
     readFromFile();
 
 
@@ -63,19 +66,37 @@ void shortcut_v::parse_names(QString filename)
     std::string app = matches[2];
     std::string extension = matches[3];
     std::pair<std::string,QString> name_icon;
-
+    bool is_image = false;
+    bool exist = false;
+    std::string icon_path;
+    for(auto ext:_image_ext)
+    {
+        QFileInfo check_file(QString::fromStdString(path + "/" + app + ext));
+        if(check_file.exists())
+        {
+            icon_path = path + "/" + app + ext;
+            exist = true;
+            break;
+        }
+    }
 
     if(std::find(_image_ext.begin(), _image_ext.end(), extension) != _image_ext.end())
     {
-        name_icon = std::make_pair(app,QString::fromStdString(":/icons/images/picture.png"));
+        is_image = true;
+        name_icon = std::make_pair(app + extension,QString::fromStdString(":/icons/images/picture.png"));
     }
     else if(std::find(_doc_ext.begin(), _doc_ext.end(), extension) != _doc_ext.end())
     {
-        name_icon = std::make_pair(app,QString::fromStdString(":/icons/images/philosophy.png"));
+        name_icon = std::make_pair(app + extension,QString::fromStdString(":/icons/images/contract.png"));
+
+    }
+    else if (exist){
+        name_icon = std::make_pair(app,QString::fromStdString(icon_path));
     }
     else {
-        name_icon = std::make_pair(app,QString::fromStdString(path + "/" + app + ".png"));
+        name_icon = std::make_pair(app,QString::fromStdString(":/icons/images/question-mark-button.png"));
     }
-    _shortcuts_class.emplace_back(extension,name_icon.first,filename,name_icon.second);
+
+    _shortcuts_class.emplace_back(extension,name_icon.first,filename,name_icon.second,is_image);
 
 }

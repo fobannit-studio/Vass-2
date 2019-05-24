@@ -7,5 +7,7 @@
         <file>images/engineering.png</file>
         <file>images/art.png</file>
         <file>images/icon2.png</file>
+        <file>images/contract.png</file>
+        <file>images/question-mark-button.png</file>
     </qresource>
 </RCC>

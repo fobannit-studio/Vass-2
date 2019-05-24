@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     MainWindow w(dims);
 
 #ifndef linux
-    w.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);// |Qt::Tool);  //сделать без рамки и всегда наверху других окон и //не отображать в панеле задач
+    w.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint)  //[Qt::Tool);  //сделать без рамки и всегда наверху других окон и //не отображать в панеле задач
 #else
     w.setWindowFlags(Qt::FramelessWindowHint);
 #endif

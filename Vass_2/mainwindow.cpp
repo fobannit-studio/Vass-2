@@ -29,6 +29,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     painter.drawRect(0, 0, width(),  height());
     //shortcut for open icons
 #ifdef linux
+    qDebug()<<"Is equal"<<(XK_M == Qt::Key_M);
     nativeEventFilter = new event_filter(XK_M,XK_Q,XK_P,XK_T,this); // m - icons , t - clock
     qApp->installNativeEventFilter(nativeEventFilter);
     connect(nativeEventFilter,&event_filter::icon_called,this,&MainWindow::setVisibleIcons);
@@ -41,8 +42,11 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     nativeEventFilter -> setShortcut(Apps::Icons);
 #endif
 
-    Configuration.setWindowFlags(Qt::FramelessWindowHint);
+    Configuration.setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
     Configuration.setAttribute(Qt::WA_TranslucentBackground);
+    Icons.setWindowFlags(Qt::WindowStaysOnTopHint|Qt::Tool|Qt::FramelessWindowHint);
+    Icons.setAttribute(Qt::WA_TranslucentBackground);
+    M_Player.setWindowFlags(Qt::FramelessWindowHint|Qt::Tool);
 
     _D_dims = dim;
 
@@ -56,7 +60,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     M_Player.add_files(saver.load_music());
     openIcons = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_M), this, SLOT(setVisibleIcons()));
     connect(&Icons,SIGNAL(HideIconBar()),this,SLOT(HideIcons()));
-
+//    setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint|Qt::Tool);
     // считать настройки из файла
 
 
@@ -82,8 +86,7 @@ void MainWindow::setVisibleIcons()
         QPoint position = QCursor::pos();
         Icons.move(position.rx() - Icons.geometry().width()/2,position.ry() - Icons.geometry().height()/2);
 //        ui-> icons -> move(position.rx() - ui->icons->geometry().width()/2,position.ry() - ui->icons->geometry().height()/2);
-        Icons.setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
-        Icons.setAttribute(Qt::WA_TranslucentBackground);
+
         Icons.setFocus();
         Icons.fill_shortcuts();
         Icons.show();

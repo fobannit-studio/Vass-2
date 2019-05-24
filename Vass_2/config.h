@@ -23,6 +23,7 @@ public:
 protected:
     void mouseMoveEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
+    void wheelEvent(QWheelEvent *event) override;
 
 
 
@@ -48,10 +49,27 @@ private slots:
 
     void on_app_8_clicked();
 
+    void on_info_clicked();
+
+    void on_add_clicked();
+
+    void on_remove_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_p_ins_i_stateChanged(int arg1);
+
+    void on_chnge_icon_clicked();
+
+    void on_chnge_icon_2_clicked();
+
+    void on_always_first_stateChanged(int arg1);
+
 private:
     Ui::config *ui;
-
+    bool _removal;
     bool isMouseDown=true;
+    bool _icon_info_active;
     int _active_element;
     int _current_page;
     shortcut_v * shortcuts;
@@ -62,7 +80,10 @@ private:
 
     void initShortcut(QPushButton * app , int current_position);
     void setIcon(QPushButton * button,int current_icon);
-    void setStyle();
+    void setStyle(bool mouse_wheel = false);
+    void increasePage();
+    void decreasePage();
+    void wCheckInit(int);
 public:
     void fill_shortcuts();
 

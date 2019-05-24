@@ -5,7 +5,7 @@
 class Shortcut
 {
 public:
-    Shortcut(std::string extension, std::string filename,QString path,QString icon_path)
+    Shortcut(std::string extension, std::string filename,QString path,QString icon_path,bool is_image)
     {
 
         _extension=extension;
@@ -13,6 +13,8 @@ public:
         _path=path;
         _icon_path=icon_path;
         _is_removable = false;
+        _is_image = is_image;
+        _weight = 0;
 
     }
     bool get_removable() const {return _is_removable;}
@@ -21,11 +23,21 @@ public:
     QString get_path() const {return _path;}
     QString get_path_to_icon() const {return _icon_path;}
     void set_removable(bool val){_is_removable = val;}
+    bool is_img() const {return _is_image;}
+    void changeIcon(QString icon_path){_icon_path = icon_path;}
+    void changeLocation(QString new_path){_path = new_path;}
+    long int  get_weight() const {return _weight;}
+    bool operator<(const Shortcut& other){
+        return this->get_weight() > other.get_weight();// returns a > b and not a<b , to sort in descending order
+    }
+    void increase_weight(long int sum){_weight+= sum;}
+    void relax_weight(){_weight=0;}
 private:
     bool _is_removable; // check is this shortcut should be removed .To remove elements on right position , i first mark them as removable , and then clear all shortcuts with rem==true , to clear elements on their exact positions in vector and prevent out of range overlapping
+    bool _is_image;
+    long int _weight;
     std::string _extension;
     std::string _filename;
-
     QString _path;
     QString _icon_path;
 };

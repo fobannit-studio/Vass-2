@@ -52,7 +52,7 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
    <attribute name="buttonGroup">
     <string notr="true">application_buttons</string>
@@ -61,9 +61,9 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
   <widget class="QLabel" name="label_1">
    <property name="geometry">
     <rect>
-     <x>15</x>
+     <x>0</x>
      <y>120</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -71,13 +71,16 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="removeShortCut">
@@ -116,15 +119,15 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>165</x>
+     <x>150</x>
      <y>120</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -132,13 +135,16 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="app_3">
@@ -160,15 +166,15 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>315</x>
+     <x>290</x>
      <y>120</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -176,13 +182,16 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="app_4">
@@ -204,15 +213,15 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>15</x>
+     <x>0</x>
      <y>260</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -220,13 +229,16 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="app_5">
@@ -248,15 +260,15 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>315</x>
+     <x>290</x>
      <y>260</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -264,21 +276,24 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>15</x>
+     <x>0</x>
      <y>400</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -286,21 +301,24 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>165</x>
+     <x>150</x>
      <y>400</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -308,13 +326,16 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="app_8">
@@ -336,15 +357,15 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>315</x>
+     <x>290</x>
      <y>400</y>
-     <width>90</width>
+     <width>130</width>
      <height>20</height>
     </rect>
    </property>
@@ -352,13 +373,16 @@ QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <property name="styleSheet">
-    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:15px}</string>
+    <string notr="true">QLabel{color:rgba(255,255,255,0.7);font-size:10px}</string>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
    <property name="text">
     <string>TextLabel</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLabel" name="backgroud">
@@ -396,7 +420,7 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="app_6">
@@ -418,7 +442,7 @@ QPushButton:hover{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
 QPushButton:pressed{ background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(94, 100, 127), stop: 1 rgb(91, 97, 124)); }</string>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <zorder>backgroud</zorder>

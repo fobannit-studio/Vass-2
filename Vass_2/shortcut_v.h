@@ -13,6 +13,8 @@
 #include<QObject>
 #include<QDebug>
 
+
+enum class State{Ranged,Single};
 class shortcut_v
 {
 private:
@@ -28,11 +30,13 @@ public:
     std::vector<Shortcut> _shortcuts_class;
     QString _shortcuts_file;
     std::regex _app_parser{R"((.*)\/(.*)(\..*)$)"};
-    std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg"};
-    std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv"};
+    std::vector<std::string> _image_ext{".png",".jpg",".bmp",".svg",".ico"};
+    std::vector<std::string> _doc_ext{".pdf",".doc",".lib",".csv",".odt"};
+    long int _summirized_weight; // sum of weighted elements in shortcuts
     void parse_names(QString);
     void writeToFile();
     void readFromFile();
+
 };
 
 #endif // SHORTCUT_V_H

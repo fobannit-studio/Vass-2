@@ -383,8 +383,10 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp qrc_resources.cpp
 qrc_resources.cpp: ../Vass_2/resources.qrc \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/rcc \
+		../Vass_2/images/contract.png \
 		../Vass_2/images/music.png \
 		../Vass_2/images/icon2.png \
+		../Vass_2/images/question-mark-button.png \
 		../Vass_2/images/philosophy.png \
 		../Vass_2/images/picture.png \
 		../Vass_2/images/explorer.png \
@@ -394,8 +396,10 @@ qrc_resources.cpp: ../Vass_2/resources.qrc \
 
 qrc_resources.cpp: ../Vass_2/resources.qrc \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/rcc \
+		../Vass_2/images/contract.png \
 		../Vass_2/images/music.png \
 		../Vass_2/images/icon2.png \
+		../Vass_2/images/question-mark-button.png \
 		../Vass_2/images/philosophy.png \
 		../Vass_2/images/picture.png \
 		../Vass_2/images/explorer.png \
@@ -406,7 +410,8 @@ qrc_resources.cpp: ../Vass_2/resources.qrc \
 compiler_moc_header_make_all: moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_config.cpp moc_event_filter.cpp moc_icon_panel.cpp moc_mainwindow.cpp moc_media_player.cpp moc_submit_removal.cpp moc_timewidget.cpp
-moc_config.cpp: ../Vass_2/shortcut.h \
+moc_config.cpp: ../Vass_2/shortcut_v.h \
+		../Vass_2/shortcut.h \
 		../Vass_2/config.h \
 		/usr/lib/x86_64-linux-gnu/qt5/bin/moc
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/bohdan/Projects/Fobannit/Vass-2/Vass_2 -I/home/bohdan/Projects/Fobannit/Vass-2 -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtX11Extras -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Vass_2/config.h -o moc_config.cpp
@@ -483,6 +488,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 config.o: ../Vass_2/config.cpp ../Vass_2/config.h \
+		../Vass_2/shortcut_v.h \
 		../Vass_2/shortcut.h \
 		ui_config.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o config.o ../Vass_2/config.cpp

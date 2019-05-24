@@ -33,8 +33,164 @@
       </property>
       <widget class="QWidget" name="main_config">
        <attribute name="title">
-        <string>Main configuration</string>
+        <string> Help</string>
        </attribute>
+       <widget class="QWidget" name="gridLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>381</width>
+          <height>351</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="1">
+          <widget class="QLabel" name="label">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>Configuration</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_4">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_3">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>Time</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_8">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QKeySequenceEdit" name="time"/>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_6">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_5">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>Media player</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_2">
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{font-size:15px}</string>
+           </property>
+           <property name="text">
+            <string>Icon panel</string>
+           </property>
+           <property name="margin">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QKeySequenceEdit" name="media"/>
+         </item>
+         <item row="3" column="3">
+          <widget class="QKeySequenceEdit" name="config_short"/>
+         </item>
+         <item row="0" column="3">
+          <widget class="QKeySequenceEdit" name="icon_short">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="icon_panel">
        <attribute name="title">
@@ -44,10 +200,14 @@
         <property name="geometry">
          <rect>
           <x>520</x>
-          <y>120</y>
+          <y>40</y>
           <width>80</width>
           <height>60</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{background-color:white}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
         </property>
         <property name="text">
          <string>Up</string>
@@ -57,10 +217,14 @@
         <property name="geometry">
          <rect>
           <x>520</x>
-          <y>180</y>
+          <y>100</y>
           <width>80</width>
           <height>60</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{background-color:white}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
         </property>
         <property name="text">
          <string>Down</string>
@@ -88,7 +252,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -104,7 +269,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -120,7 +286,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -136,7 +303,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -152,7 +320,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -168,7 +337,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -184,7 +354,8 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
@@ -200,12 +371,180 @@
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">QPushButton{text-align:left;}</string>
+          <string notr="true">QPushButton{background-color:white;text-align:left}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
          </property>
          <property name="text">
           <string>PushButton</string>
          </property>
         </widget>
+       </widget>
+       <widget class="QPushButton" name="info">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>160</y>
+          <width>80</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{background-color:white}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
+        </property>
+        <property name="text">
+         <string>Hide
+settings</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="add">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>220</y>
+          <width>80</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{background-color:white}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
+        </property>
+        <property name="text">
+         <string>Add 
+shortcut</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="remove">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>280</y>
+          <width>80</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{background-color:white}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
+        </property>
+        <property name="text">
+         <string>Remove
+ active 
+shortcut</string>
+        </property>
+       </widget>
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>60</y>
+          <width>261</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
+        </property>
+        <widget class="QWidget" name="page_3"/>
+        <widget class="QWidget" name="page_4">
+         <widget class="QWidget" name="gridLayoutWidget_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>20</y>
+            <width>256</width>
+            <height>301</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="icon_information">
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Always first</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QCheckBox" name="always_first">
+             <property name="text">
+              <string>Apply</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Change current icon</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QPushButton" name="chnge_icon_2">
+             <property name="styleSheet">
+              <string notr="true">QPushButton{background-color:white;border-radius:2px;border:1px solid rgba(0,0,0,0.5)}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
+             </property>
+             <property name="text">
+              <string>Change</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Change application 
+location</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="chnge_icon">
+             <property name="styleSheet">
+              <string notr="true">QPushButton{background-color:white;border-radius:2px;border:1px solid rgba(0,0,0,0.5)}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
+             </property>
+             <property name="text">
+              <string>Change</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Show picture 
+instead of icon for images</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QCheckBox" name="p_ins_i">
+             <property name="text">
+              <string>Activate</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>340</y>
+          <width>80</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{background-color:white}
+QPushButton:hover{background-color:rgba(255,255,255,0.5)}</string>
+        </property>
+        <property name="text">
+         <string>Remove
+all</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="player">

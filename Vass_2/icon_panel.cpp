@@ -20,6 +20,8 @@ icon_panel::icon_panel(QWidget *parent) :
     for(QPushButton * app:_app_buttons)app->installEventFilter(this);
     shortcuts = shortcut_v::Initialialize();
 //    readFromFile();
+//    setWindowFlags(Qt::Tool);
+//    this -> setWindowFlags(Qt::Tool);
     fill_shortcuts();
 }
 
