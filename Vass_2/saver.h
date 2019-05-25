@@ -9,7 +9,6 @@
 #include <QJsonDocument>
 #include <QMediaPlaylist>
 
-
 class Saver
 {
 public:
@@ -19,12 +18,14 @@ public:
 
     void save_music(const QMediaPlaylist& songs);
     QStringList load_music();
-    void save_icons();
-    void read_icons();
+    void save_icons(std::vector<int> keys , std::vector<int> modifiers);
+    std::vector<int> read_keys();
+    std::vector<int> read_modifiers();
     void save();
 
     QJsonDocument open_file();
 private:
+
     QJsonObject settings_obj;
     void save_to_file();
 

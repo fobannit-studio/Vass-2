@@ -6,22 +6,51 @@
 shortcut_v * shortcut_v::Shortcuts_Base = nullptr;
 
 
-shortcut_v::shortcut_v()
-{
+shortcut_v::shortcut_v(){
+
+
+    std::vector<int> tmp_keys = saver.read_keys();
+    qDebug() << tmp_keys;
     qDebug() << "created new Shortcut vector";
     _shortcuts_file = QObject::tr("shortcuts.abk");
     _summirized_weight = 0;
     readFromFile();
-    _icons = Qt::Key_M;
-    _config = Qt::Key_Q;
-    _time = Qt::Key_T;
-    _player = Qt::Key_P;
-    _icons_mod = ControlMask;
-    _player_mod = ControlMask;
-    _time_mod = ControlMask;
-    _config_mod = ControlMask;
+    if(tmp_keys.empty() || tmp_keys[0] == 0){
+        _icons = Qt::Key_M;
+        _config = Qt::Key_Q;
+        _time = Qt::Key_T;
+        _player = Qt::Key_P;
+        _icons_mod = ControlMask;
+        _player_mod = ControlMask;
+        _time_mod = ControlMask;
+        _config_mod = ControlMask;
+    }else {
+        _icons =tmp_keys[0];
+        _config = tmp_keys[1];
+        _time = tmp_keys[2];
+        _player = tmp_keys[3];
+        std::vector<int> tmp_mod = saver.read_modifiers();
+        _icons_mod = tmp_mod[0];
+        _player_mod = tmp_mod[1];
+        _time_mod = tmp_mod[2];
+        _config_mod = tmp_mod[3];
+}
+
     _hotKeys = {_icons,_config,_time,_player};
 }
+
+
+shortcut_v::~shortcut_v(){
+    qDebug() << "saving keys";
+    std::vector<int> keys = {_icons,_config,_time,_player};
+    std::vector<int> modifiers = {_icons_mod,_config_mod,_time_mod,_player_mod};
+    saver.save_icons(keys,modifiers);
+}
+
+
+
+
+
 std::string shortcut_v::setModPrefix(unsigned int modifier)
 {
     if(modifier==ControlMask){
@@ -33,7 +62,7 @@ std::string shortcut_v::setModPrefix(unsigned int modifier)
     }
     else if (modifier == Mod1Mask)
     {
-        return "Alt +";
+        return "AltL +";
     }
     else {
         return " ";
@@ -231,7 +260,7 @@ void shortcut_v::parse_names(QString filename)
     return Qt::Key_0;
 };
 
- unsigned int shortcut_v::return_modifier(QString mod)
+int shortcut_v::return_modifier(QString mod)
  {
      if(mod == "Ctrl")
      {

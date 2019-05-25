@@ -1,5 +1,6 @@
 #ifndef SHORTCUT_V_H
 #define SHORTCUT_V_H
+
 #include<vector>
 #include<string>
 #include<regex>
@@ -12,14 +13,17 @@
 #include<QTranslator>
 #include<QObject>
 #include<QDebug>
+#include"saver.h"
+
 enum class State{Ranged,Single};
 class shortcut_v
 {
 private:
     static shortcut_v * Shortcuts_Base;
     shortcut_v();
-public:
 
+public:
+    ~shortcut_v();
 //singleton class
     static shortcut_v * Initialialize(){
         if(Shortcuts_Base == nullptr)Shortcuts_Base = new shortcut_v;
@@ -30,10 +34,11 @@ public:
     int _player;
     int _time;
     int _config;
-    unsigned int _icons_mod;
-    unsigned int _player_mod;
-    unsigned int _time_mod;
-    unsigned int _config_mod;
+    int _icons_mod;
+    int _player_mod;
+    int _time_mod;
+    int _config_mod;
+    Saver saver;
     std::vector<Shortcut> _shortcuts_class;
     std::vector<int> _hotKeys;
     QString _shortcuts_file;
@@ -45,7 +50,7 @@ public:
     void writeToFile();
     void readFromFile();
     int return_key_code(QString);
-    unsigned int return_modifier(QString);
+    int return_modifier(QString);
     std::string setModPrefix(unsigned int modifier);
 
 };

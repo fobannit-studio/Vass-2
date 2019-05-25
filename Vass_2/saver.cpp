@@ -34,6 +34,47 @@ void Saver::save()
     qWarning("saved");
 
 }
+
+void Saver::save_icons(std::vector<int> keys , std::vector<int> modifiers)
+{
+    qDebug() << "Keys in saver " << keys;
+    QJsonArray arr;
+    for(auto& i:keys)
+    {
+        arr.append(i);
+    }
+    this -> settings_obj.insert("keys",arr);
+    arr = QJsonArray();
+    for(auto& i:modifiers){
+        arr.append(i);
+    }
+    this ->settings_obj.insert("modifiers",arr);
+    save();
+}
+std::vector<int> Saver::read_keys()
+{
+    std::vector<int> o_keys;
+    QJsonDocument Saved_Data = open_file();
+    QJsonArray keys = Saved_Data.object()["keys"].toArray();
+    o_keys.emplace_back(keys.at(0).toInt());
+    o_keys.emplace_back(keys.at(1).toInt());
+    o_keys.emplace_back(keys.at(2).toInt());
+    o_keys.emplace_back(keys.at(3).toInt());
+    return o_keys;
+}
+std::vector<int> Saver::read_modifiers()
+{
+    std::vector<int> o_keys;
+    QJsonDocument Saved_Data = open_file();
+    QJsonArray keys = Saved_Data.object()["modifiers"].toArray();
+    o_keys.emplace_back(keys.at(0).toInt());
+    o_keys.emplace_back(keys.at(1).toInt());
+    o_keys.emplace_back(keys.at(2).toInt());
+    o_keys.emplace_back(keys.at(3).toInt());
+    return o_keys;
+}
+
+
 void Saver::save_music(const QMediaPlaylist& songs)
 {
   QJsonArray arr;

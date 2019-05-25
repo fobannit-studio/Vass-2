@@ -71,8 +71,15 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
 MainWindow::~MainWindow()
 {
     qWarning("saving");
+//    qDebug() << "saving keys";
+//    std::vector<int> keys = {shortcuts->_icons,shortcuts->_config,shortcuts->_time,shortcuts->_player};
+//    std::vector<int> modifiers = {shortcuts->_icons_mod,shortcuts->_config_mod,shortcuts->_time_mod,shortcuts->_player_mod};
+//    saver.save_icons(keys,modifiers);
+
+    delete shortcuts;
     if (M_Player.playlist.mediaCount()>0)
         saver.save_music(M_Player.playlist);
+//    saver.save();
     delete ui;
 
 

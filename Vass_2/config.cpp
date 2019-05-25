@@ -115,7 +115,7 @@ void config::setStyle(bool mouse_wheel)
     {
         if(i == _active_element%(8) && !mouse_wheel)
         {
-           _app_buttons[i]-> setStyleSheet("QPushButton{background-color:rgba(38, 214, 33,0.7);border: 1px solid gray;border-radius:10px ; padding-top:0px}QPushButton:hover{background-color:rgb(160, 8, 33)}");
+           _app_buttons[i]-> setStyleSheet("QPushButton{background-color:rgba(38, 214, 33,0.4);border: 1px solid gray;border-radius:10px ; padding-top:0px}QPushButton:hover{background-color:rgba(38, 214, 33,1);}");
         }else {
            _app_buttons[i]-> setStyleSheet("QPushButton{background-color:white}");
 }
