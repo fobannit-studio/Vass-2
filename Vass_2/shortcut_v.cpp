@@ -16,10 +16,29 @@ shortcut_v::shortcut_v()
     _config = Qt::Key_Q;
     _time = Qt::Key_T;
     _player = Qt::Key_P;
+    _icons_mod = ControlMask;
+    _player_mod = ControlMask;
+    _time_mod = ControlMask;
+    _config_mod = ControlMask;
     _hotKeys = {_icons,_config,_time,_player};
-
-
 }
+std::string shortcut_v::setModPrefix(unsigned int modifier)
+{
+    if(modifier==ControlMask){
+        return "Ctrl + ";
+    }
+    else if (modifier == ShiftMask)
+    {
+        return "Shift + ";
+    }
+    else if (modifier == Mod1Mask)
+    {
+        return "Alt +";
+    }
+    else {
+        return " ";
+    }
+ }
 
 void shortcut_v::writeToFile()
 {
@@ -211,6 +230,23 @@ void shortcut_v::parse_names(QString filename)
 
     return Qt::Key_0;
 };
+
+ unsigned int shortcut_v::return_modifier(QString mod)
+ {
+     if(mod == "Ctrl")
+     {
+         return ControlMask;
+     }
+     if(mod == "Alt")
+     {
+         return Mod1Mask;
+     }
+     if(mod == "Shift")
+     {
+         return ShiftMask;
+     }
+     return 0;
+ }
 
 
 

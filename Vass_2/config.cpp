@@ -12,10 +12,10 @@ config::config(QWidget *parent) :
     _active_element = -1;
     ui->stackedWidget->setCurrentWidget(ui->page_4);
     _icon_info_active = false;
-    ui->i_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_icons).toString());
-    ui->t_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_time).toString());
-    ui->m_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_player).toString());
-    ui->c_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_config).toString());
+    ui->i_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_icons_mod)) + QKeySequence(shortcuts->_icons).toString());
+    ui->t_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_time_mod)) + QKeySequence(shortcuts->_time).toString());
+    ui->m_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_player_mod)) + QKeySequence(shortcuts->_player).toString());
+    ui->c_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_config_mod)) + QKeySequence(shortcuts->_config).toString());
 
 
     fill_shortcuts();
@@ -359,25 +359,42 @@ void config::wCheckInit(int el)
 void config::on_submit_clicked()
 {
     QStringList seq = ui->icon->keySequence().toString().split("+");
-    if(seq.size()>1)shortcuts->_icons = shortcuts->return_key_code(seq[1]);
+    if(seq.size()>1){
+        shortcuts->_icons_mod = shortcuts ->return_modifier(seq[0]);
+        shortcuts->_icons = shortcuts->return_key_code(seq[1]);
+    }
+
     else if(!seq[0].isEmpty()) shortcuts->_icons = shortcuts->return_key_code(seq[0]);
 
     seq = ui->media->keySequence().toString().split("+");
-    if(seq.size()>1)shortcuts->_player = shortcuts->return_key_code(seq[1]);
-    else if(!seq[0].isEmpty()) shortcuts->_player = shortcuts->return_key_code(seq[0]);
+    if(seq.size()>1){
+        shortcuts->_player_mod = shortcuts ->return_modifier(seq[0]);
+        shortcuts->_player = shortcuts->return_key_code(seq[1]);
+    }
+        else if(!seq[0].isEmpty()) shortcuts->_player = shortcuts->return_key_code(seq[0]);
 
     seq = ui->time->keySequence().toString().split("+");
-    if(seq.size()>1)shortcuts->_time= shortcuts->return_key_code(seq[1]);
-    else if(!seq[0].isEmpty()) shortcuts->_time= shortcuts->return_key_code(seq[0]);
+    if(seq.size()>1){
+        shortcuts->_time_mod = shortcuts ->return_modifier(seq[0]);
+        shortcuts->_time= shortcuts->return_key_code(seq[1]);
+
+    }else if(!seq[0].isEmpty()) shortcuts->_time= shortcuts->return_key_code(seq[0]);
     qDebug()<<"Unchanged shortuc time "<<seq << " dd ";
+
     seq = ui->config_2->keySequence().toString().split("+");
-    if(seq.size()>1)shortcuts->_config = shortcuts->return_key_code(seq[1]);
-    else if(!seq[0].isEmpty()) shortcuts->_config = shortcuts->return_key_code(seq[0]);
+    if(seq.size()>1)
+    {
+        shortcuts->_config_mod = shortcuts ->return_modifier(seq[0]);
+        shortcuts->_config = shortcuts->return_key_code(seq[1]);
+    }
+        else if(!seq[0].isEmpty()) shortcuts->_config = shortcuts->return_key_code(seq[0]);
 
     emit changeHotKey();
-    ui->i_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_icons).toString());
-    ui->t_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_time).toString());
-    ui->m_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_player).toString());
-    ui->c_p_l->setText("Ctrl + " + QKeySequence(shortcuts->_config).toString());
+    ui->i_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_icons_mod)) + QKeySequence(shortcuts->_icons).toString());
+    ui->t_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_time_mod)) + QKeySequence(shortcuts->_time).toString());
+    ui->m_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_player_mod)) + QKeySequence(shortcuts->_player).toString());
+    ui->c_p_l->setText(QString::fromStdString(shortcuts->setModPrefix(shortcuts->_config_mod)) + QKeySequence(shortcuts->_config).toString());
+
+
 
 }

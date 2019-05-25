@@ -12,8 +12,6 @@
 #include<QTranslator>
 #include<QObject>
 #include<QDebug>
-
-
 enum class State{Ranged,Single};
 class shortcut_v
 {
@@ -27,10 +25,15 @@ public:
         if(Shortcuts_Base == nullptr)Shortcuts_Base = new shortcut_v;
         return Shortcuts_Base;
     }
+   // 1 - icon 2 - player 3 - time 4 - config
     int _icons;
     int _player;
     int _time;
     int _config;
+    unsigned int _icons_mod;
+    unsigned int _player_mod;
+    unsigned int _time_mod;
+    unsigned int _config_mod;
     std::vector<Shortcut> _shortcuts_class;
     std::vector<int> _hotKeys;
     QString _shortcuts_file;
@@ -42,6 +45,8 @@ public:
     void writeToFile();
     void readFromFile();
     int return_key_code(QString);
+    unsigned int return_modifier(QString);
+    std::string setModPrefix(unsigned int modifier);
 
 };
 

@@ -17,13 +17,13 @@ class event_filter : public QObject, public QAbstractNativeEventFilter
     Q_OBJECT
 
 public:
-    explicit event_filter(KeySym icons , KeySym config , KeySym media , KeySym clock , QObject *parent = nullptr);
+    explicit event_filter(KeySym icons , KeySym config , KeySym media , KeySym clock , QObject *parent = nullptr ,  unsigned int i_m = ControlMask,unsigned int conf_m = ControlMask,unsigned int p_m = ControlMask,unsigned int t_m = ControlMask);
 
     bool nativeEventFilter(const QByteArray &eventType , void *message ,long *result);
 //    void setShortcut(KeySym);
     void setShortcut(Apps);
     void unsetShortcut(int);
-    void upadteHotKeys(KeyCode,Apps);
+    void upadteHotKeys(KeyCode,Apps,unsigned int modifier = ControlMask);
 
 signals:
     void icon_called();
@@ -36,9 +36,13 @@ signals:
 private:
 //    shortcut_v * shortcuts;
     int _icon_keycode;
+    unsigned int _icon_modifier;
     int _config_keycode;
+    unsigned int _config_modifier;
     int _media_keycode;
+    unsigned int _media_modifier;
     int _clock_keycode;
+    unsigned int _clock_modifier;
 };
 
 

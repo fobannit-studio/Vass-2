@@ -30,7 +30,7 @@ MainWindow::MainWindow(std::pair<int,int> dim ,QWidget *parent) :
     //shortcut for open icons
 #ifdef linux
     qDebug()<<"Is equal"<<(XK_M == Qt::Key_M);
-    nativeEventFilter = new event_filter(XK_M,XK_Q,XK_P,XK_T,this); // m - icons , t - clock
+    nativeEventFilter = new event_filter(shortcuts->_icons,shortcuts->_config,shortcuts->_player,shortcuts->_time,this,shortcuts->_icons_mod,shortcuts->_config_mod,shortcuts->_player_mod,shortcuts->_time_mod); // m - icons , t - clock
     qApp->installNativeEventFilter(nativeEventFilter);
     connect(nativeEventFilter,&event_filter::icon_called,this,&MainWindow::setVisibleIcons);
     connect(nativeEventFilter,&event_filter::clock_called,this,&MainWindow::setVisibleTime);
@@ -81,10 +81,10 @@ MainWindow::~MainWindow()
 void MainWindow::setNewShortcut()
 {
     qDebug()<<"In set new shortcut  " << shortcuts->_icons;
-    nativeEventFilter ->upadteHotKeys(shortcuts->_icons,Apps::Icons);
-    nativeEventFilter ->upadteHotKeys(shortcuts->_player,Apps::Player);
-    nativeEventFilter ->upadteHotKeys(shortcuts->_time,Apps::Clock);
-    nativeEventFilter ->upadteHotKeys(shortcuts->_config,Apps::Config);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_icons,Apps::Icons , shortcuts->_icons_mod);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_player,Apps::Player ,  shortcuts->_player_mod);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_time,Apps::Clock, shortcuts->_time_mod);
+    nativeEventFilter ->upadteHotKeys(shortcuts->_config,Apps::Config, shortcuts->_config_mod);
 }
 void MainWindow::setVisibleIcons()
 {
